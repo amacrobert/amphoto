@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="row">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active" style="background-image: url({{ asset('images/festivals/0001-1.JPG') }})"></div>
+        <div class="item" style="background-image: url({{ asset('images/portraiture/0005.JPG') }})"></div>
+        <div class="item" style="background-image: url({{ asset('images/nightlife/0006.JPG') }})"></div>
+        <div class="item" style="background-image: url({{ asset('images/nightlife/0025.JPG') }})"></div>
+        <div class="item" style="background-image: url({{ asset('images/day-parties/0023.JPG') }})"></div>
+        <div class="item" style="background-image: url({{ asset('images/festivals/0033.JPG') }})"></div>
+        <div class="item" style="background-image: url({{ asset('images/festivals/0034.JPG') }})"></div>
+        <div class="item" style="background-image: url({{ asset('images/nightlife/0001.JPG') }})"></div>
+        <div class="item" style="background-image: url({{ asset('images/nightlife/0012.JPG') }})"></div>
+        <div class="item" style="background-image: url({{ asset('images/nightlife/0026.JPG') }})"></div>
+        <div class="item" style="background-image: url({{ asset('images/nightlife/0028.JPG') }})"></div>
+        <div class="item" style="background-image: url({{ asset('images/portraiture/0029.JPG') }})"></div>
+        <div class="item" style="background-image: url({{ asset('images/portraiture/0032.JPG') }})"></div>
+        <div class="item" style="background-image: url({{ asset('images/portraiture/0033.JPG') }})"></div>
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(function() {
+            $('#myCarousel').carousel({
+                interval: 4000,
+                pause: false,
+            });
+        });
+    </script>
+
+{% endblock %}

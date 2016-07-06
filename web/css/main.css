@@ -1,0 +1,141 @@
+body {
+    padding-top: 130px;
+    padding-bottom: 60px;
+}
+
+.carousel .item {
+    width: 100vw;
+    height: calc(100vh - 66px);
+    background-size: cover;
+}
+
+@media (min-width: 768px) {
+    body {
+        padding-top: 66px;
+    }
+}
+
+body.slideshow {
+    padding-bottom: 0;
+}
+
+a {
+    color: #000;
+}
+a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.header {
+    background-color: #FFF;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 2px solid white;
+}
+.header h1 {
+    font-size: 18px;
+    font-family: 'Raleway';
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 7px 0 0 10px;
+}
+
+ul.social-list {
+    list-style-type: none;
+    font-size: 24px;
+}
+ul.social-list li {
+    float: right;
+}
+ul.social-list a {
+    display: block;
+    text-align: center;
+    width: 40px;
+    color: #000;
+}
+ul.social-list a:hover {
+    color: #888;
+}
+.social-text {
+    font-style: italic;
+    font-size: 14px;
+    line-height: 32px;
+}
+
+.navigation {
+    background-color: #333;
+    color: #EEE;
+}
+
+.navigation ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-family: 'Ubuntu Condensed';
+    letter-spacing: 1px;
+}
+.navigation ul li {
+    display: inline-block;
+    padding: 5px 15px;
+    text-align: center;
+}
+.navigation ul li a {
+    color: #FFF;
+    text-decoration: none;
+}
+.navigation ul li a:hover {
+    color: #CCC;
+}
+
+.page-title {
+    text-align: center;
+    padding: 30px 0;
+}
+.page-title h2 {
+    font-family: 'Raleway';
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+.page-title p {
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+/* Custom CSS for Freewall plugin */
+.item {
+    display: block;
+    background-color: #CCC;
+    background-position: center;
+    background-size: cover;
+    width: 350px;
+    height: 233px;
+}
+
+.item.portrait {
+    width: 233px;
+    height: 350px;
+}
+
+.item.square {
+    width: 233px;
+    height: 233px;
+}
+
+img.profile {
+    width: calc(40% - 10px);
+    padding: 0 10px 10px  0;
+    float: left;
+}
+
+.quote-author {
+    float: right;
+}

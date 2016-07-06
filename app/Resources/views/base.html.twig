@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+        <title>{% block title %}Andrew MacRobert Photography{% endblock %}</title>
+
+        {% block stylesheets %}
+            <link href="{{ asset('bootstrap-3.3.6/css/bootstrap.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('bootstrap-3.3.6/css/bootstrap-theme.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+            <link href="{{ asset('lightbox2/css/lightbox.min.css') }}" rel="stylesheet">
+            <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body class="{{ bodyclasses|default('') }}">
+        <div class="container-fluid">
+        {% block header %}
+            <div class="row header" style>
+                <div class="col-xs-12 col-sm-9"><h1><a href="/">Andrew MacRobert Photography</a></h1></div>
+                <div class="col-xs-12 col-sm-3">
+                    <ul class="social-list">
+                        <li><a href="//facebook.com/andrewmacrobertphoto" target="_blank"><i class="ion ion-social-facebook"></i></a></li>
+                        <li><a href="//instagram.com/dapperviking" target="_blank"><i class="ion ion-social-instagram"></i></a></li>
+                        <li class="social-text">follow:</li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-12 navigation">
+                    <ul>
+                        <li><a href="/photos/nightlife">🎉 Nightlife</a></li>
+                        <li><a href="/photos/day-parties">🍹 Day parties</a></li>
+                        <li><a href="/photos/festivals">🎡 Festivals</a></li>
+                        <li><a href="/photos/portraiture">🚌 Tour Life</a></li>
+                        <li><a href="/photos/portraiture">👰 Weddings</a></li>
+                        <li><a href="/photos/portraiture">😎 Portraiture</a></li>
+                        <li><a href="/about">[About]</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        {% endblock %}
+
+        {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}
+            <script src="{{ asset('js/jquery-2.2.4.min.js') }}"></script>
+            <script src="{{ asset('bootstrap-3.3.6/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('js/freewall.js') }}"></script>
+            <script src="{{ asset('lightbox2/js/lightbox.min.js') }}"></script>
+            <script src="{{ asset('js/main.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>
