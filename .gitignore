@@ -15,4 +15,5 @@
 /vendor/
 /web/bundles/
 *.BridgeSort
+sftp-config.json
 
