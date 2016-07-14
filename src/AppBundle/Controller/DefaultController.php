@@ -146,7 +146,7 @@ class DefaultController extends Controller
             'description' => $description,
             'photos' => $photos,
             'og' => [
-                'title' => $title . ' on Andrew MacRobert Photography',
+                'title' => $title,
                 'image' => 'http://andrewmacrobert.com/' . $photos[0]->uri,
             ],
         ]);
