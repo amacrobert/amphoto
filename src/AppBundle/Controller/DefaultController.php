@@ -13,33 +13,12 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request) {
 
-        // Images in the home page slideshow, in order.
-        // These paths are relative to web/images/
-        $photos = [
-            'festivals/0001-1.jpg',
-            'tour-life/0029.jpg',
-            'weddings/0015.jpg',
-            'portraiture/0005.jpg',
-            'nightlife/0006.jpg',
-            'nightlife/0025.jpg',
-            'day-parties/0023.jpg',
-            'festivals/0033.jpg',
-            'festivals/0034.jpg',
-            'nightlife/0001.jpg',
-            'nightlife/0012.jpg',
-            'nightlife/0026.jpg',
-            'nightlife/0028.jpg',
-            'portraiture/0029.jpg',
-            'portraiture/0032.jpg',
-            'portraiture/0033.jpg',
-        ];
+        $content = $this->get('web_content');
 
         return $this->render('default/index.html.twig', [
-            'slideshow' => $photos,
             'bodyclass' => 'slideshow',
-            'og' => [
-                'image' => 'http://andrewmacrobert.com/images/' . $photos[0],
-            ],
+            'slideshow' => $content->getFeaturedPhotos(),
+            'og' => $content->getOpenGraph(),
         ]);
     }
 
@@ -48,10 +27,7 @@ class DefaultController extends Controller
      */
     public function aboutAction() {
         return $this->render('default/about.html.twig', [
-            'og' => [
-                'title' => 'About Andrew MacRobert Photography',
-                'image' => 'http://andrewmacrobert.com/images/profile.jpg',
-            ],
+            'og' => $this->get('web_content')->getOpenGraph('about'),
         ]);
     }
 
