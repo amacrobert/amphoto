@@ -36,12 +36,6 @@ class DefaultController extends Controller
      */
     public function categoryAction($category) {
 
-        // List allowed file extensions here
-        $allowed_extensions = [
-            'jpg',
-            'jpeg',
-        ];
-
         $directory = 'images/' . $category;
 
         // If the category doesn't exist, redirect home
@@ -49,36 +43,7 @@ class DefaultController extends Controller
             return $this->redirectToRoute('homepage');
         }
 
-        // Scan the contents of the category's directory for photos to display
-        $files = scandir($directory, SCANDIR_SORT_DESCENDING);
-        $photos = [];
-
-        foreach ($files as $file) {
-            // Only accept certain file types and ignore directories
-            $pathinfo = pathinfo($file);
-
-            if (in_array(strtolower($pathinfo['extension']), $allowed_extensions)) {
-
-                $uri = 'images/' . $category . '/' . $file;
-                
-                // Determine if the image is landscape, portrait, or square for proper Freewall rendering
-                $dimensions = getimagesize($uri);
-                if ($dimensions[0] > $dimensions[1]) {
-                    $orientation = 'landscape';
-                }
-                elseif ($dimensions[0] < $dimensions[1]) {
-                    $orientation = 'portrait';
-                }
-                else {
-                    $orientation = 'square';
-                }
-
-                $photos[] = (object)[
-                    'uri' => $uri,
-                    'orientation' => $orientation,
-                ];
-            }
-        }
+        $photos = $this->get('PhotoCategory')->getPhotos($category);
 
         switch ($category) {
             case 'nightlife':

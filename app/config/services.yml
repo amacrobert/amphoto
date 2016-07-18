@@ -6,3 +6,5 @@ parameters:
 services:
     web_content:
         class: AppBundle\Service\WebContent
+    photo_category:
+        class: AppBundle\Service\PhotoCategory
