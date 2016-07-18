@@ -34,10 +34,13 @@ class PhotoCategory {
                 $file = substr($key, 0, strpos($key, ".jpg")) . '.jpg';
 
                 $uri = $directory . '/' . $file;
-                $photos[] = (object)[
-                    'uri' => $uri,
-                    'orientation' => $this->getOrientation($uri),
-                ];
+
+                if (file_exists($uri)) {
+                    $photos[] = (object)[
+                        'uri' => $uri,
+                        'orientation' => $this->getOrientation($uri),
+                    ];
+                }
             }
         }
 
