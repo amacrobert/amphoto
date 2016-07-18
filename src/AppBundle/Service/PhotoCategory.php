@@ -44,7 +44,7 @@ class PhotoCategory {
             }
         }
 
-        // No .BridgeSort -- scandir and sort by filename
+        // No BridgeSort -- scandir and sort by filename
         else {
             $files = scandir($directory, SCANDIR_SORT_DESCENDING);
 

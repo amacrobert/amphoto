@@ -73,7 +73,7 @@ class DefaultController extends Controller
 
             case 'weddings':
                 $title = 'Weddings';
-                $description = 'Wedding ceremonies, receptions, and engagement shoots.';
+                $description = 'Wedding ceremonies, receptions, bridal, and engagement shoots.';
                 break;
 
             default:
