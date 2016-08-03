@@ -16,6 +16,7 @@ class WebContent {
     public function getFeaturedPhotos() {
         return [
             'festivals/0001-1.jpg',
+            'nightlife/royale-go-001.jpg',
             'tour-life/0029.jpg',
             'weddings/0015.jpg',
             'portraiture/0005.jpg',
@@ -49,7 +50,7 @@ class WebContent {
 
             default:
                 $ogp = [
-                    'image' => 'http://andrewmacrobert.com/images/festivals/0001-1.jpg',
+                    'image' => 'http://andrewmacrobert.com/images/nightlife/royale-go-001.jpg',
                 ];
                 break;
         }
