@@ -11,31 +11,6 @@ namespace AppBundle\Service;
 class WebContent {
 
     /**
-     * Featured photos to be shown on the home page, in order.
-     */
-    public function getFeaturedPhotos() {
-        return [
-            'festivals/0001-1.jpg',
-            'nightlife/royale-go-001.jpg',
-            'tour-life/0029.jpg',
-            'weddings/0015.jpg',
-            'portraiture/0005.jpg',
-            'nightlife/0006.jpg',
-            'nightlife/0025.jpg',
-            'day-parties/0023.jpg',
-            'festivals/0033.jpg',
-            'festivals/0034.jpg',
-            'nightlife/0001.jpg',
-            'nightlife/0012.jpg',
-            'nightlife/0026.jpg',
-            'nightlife/0028.jpg',
-            'portraiture/0029.jpg',
-            'portraiture/0032.jpg',
-            'portraiture/0033.jpg',
-        ];
-    }
-
-    /**
      * Get OGP values for a given page
      */
     public function getOpenGraph($page = null) {

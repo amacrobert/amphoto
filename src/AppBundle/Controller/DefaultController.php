@@ -14,10 +14,11 @@ class DefaultController extends Controller
     public function indexAction(Request $request) {
 
         $content = $this->get('web_content');
+        $category = $this->get('photo_category');
 
         return $this->render('default/index.html.twig', [
             'bodyclass' => 'slideshow',
-            'slideshow' => $content->getFeaturedPhotos(),
+            'slideshow' => $category->getPhotos('featured'),
             'og' => $content->getOpenGraph(),
         ]);
     }
@@ -43,7 +44,7 @@ class DefaultController extends Controller
             return $this->redirectToRoute('homepage');
         }
 
-        $photos = $this->get('PhotoCategory')->getPhotos($category);
+        $photos = $this->get('photo_category')->getPhotos($category);
 
         switch ($category) {
             case 'nightlife':
