@@ -29,6 +29,7 @@ class DefaultController extends Controller
     public function aboutAction() {
         return $this->render('default/about.html.twig', [
             'og' => $this->get('web_content')->getOpenGraph('about'),
+            'aboutNavActive' => true,
         ]);
     }
 
@@ -50,31 +51,37 @@ class DefaultController extends Controller
             case 'nightlife':
                 $title = 'Nightlife';
                 $description = '';
+                $active_nav = 'nightlifeNavActive';
                 break;
 
             case 'day-parties':
                 $title = 'Day Parties';
                 $description = '';
+                $active_nav = 'dayPartiesNavActive';
                 break;
 
             case 'festivals':
                 $title = 'Festivals';
                 $description = '';
+                $active_nav = 'festivalsNavActive';
                 break;
 
             case 'portraiture':
                 $title = 'Portraiture';
                 $description = 'Fashion shoots, publicity shoots, editorials, and just-for-fun shoots of human beings.';
+                $active_nav = 'portraitureNavActive';
                 break;
 
             case 'tour-life':
                 $title = 'Tour Life';
                 $description = "Being on tour is living in an alternate reality, and it's not all about the performance each night. A big part of tour photography is capturing candid moments of artists in various cities, exposing their personality to fans on social media in ways they don't see on stage.";
+                $active_nav = 'tourLifeNavActive';
                 break;
 
             case 'weddings':
                 $title = 'Weddings';
                 $description = 'Wedding ceremonies, receptions, bridal, and engagement shoots.';
+                $active_nav = 'weddingsNavActive';
                 break;
 
             default:
@@ -91,6 +98,7 @@ class DefaultController extends Controller
                 'title' => $title,
                 'image' => 'http://andrewmacrobert.com/' . $photos[0]->uri,
             ],
+            $active_nav => true,
         ]);
     }
 }
