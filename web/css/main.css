@@ -124,6 +124,17 @@ ul.social-list a:hover {
     margin: 0 auto 30px auto;
 }
 
+.page-title p.instructions {
+    color: #888;
+    font-style: italic;
+    display: none;
+}
+@media (min-width: 768px) {
+    .page-title p.instructions {
+        display: inherit;
+    }
+}
+
 /* Custom CSS for Freewall plugin */
 .item {
     display: block;
