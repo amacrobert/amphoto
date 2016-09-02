@@ -29,7 +29,19 @@ class DefaultController extends Controller
     public function aboutAction() {
         return $this->render('default/about.html.twig', [
             'og' => $this->get('web_content')->getOpenGraph('about'),
+            'moreNavActive' => true,
             'aboutNavActive' => true,
+        ]);
+    }
+
+    /**
+     * @Route("/equipment", name="equipment")
+     */
+    public function equipmentAction() {
+        return $this->render('default/equipment.html.twig', [
+            'og' => $this->get('web_content')->getOpenGraph('equipment'),
+            'moreNavActive' => true,
+            'equipmentNavActive' => true,
         ]);
     }
 

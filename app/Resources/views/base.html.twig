@@ -70,8 +70,18 @@
                             <li {% if portraitureNavActive is defined %} class="active"{% endif %}>
                                 <a href="/photos/portraiture">👙 Portraits</a>
                             </li>
-                            <li {% if aboutNavActive is defined %} class="active"{% endif %}>
-                                <a href="/about">/About</a>
+                            <li role="presentation" class="dropdown {% if moreNavActive is defined %}active{% endif %}">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    More <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li {% if aboutNavActive is defined %}class="active"{% endif %}>
+                                        <a href="/about">Contact/About</a>
+                                    </li>
+                                    <li {% if equipmentNavActive is defined %}class="active"{% endif %}>
+                                        <a href="/equipment">Equipment</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>

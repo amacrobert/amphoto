@@ -23,6 +23,12 @@ class WebContent {
                 ];
                 break;
 
+            case 'equipment':
+                $ogp = [
+                    'title' => 'My Equipment',
+                ];
+                break;
+
             default:
                 $ogp = [
                     'image' => 'http://andrewmacrobert.com/images/nightlife/royale-go-001.jpg',

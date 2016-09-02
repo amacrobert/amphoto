@@ -156,7 +156,7 @@ ul.social-list a:hover {
 
 img.profile {
     width: calc(40% - 10px);
-    padding: 0 10px 10px  0;
+    padding: 0 10px 10px  0px;
     float: left;
 }
 
@@ -170,4 +170,46 @@ blockquote {
     text-align: right;
     margin-bottom: 50px;
     color: #888;
+}
+
+/* overrides for bootstrap's menu dropdown item */
+.dropdown-menu {
+    border: none;
+    background-color: #333;
+}
+.dropdown-menu > li > a {
+    line-height: 2em;
+    color: #EEE;
+}
+@media (min-width: 768px) {
+    .dropdown-menu > li > a {
+        text-transform: uppercase;
+        font-family: 'Ubuntu Condensed';
+        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    }
+    .dropdown-menu > li:last-child a {
+        border-bottom: none;
+    }
+}
+
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover {
+    background-color: #444;
+    background-image: none;
+    color: #FFF;
+}
+
+.equipment a {
+    color: #0000AA;
+}
+.equipment a:focus,
+.equipment a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+.list-section-title {
+    margin: 20px 0 0 5px;
+    text-transform: uppercase;
+    font-weight: bold;
 }
