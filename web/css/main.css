@@ -127,11 +127,17 @@ ul.social-list a:hover {
 .page-title p.instructions {
     color: #888;
     font-style: italic;
+}
+.page-title p.instructions .click {
     display: none;
 }
+
 @media (min-width: 768px) {
-    .page-title p.instructions {
-        display: inherit;
+    .page-title p.instructions .tap {
+        display: none;
+    }
+    .page-title p.instructions .click {
+        display: initial;
     }
 }
 
