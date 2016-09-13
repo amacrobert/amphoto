@@ -55,15 +55,15 @@
                             <li {% if nightlifeNavActive is defined %} class="active"{% endif %}>
                                 <a href="/photos/nightlife">🎉 Nightlife</a>
                             </li>
+                            <li {% if festivalsNavActive is defined %} class="active"{% endif %}>
+                               <a href="/photos/festivals">🎡 Festivals</a>
+                            </li>
                             <li {% if dayPartiesNavActive is defined %} class="active"{% endif %}>
                                 <a href="/photos/day-parties">🍹 Day parties</a>
                             </li>
-                             <li {% if festivalsNavActive is defined %} class="active"{% endif %}>
-                               <a href="/photos/festivals">🎡 Festivals</a>
-                            </li>
-                            <li {% if tourLifeNavActive is defined %} class="active"{% endif %}>
+                            {% if tourLifeNavActive is defined %}<li class="active">
                                 <a href="/photos/tour-life">🚌 Tour Life</a>
-                            </li>
+                            </li>{% endif %}
                             <li {% if weddingsNavActive is defined %} class="active"{% endif %}>
                                 <a href="/photos/weddings">👰 Weddings</a>
                             </li>
