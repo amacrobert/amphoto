@@ -52,25 +52,42 @@
                     </div>
                     <div id="navbar" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
+
                             <li {% if nightlifeNavActive is defined %} class="active"{% endif %}>
                                 <a href="/photos/nightlife">🎉 Nightlife</a>
                             </li>
+
                             <li {% if festivalsNavActive is defined %} class="active"{% endif %}>
                                <a href="/photos/festivals">🎡 Festivals</a>
                             </li>
+
                             <li {% if dayPartiesNavActive is defined %} class="active"{% endif %}>
                                 <a href="/photos/day-parties">🍹 Day parties</a>
                             </li>
+
                             {% if tourLifeNavActive is defined %}<li class="active">
                                 <a href="/photos/tour-life">🚌 Tour Life</a>
                             </li>{% endif %}
+
                             <li {% if weddingsNavActive is defined %} class="active"{% endif %}>
                                 <a href="/photos/weddings">👰 Weddings</a>
                             </li>
-                            <li {% if portraitureNavActive is defined %} class="active"{% endif %}>
-                                <a href="/photos/portraiture">👙 Portraits</a>
+
+                            <li {% if portraitsWomenNavActive is defined or portraitsMenNavActive is defined%} class="active"{% endif %}>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    👙 Portraits <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li {% if portraitsWomenNavActive is defined %}class="active"{% endif %}>
+                                        <a href="/photos/portraits-women">Women</a>
+                                    </li>
+                                    <li {% if portraitsMenNavActive is defined %}class="active"{% endif %}>
+                                        <a href="/photos/portraits-men">Men</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li role="presentation" class="dropdown {% if moreNavActive is defined %}active{% endif %}">
+
+                            <li role="presentation" class="dropdown {% if aboutNavActive is defined or equipmentNavActive is defined %}active{% endif %}">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                     More <span class="caret"></span>
                                 </a>
@@ -83,6 +100,7 @@
                                     </li>
                                 </ul>
                             </li>
+
                         </ul>
                     </div>
                 </div>

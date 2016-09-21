@@ -62,19 +62,16 @@ class DefaultController extends Controller
         switch ($category) {
             case 'nightlife':
                 $title = 'Nightlife';
-                $description = '';
                 $active_nav = 'nightlifeNavActive';
                 break;
 
             case 'day-parties':
                 $title = 'Day Parties';
-                $description = '';
                 $active_nav = 'dayPartiesNavActive';
                 break;
 
             case 'festivals':
                 $title = 'Festivals';
-                $description = '';
                 $active_nav = 'festivalsNavActive';
                 break;
 
@@ -82,6 +79,18 @@ class DefaultController extends Controller
                 $title = 'Portraiture';
                 $description = 'Fashion shoots, publicity shoots, editorials, and just-for-fun shoots of human beings.';
                 $active_nav = 'portraitureNavActive';
+                break;
+
+            case 'portraits-women':
+                $title = 'Portraiture: Women';
+                $description = '<a href="/photos/portraits-men">Switch to men</a>';
+                $active_nav = 'portraitsWomenNavActive';
+                break;
+
+            case 'portraits-men':
+                $title = 'Portraiture: Men';
+                $description = '<a href="/photos/portraits-women">Switch to women</a>';
+                $active_nav = 'portraitsMenNavActive';
                 break;
 
             case 'tour-life':
@@ -104,7 +113,7 @@ class DefaultController extends Controller
 
         return $this->render('default/category.html.twig', [
             'title' => $title,
-            'description' => $description,
+            'description' => empty($description) ? '' : $description,
             'photos' => $photos,
             'og' => [
                 'title' => $title,

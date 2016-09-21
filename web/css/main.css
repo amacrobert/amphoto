@@ -52,7 +52,8 @@ ul.social-list li {
 ul.social-list a {
     display: block;
     text-align: center;
-    width: 40px;
+    width: 20px;
+    margin-left: 8px;
     color: #000;
 }
 ul.social-list a:hover {
