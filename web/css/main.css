@@ -39,10 +39,19 @@ a:hover {
     margin: 7px 0 0 10px;
 }
 
+.header h1 .abridge {
+    display: none;
+}
+@media (min-width: 768px) {
+    .header h1 .abridge {
+        display: inherit;
+    }
+}
+
 ul.social-list {
     position: fixed;
     top: 0;
-    right: 0;
+    right: 10px;
     list-style-type: none;
     font-size: 24px;
 }
@@ -58,17 +67,6 @@ ul.social-list a {
 }
 ul.social-list a:hover {
     color: #888;
-}
-.social-text {
-    font-style: italic;
-    font-size: 14px;
-    line-height: 32px;
-    display: none;
-}
-@media (min-width: 768px) {
-    .social-text {
-        display: inherit;
-    }
 }
 
 /* like boostrap's .navbar-fixed-top but with space above it for the site title and social links */
