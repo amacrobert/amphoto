@@ -89,6 +89,10 @@
                                 </ul>
                             </li>
 
+                            <li {% if videoNavActive is defined %} class="active"{% endif %}>
+                                <a href="/video">🎬 Video</a>
+                            </li>
+
                             <li role="presentation" class="dropdown {% if aboutNavActive is defined or equipmentNavActive is defined %}active{% endif %}">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                     More <span class="caret"></span>

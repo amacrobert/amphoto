@@ -46,6 +46,16 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/video", name="video")
+     */
+    public function videoAction() {
+        return $this->render('default/video.html.twig', [
+            'og' => $this->get('web_content')->getOpenGraph('equipment'),
+            'videoNavActive' => true,
+        ]);
+    }
+
+    /**
      * @Route("/photos/{category}", name="category")
      */
     public function categoryAction($category) {
