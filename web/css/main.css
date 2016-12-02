@@ -218,3 +218,7 @@ blockquote {
     text-transform: uppercase;
     font-weight: bold;
 }
+
+.video-item {
+    margin-bottom: 70px;
+}
