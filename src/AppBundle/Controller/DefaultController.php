@@ -70,8 +70,8 @@ class DefaultController extends Controller
         $photos = $this->get('photo_category')->getPhotos($category);
 
         switch ($category) {
-            case 'nightlife':
-                $title = 'Nightlife';
+            case 'nightlife-events':
+                $title = 'Nightlife & Events';
                 $active_nav = 'nightlifeNavActive';
                 break;
 
