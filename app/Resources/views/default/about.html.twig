@@ -25,15 +25,10 @@
             <p>I'm local to Boston, but available for bookings worldwide.</p>
 
             {# Testimonials #}
-            <blockquote>Andrew MacRobert is in my opinion the best nightlife photographer in Boston."</blockquote>
-            <div class="quote-author">&mdash; Matthew Keene, manager of Keene Marcil Group</div>
-
-            <blockquote>I want to make the night a huge success, which means I need the best photog guy in the business."</blockquote>
-            <div class="quote-author">&mdash; Theodore Green of Green T Enterprises, booking Andrew at Royale Boston</div>
-
-            <blockquote>Boston will be too small for Andrew. I proclaim it."</blockquote>
-            <div class="quote-author">&mdash; Cam Preciado, Creative Director at Christian Hill Studios</div>
-
+            {% for endorsement in endorsements %}
+                <blockquote>{{ endorsement.quote }}"</blockquote>
+                <div class="quote-author">&mdash; {{ endorsement.byline }}</div>
+            {% endfor %}
         </div>
     </div>
 

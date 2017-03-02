@@ -168,6 +168,7 @@ img.profile {
 blockquote {
     clear: both;
     margin-top: 40px;
+    text-align: left;
 }
 
 .quote-author {
@@ -175,6 +176,11 @@ blockquote {
     text-align: right;
     margin-bottom: 50px;
     color: #888;
+}
+
+.category-endorsement {
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 /* overrides for bootstrap's menu dropdown item */

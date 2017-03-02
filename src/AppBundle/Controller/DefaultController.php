@@ -28,6 +28,7 @@ class DefaultController extends Controller
      */
     public function aboutAction() {
         return $this->render('default/about.html.twig', [
+            'endorsements' => $this->get('web_content')->getEndorsements(),
             'og' => $this->get('web_content')->getOpenGraph('about'),
             'moreNavActive' => true,
             'aboutNavActive' => true,
@@ -125,6 +126,7 @@ class DefaultController extends Controller
             'title' => $title,
             'description' => empty($description) ? '' : $description,
             'photos' => $photos,
+            'endorsements' => $this->get('web_content')->getEndorsements($category),
             'og' => [
                 'title' => $title,
                 'image' => 'http://andrewmacrobert.com/' . $photos[0]->uri,
