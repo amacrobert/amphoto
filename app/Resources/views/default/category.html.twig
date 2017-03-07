@@ -21,7 +21,7 @@
 
     <div id="freewall">
         {% for photo in photos %}
-            <a href="{{ asset(photo.uri) }}" data-lightbox="test-category" data-original="{{ asset(photo.uri) }}" class="lazy item {{ photo.orientation }}" style="background-image: url({{ asset('images/placeholder.png') }})"></a>
+            <a href="{{ asset(photo.uri) }}" data-lightbox="test-category" data-original="{{ asset(photo.uri) }}" class="item {{ photo.orientation }}" style="background-image: url({{ asset('images/placeholder.png') }})"></a>
         {% endfor %}
     </div>
 
@@ -29,11 +29,4 @@
 
 {% block javascripts %}
     {{ parent() }}
-
-    <script>
-        $('.lazy').lazyload({
-            effect: 'fadeIn',
-            threshold: 600
-        });
-    </script>
 {% endblock %}
