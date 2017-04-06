@@ -229,3 +229,14 @@ blockquote {
 .video-item {
     margin-bottom: 70px;
 }
+
+.cta {
+    background-color: #5bc0de;
+}
+
+.banner {
+    min-height: 200px;
+    background-size: cover;
+    background-position: center 60%;
+    margin-bottom: 45px;
+}

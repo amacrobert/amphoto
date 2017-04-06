@@ -36,6 +36,16 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/contact", name="contact")
+     */
+    public function contactAction() {
+        return $this->render('default/contact.html.twig', [
+            'og' => $this->get('web_content')->getOpenGraph('about'),
+            'contactNavActive' => true,
+        ]);
+    }
+
+    /**
      * @Route("/equipment", name="equipment")
      */
     public function equipmentAction() {
@@ -53,6 +63,7 @@ class DefaultController extends Controller
         return $this->render('default/video.html.twig', [
             'og' => $this->get('web_content')->getOpenGraph('equipment'),
             'videoNavActive' => true,
+            'moreNavActive' => true,
         ]);
     }
 
