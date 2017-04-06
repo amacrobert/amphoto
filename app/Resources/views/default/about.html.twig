@@ -5,24 +5,15 @@
 {% block body %}
 
     <div class="row">
-        <div class="col-xs-12 page-title"><h2>Contact</h2></div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-            <p>For bookings and rate inquiries, email your full name and a description of the event or job.</p>
-            <p><b>Email</b>: andrew.macrobert@gmail.com</p>
-            <p><b>Phone</b>: (781) 353-1924</p>
-        </div>
+        <div class="col-xs-12 page-title"><h2>About</h2></div>
     </div>
 
     <div class="row">
-        <div class="col-xs-12 page-title"><h2>About</h2></div>
-    </div>
-    <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
             <img src="{{ asset('images/profile.jpg') }}" class="profile">
-            <p>I am a Boston-based photographer. I shoot concerts, nightlife, fashion, weddings, festivals, and any other assignments. I specialize in nightlife and capturing incredible moments wherever there is a party.</p>
-            <p>I'm local to Boston, but available for bookings worldwide.</p>
+            <p>I am a Boston-based photographer committed to delivering outstanding content for my clients.</p>
+            <p>With my first DSLR in 2014, I started as a nightlife event photographer. I continue to photograph clubs, but have expanded my repertoire to include weddings, fashion, press photos, and many more odd assignments.</p>
+            <p>I'm local to Boston, but available for bookings worldwide. If you like what you see on this website, <a href="/contact" style="text-decoration:underline">contact me</a> for a booking.</p>
 
             {# Testimonials #}
             {% for endorsement in endorsements %}
