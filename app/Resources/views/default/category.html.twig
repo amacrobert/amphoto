@@ -13,7 +13,7 @@
 
     <div class="row justify-content-md-center">
         {% for endorsement in endorsements %}
-            <div class="col-md-6 ">
+            <div class="{% if endorsements|length == 1 %}col-md-offset-3 {% endif %}col-md-6">
                 <blockquote>{{ endorsement.quote }}"</blockquote>
                 <div class="quote-author">&mdash; {{ endorsement.byline }}</div>
             </div>
