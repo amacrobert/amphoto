@@ -7,17 +7,19 @@
     <div class="row">
         <div class="col-xs-12 page-title">
             <h2>{{ title }}</h2>
-
-            {% for endorsement in endorsements %}
-            <div class="category-endorsement">
-                <blockquote>{{ endorsement.quote }}"</blockquote>
-                <div class="quote-author">&mdash; {{ endorsement.byline }}</div>
-            </div>
-            {% endfor %}
-
             <p>{{ description|raw }}</p>
         </div>
     </div>
+
+    <div class="row justify-content-md-center">
+        {% for endorsement in endorsements %}
+            <div class="col-md-6 ">
+                <blockquote>{{ endorsement.quote }}"</blockquote>
+                <div class="quote-author">&mdash; {{ endorsement.byline }}</div>
+            </div>
+        {% endfor %}
+    </div>
+
 
     <div id="freewall">
         {% for photo in photos %}
