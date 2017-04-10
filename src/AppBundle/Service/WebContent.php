@@ -32,12 +32,10 @@ class WebContent {
             case 'video':
                 $ogp = [
                     'title' => 'Video',
-                    'image' => 'http://andrewmacrobert.com/images/nightlife/royale-go-001.jpg',
                 ];
 
             default:
                 $ogp = [
-                    'image' => 'http://andrewmacrobert.com/images/nightlife/royale-go-001.jpg',
                 ];
                 break;
         }
