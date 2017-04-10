@@ -1,6 +1,5 @@
 body {
     padding-top: 82px;
-    padding-bottom: 60px;
 }
 
 .carousel .item {
@@ -243,4 +242,14 @@ blockquote {
 
 #portfolio-gallery {
     margin-bottom: 60px;
+}
+
+.newsletter {
+    background-color: #eee;
+    padding-bottom: 60px;
+    margin-top: 60px;
+}
+
+body #mc_embed_signup #mc-embedded-subscribe-form div.mce_inline_error {
+    background-color: transparent;
 }
