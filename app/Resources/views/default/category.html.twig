@@ -21,9 +21,11 @@
     </div>
 
 
-    <div id="freewall">
+    <div id="portfolio-gallery">
         {% for photo in photos %}
-            <a href="{{ asset(photo.uri) }}" data-lightbox="test-category" data-original="{{ asset(photo.uri) }}" class="lazy item {{ photo.orientation }}"></a>
+            <a href="{{ asset(photo.uri) }}" data-lightbox="test-category" data-original="{{ asset(photo.uri) }}">
+                <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
+            </a>
         {% endfor %}
     </div>
 
@@ -33,9 +35,13 @@
     {{ parent() }}
 
     <script>
-        $('.lazy').lazyload({
-            effect: 'fadeIn',
-            threshold: 600
+        $(function() {
+            $('#portfolio-gallery').justifiedGallery({
+                rowHeight: 250,
+                lastRow: 'center',
+                margins: 2,
+                waitThumbnailsLoad: true
+            });
         });
     </script>
 {% endblock %}
