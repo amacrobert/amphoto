@@ -36,10 +36,7 @@ class PhotoCategory {
                 $uri = $directory . '/' . $file;
 
                 if (file_exists($uri)) {
-                    $photos[] = (object)[
-                        'uri' => $uri,
-                        'orientation' => $this->getOrientation($uri),
-                    ];
+                    $photos[] = (object)array_merge(['uri' => $uri], $this->getDimensions($uri));
                 }
             }
         }
@@ -54,10 +51,7 @@ class PhotoCategory {
 
                 if (in_array(strtolower($pathinfo['extension']), self::$allowed_extensions)) {
                     $uri = $directory . '/' . $file;
-                    $photos[] = (object)[
-                        'uri' => $uri,
-                        'orientation' => $this->getOrientation($uri),
-                    ];
+                    $photos[] = (object)array_merge(['uri' => $uri], $this->getDimensions($uri));
                 }
             }
         }
@@ -72,19 +66,12 @@ class PhotoCategory {
      * @return string
      *   landscape, orientation, or square
      */
-    private function getOrientation($uri) {
+    private function getDimensions($uri) {
         // Determine if the image is landscape, portrait, or square for proper Freewall rendering
         $dimensions = getimagesize($uri);
-        if ($dimensions[0] > $dimensions[1]) {
-            $orientation = 'landscape';
-        }
-        elseif ($dimensions[0] < $dimensions[1]) {
-            $orientation = 'portrait';
-        }
-        else {
-            $orientation = 'square';
-        }
-
-        return $orientation;
+        return [
+            'width' => $dimensions[0],
+            'height' => $dimensions[1]
+        ];
     }
 }
