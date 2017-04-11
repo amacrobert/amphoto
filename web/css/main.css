@@ -273,3 +273,12 @@ body #mc_embed_signup #mce-success-response {
 body #mc_embed_signup #mc-embedded-subscribe-form div.mce_inline_error {
     padding: 5px 0;
 }
+
+body #mc_embed_signup .mc-field-group {
+    width: initial;
+    padding-bottom: initial;
+}
+
+body #mc_embed_signup .button {
+    margin-top: 6px;
+}
