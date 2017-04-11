@@ -40,7 +40,7 @@ class DefaultController extends Controller
      */
     public function contactAction() {
         return $this->render('default/contact.html.twig', [
-            'og' => $this->get('web_content')->getOpenGraph('about'),
+            'og' => $this->get('web_content')->getOpenGraph('contact'),
             'contactNavActive' => true,
         ]);
     }
@@ -61,7 +61,7 @@ class DefaultController extends Controller
      */
     public function videoAction() {
         return $this->render('default/video.html.twig', [
-            'og' => $this->get('web_content')->getOpenGraph('equipment'),
+            'og' => $this->get('web_content')->getOpenGraph('video'),
             'videoNavActive' => true,
             'moreNavActive' => true,
         ]);

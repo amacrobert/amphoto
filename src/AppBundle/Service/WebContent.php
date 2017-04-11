@@ -18,21 +18,29 @@ class WebContent {
 
             case 'about':
                 $ogp = [
-                    'title' => 'About',
-                    'image' => 'http://andrewmacrobert.com/images/profile.jpg',
+                    'title' => 'About Andrew MacRobert Photography',
+                    'image' => 'http://andrewmacrobert.com/images/profile2.jpg',
+                ];
+                break;
+
+            case 'contact':
+                $ogp = [
+                    'title' => 'Contact Andrew MacRobert Photography',
+                    'image' => 'http://andrewmacrobert.com/banner/panorama1.jpg'
                 ];
                 break;
 
             case 'equipment':
                 $ogp = [
-                    'title' => 'My Equipment',
+                    'title' => 'My Equipment - Andrew MacRobert Photography',
                 ];
                 break;
 
             case 'video':
                 $ogp = [
-                    'title' => 'Video',
+                    'title' => 'Video - Andrew MacRobert Photography',
                 ];
+                break;
 
             default:
                 $ogp = [
