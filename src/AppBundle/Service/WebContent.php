@@ -3,7 +3,8 @@
  * WebContent
  *
  * Service for fetching web content.
- * @todo: Create a database and administrative backend for CRUD operations instead of SFTP & editing this code. 
+ * @todo: Create a database and administrative backend for CRUD operations instead
+ *   of SFTP & editing this code. 
  */
 
 namespace AppBundle\Service;
