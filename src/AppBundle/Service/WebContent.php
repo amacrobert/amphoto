@@ -27,7 +27,7 @@ class WebContent {
             case 'contact':
                 $ogp = [
                     'title' => 'Contact Andrew MacRobert Photography',
-                    'image' => 'http://andrewmacrobert.com/banner/panorama1.jpg'
+                    'image' => 'http://andrewmacrobert.com/images/banner/panorama1.jpg'
                 ];
                 break;
 

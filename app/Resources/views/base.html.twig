@@ -58,17 +58,15 @@
                                 <a href="/photos/nightlife-events">🎉 Nightlife + Events</a>
                             </li>
 
-                            <li {% if festivalsNavActive is defined %} class="active"{% endif %}>
+                            {% if festivalsNavActive is defined %}
+                            <li class="active">
                                <a href="/photos/festivals">🎡 Festivals</a>
                             </li>
+                            {% endif %}
 
                             {% if tourLifeNavActive is defined %}<li class="active">
                                 <a href="/photos/tour-life">🚌 Tour Life</a>
                             </li>{% endif %}
-
-                            <li {% if weddingsNavActive is defined %} class="active"{% endif %}>
-                                <a href="/photos/weddings">👰 Weddings</a>
-                            </li>
 
                             <li {% if portraitsWomenNavActive is defined or portraitsMenNavActive is defined%} class="active"{% endif %}>
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -82,6 +80,10 @@
                                         <a href="/photos/portraits-men">Men</a>
                                     </li>
                                 </ul>
+                            </li>
+
+                            <li {% if weddingsNavActive is defined %} class="active"{% endif %}>
+                                <a href="/photos/weddings">👰 Weddings</a>
                             </li>
 
                             <li class="{% if contactNavActive is defined %}active {% endif %}cta">
