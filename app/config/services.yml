@@ -8,3 +8,9 @@ services:
         class: AppBundle\Service\WebContent
     photo_category:
         class: AppBundle\Service\PhotoCategory
+    wordpress_client:
+        class: HieuLe\WordpressXmlrpcClient\WordpressClient
+        arguments:
+            - 'https://andrewmacrobertphoto.wordpress.com/xmlrpc.php'
+            - '%wp_username%'
+            - '%wp_password%'

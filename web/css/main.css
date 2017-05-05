@@ -240,6 +240,21 @@ blockquote {
     margin-bottom: 45px;
 }
 
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .banner { min-height: 300px; }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .banner { min-height: 350px;  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .banner { min-height: 400px; }
+}
+
 #portfolio-gallery {
     margin-bottom: 60px;
 }

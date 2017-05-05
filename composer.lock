@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "37f1e2a7cebbaf848e69476a5d759942",
-    "content-hash": "ee9e63248bf64a4e2dc29793a07f9436",
+    "hash": "94bdb274393e6fe5460ec6599386be4e",
+    "content-hash": "1e568d2ce9524e8eff8d00f27f010de3",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -833,6 +833,59 @@
                 "orm"
             ],
             "time": "2016-12-18 15:42:34"
+        },
+        {
+            "name": "hieu-le/wordpress-xmlrpc-client",
+            "version": "2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/letrunghieu/wordpress-xmlrpc-client.git",
+                "reference": "64ce550961b1885b8fc8b63dec66670f54fff28f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/letrunghieu/wordpress-xmlrpc-client/zipball/64ce550961b1885b8fc8b63dec66670f54fff28f",
+                "reference": "64ce550961b1885b8fc8b63dec66670f54fff28f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xmlrpc": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "illuminate/support": "~4.0",
+                "php-vcr/php-vcr": "^1.0",
+                "php-vcr/phpunit-testlistener-vcr": "*",
+                "phpunit/phpunit": "*",
+                "symfony/yaml": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HieuLe\\WordpressXmlrpcClient\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hieu Le",
+                    "email": "letrunghieu.cse09@gmail.com",
+                    "homepage": "http://www.hieule.info"
+                }
+            ],
+            "description": "A PHP client for Wordpress websites that closely implement the XML-RPC WordPress API with full test suite built in",
+            "keywords": [
+                "api",
+                "client",
+                "remote",
+                "wordpress",
+                "xmlrpc"
+            ],
+            "time": "2016-02-04 08:05:47"
         },
         {
             "name": "incenteev/composer-parameter-handler",

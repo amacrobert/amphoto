@@ -17,7 +17,7 @@
         {% block stylesheets %}
             <link href="{{ asset('bootstrap/dist/css/bootstrap.min.css?v=1') }}" rel="stylesheet">
             <link href="{{ asset('bootstrap/dist/css/bootstrap-theme.min.css?v=1') }}" rel="stylesheet">
-            <link href="{{ asset('css/main.css?v=5') }}" rel="stylesheet">
+            <link href="{{ asset('css/main.css?v=6') }}" rel="stylesheet">
             <link href="{{ asset('lightbox2/css/lightbox.min.css') }}" rel="stylesheet">
             <link rel="stylesheet" href="https://use.fontawesome.com/0c8c99d399.css">
             <link rel="stylesheet" href="{{ asset('justifiedGallery/justifiedGallery.min.css') }} " />
@@ -90,8 +90,8 @@
                                 <a href="/photos/weddings">👰 Weddings</a>
                             </li>
 
-                            <li class="{% if contactNavActive is defined %}active {% endif %}cta">
-                                <a href="/contact">Book Now</a>
+                            <li class="{% if blogNavActive is defined %}active {% endif %}">
+                                <a href="/blog">Blog</a>
                             </li>
 
                             <li role="presentation" class="dropdown {% if moreNavActive is defined %}active{% endif %}">
@@ -111,6 +111,10 @@
                                         <a href="/equipment">🎒 Equipment</a>
                                     </li>
                                 </ul>
+                            </li>
+
+                            <li class="{% if contactNavActive is defined %}active {% endif %}cta">
+                                <a href="/contact">Book Now</a>
                             </li>
 
                         </ul>

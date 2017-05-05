@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-xs-12 page-title">
+            <h2>{{ post.post_title }}</h2>
+            <p>Andrew MacRobert · {{ post.post_date.timestamp|date('F j, Y') }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+            <img class="featured-image" src="{{ post.post_thumbnail.link|default('') }}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 post-content">
+            <p>{{ post.post_content|default('')|raw|nl2br }}</p>
+        </div>
+    </div>
+
+    <div class="share-buttons">
+        <div class="fb-share-button" data-href="http://andrewmacrobert.com/blog/{{ post.post_id }}" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fandrewmacrobert.com%2Fblog%2F123&amp;src=sdkpreparse">Share</a></div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 cta-blog">
+            <a href="/blog">《 More Blog Posts</a>
+        </div>
+    </div>
+
+    {% include 'default/newsletter.html' %}
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style>
+    .featured-image {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .post-content {
+        margin-bottom: 30px;
+        font-size: 16px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        line-height: 32px;
+    }
+
+    .post-content img {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 30px;
+    }
+
+    .share-buttons {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .cta-blog {
+        text-align: left;
+    }
+    .cta-blog a {
+        color: #3060AA;
+        font-size: 1.35em;
+        text-transform: uppercase;
+    }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <!-- facebook share -->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=158351997621933";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+{% endblock %}
