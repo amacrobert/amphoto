@@ -17,8 +17,8 @@
                             <img class="media-object" src="{{ post.post_thumbnail.thumbnail|default('') }}">
                         </div>
                         <div class="media-body">
+                            <p class="date">{{ post.post_date.timestamp|date('F j, Y') }}</p>
                             <h4 class="media-heading">{{ post.post_title }}</h4>
-                            <p>{{ post.post_date.timestamp|date('F d, Y') }}</p>
                             <p>{{ post.post_excerpt|default('') }}</p>
                         </div>
                     </div>
@@ -48,6 +48,11 @@
 
     h4.media-heading {
         color: #3060AA;
+    }
+
+    p.date {
+        float: right;
+        font-size: 11px;
     }
     </style>
 {% endblock %}
