@@ -45,7 +45,7 @@ class DefaultController extends Controller
             'post' => $post,
             'og' => [
                 'title' => $post->post_title,
-                'image' => $post->post_thumbnail['link'],
+                'image' => str_replace('https://', 'http://', $post->post_thumbnail['link']),
                 'description' => $post->post_excerpt,
             ],
         ]);
