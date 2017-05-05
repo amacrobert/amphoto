@@ -12,12 +12,6 @@ class DefaultController extends Controller
      * @Route("/", name="homepage")
      */
     public function indexAction(Request $request) {
-        $wp_client = $this->get('wordpress_client');
-
-        print '<pre>';
-        print_r($wp_client->getPosts());
-        exit();
-
         $content = $this->get('web_content');
         $category = $this->get('photo_category');
 
