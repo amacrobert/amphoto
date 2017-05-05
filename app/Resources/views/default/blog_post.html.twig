@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-xs-12 page-title">
+            <h2>{{ post.post_title }}</h2>
+            <p>Andrew MacRobert \\ {{ post.post_date.timestamp|date('F d, Y') }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+            <img class="featured-image" src="{{ post.post_thumbnail.link|default('') }}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 post-content">
+            <p>{{ post.post_content|default('')|raw|nl2br }}</p>
+        </div>
+    </div>
+
+    <div class="cta-blog">
+        <a href="/blog">More Blog Posts</a>
+    </div>
+
+    {% include 'default/newsletter.html' %}
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style>
+    .featured-image {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .post-content {
+        margin-bottom: 120px;
+        font-size: 16px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        line-height: 32px;
+    }
+
+    .post-content img {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 30px;
+    }
+
+    .cta-blog {
+        text-align: center;
+    }
+    .cta-blog a {
+        color: #3060AA;
+        font-size: 1.35em;
+        text-transform: uppercase;
+    }
+    </style>
+{% endblock %}

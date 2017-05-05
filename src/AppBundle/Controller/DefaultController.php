@@ -12,6 +12,11 @@ class DefaultController extends Controller
      * @Route("/", name="homepage")
      */
     public function indexAction(Request $request) {
+        $wp_client = $this->get('wordpress_client');
+
+        print '<pre>';
+        print_r($wp_client->getPosts());
+        exit();
 
         $content = $this->get('web_content');
         $category = $this->get('photo_category');
@@ -20,6 +25,35 @@ class DefaultController extends Controller
             'bodyclass' => 'slideshow',
             'slideshow' => $category->getPhotos('featured'),
             'og' => $content->getOpenGraph(),
+        ]);
+    }
+
+    /**
+     * @Route("/blog", name="blog_index")
+     */
+    public function blogIndexAction() {
+        $posts = $this->get('wordpress_client')->getPosts();
+
+        return $this->render('default/blog.html.twig', [
+            'blogNavActive' => true,
+            'posts' => $posts,
+        ]);
+    }
+
+    /**
+     * @Route("/blog/{post_id}", name="blog_post")
+     */
+    public function blogPostAction($post_id) {
+        $post = (object)$this->get('wordpress_client')->getPost($post_id);
+
+        return $this->render('default/blog_post.html.twig', [
+            'blogNavActive' => true,
+            'post' => $post,
+            'og' => [
+                'title' => $post->post_title,
+                'image' => $post->post_thumbnail['link'],
+                'description' => $post->post_excerpt,
+            ],
         ]);
     }
 
