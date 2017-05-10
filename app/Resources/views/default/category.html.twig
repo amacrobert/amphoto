@@ -33,14 +33,8 @@
 
 {% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link href="{{ asset('swipebox/css/swipebox.min.css') }}" rel="stylesheet">
-{% endblock %}
-
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('swipebox/js/jquery.swipebox.min.js') }}"></script>
     <script>
         $(function() {
             $('#portfolio-gallery').justifiedGallery({

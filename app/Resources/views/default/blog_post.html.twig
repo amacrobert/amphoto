@@ -11,19 +11,19 @@
 
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-            <img class="featured-image" src="{{ post.post_thumbnail.link|default('') }}">
+            <a href="{{ post.post_thumbnail.link|default('') }}" class="swipebox">
+                <img class="featured-image" src="{{ post.post_thumbnail.link|default('') }}">
+            </a>
         </div>
     </div>
 
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 post-content">
-            <p>{{ post.post_content|default('')|raw|nl2br }}</p>
+            {{ post.post_content|default('')|raw|nl2br }}
         </div>
 
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 share-buttons">
-
             <p><em>Sharing is caring</em></p>
-
             {% include 'default/rrssb.html.twig' %}
         </div>
     </div>
@@ -75,4 +75,15 @@
     {{ parent() }}
 
     <script src="{{ asset('rrssb/js/rrssb.min.js') }}"></script>
+
+    <script>
+        // Turn wordpress images into a swipebox gallery
+        $(function() {
+            $('.post-content img').wrap(function () {
+                var img_url = $(this).attr('src');
+                return '<a href="' + img_url + '" class="swipebox"></a>';
+            });
+            $('.swipebox').swipebox({hideBarsDelay: 1000});
+        });
+    </script>
 {% endblock %}
