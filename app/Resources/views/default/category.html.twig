@@ -23,7 +23,7 @@
 
     <div id="portfolio-gallery">
         {% for photo in photos %}
-            <a href="{{ asset(photo.uri) }}" data-lightbox="test-category" data-original="{{ asset(photo.uri) }}">
+            <a href="{{ asset(photo.uri) }}" class="swipebox">
                 <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
             </a>
         {% endfor %}
@@ -33,9 +33,14 @@
 
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('swipebox/css/swipebox.min.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
-
+    <script src="{{ asset('swipebox/js/jquery.swipebox.min.js') }}"></script>
     <script>
         $(function() {
             $('#portfolio-gallery').justifiedGallery({
@@ -44,6 +49,8 @@
                 margins: 2,
                 waitThumbnailsLoad: true
             });
+
+            $('.swipebox').swipebox({hideBarsDelay: 1000});
         });
     </script>
 {% endblock %}
