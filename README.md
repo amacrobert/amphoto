@@ -1,4 +1,4 @@
 amphoto
 =======
 
-A Symfony project created on June 30, 2016, 12:09 pm.
+This is the code repository of my photography website, andrewmacrobert.com.
