@@ -26,7 +26,7 @@ class DefaultController extends Controller
      * @Route("/blog", name="blog_index")
      */
     public function blogIndexAction() {
-        $posts = $this->get('wordpress_client')->getPosts();
+        $posts = $this->get('wordpress_client')->getPosts(['post_status' => 'publish']);
 
         return $this->render('default/blog.html.twig', [
             'blogNavActive' => true,
@@ -39,13 +39,14 @@ class DefaultController extends Controller
      */
     public function blogPostAction($post_id) {
         $post = (object)$this->get('wordpress_client')->getPost($post_id);
+        $featured_image = isset($post->post_thumbnail['link']) ? $post->post_thumbnail['link'] : null;
 
         return $this->render('default/blog_post.html.twig', [
             'blogNavActive' => true,
             'post' => $post,
             'og' => [
                 'title' => $post->post_title,
-                'image' => str_replace('https://', 'http://', $post->post_thumbnail['link']),
+                'image' => str_replace('https://', 'http://', $featured_image),
                 'description' => $post->post_excerpt,
             ],
         ]);
