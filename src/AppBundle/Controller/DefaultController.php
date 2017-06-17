@@ -40,6 +40,10 @@ class DefaultController extends Controller
     public function blogPostAction($post_id) {
         $post = (object)$this->get('wordpress_client')->getPost($post_id);
         $featured_image = isset($post->post_thumbnail['link']) ? $post->post_thumbnail['link'] : null;
+        // Convert WordPress captions to HTML
+        // @todo: move this logic to a service
+        $post->post_content = str_replace('&nbsp;', ' ', $post->post_content);
+        $post->post_content = preg_replace("/\s*\[caption(.*?)\](<img(.*?)>)(.*?)\[\/caption\]\s*/", PHP_EOL.PHP_EOL."<img $3><div class='caption'>$4</div>", $post->post_content);
 
         return $this->render('default/blog_post.html.twig', [
             'blogNavActive' => true,
