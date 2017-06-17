@@ -152,7 +152,6 @@ class DefaultController extends Controller
 
             case 'weddings':
                 $title = 'Weddings';
-                $description = 'Wedding ceremonies, receptions, bridal, and engagement shoots.';
                 $active_nav = 'weddingsNavActive';
                 break;
 

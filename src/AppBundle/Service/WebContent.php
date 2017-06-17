@@ -72,6 +72,11 @@ class WebContent {
                 'byline' => 'Cam Preciado, Creative Director at Christian Hill Studios',
                 'category' => 'festivals',
             ],
+            [
+                'quote' => 'Gaby and I are really blown away by your professionalism and above-and-beyond service.',
+                'byline' => 'Chris MacFadyen, newlywed husband and wedding client',
+                'category' => 'weddings',
+            ],
         ];
 
         if ($category) {
