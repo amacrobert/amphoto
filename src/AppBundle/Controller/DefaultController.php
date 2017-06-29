@@ -127,13 +127,8 @@ class DefaultController extends Controller
 
             case 'festivals':
                 $title = 'Festivals';
+                $description = 'I am currently looking for music festival bookings. If you are an organizer for a festival and interested in media coverage that captures it in the best possible light, <a href="/contact" style="text-decoration:underline">reach out!</a>';
                 $active_nav = 'festivalsNavActive';
-                break;
-
-            case 'portraiture':
-                $title = 'Portraiture';
-                $description = 'Fashion shoots, publicity shoots, editorials, and just-for-fun shoots of human beings.';
-                $active_nav = 'portraitureNavActive';
                 break;
 
             case 'portraits-women':
