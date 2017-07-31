@@ -31,7 +31,8 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "twbs/bootstrap": "^3.3",
-        "hieu-le/wordpress-xmlrpc-client":"~2.0"
+        "hieu-le/wordpress-xmlrpc-client":"~2.0",
+        "guzzlehttp/guzzle":"~6.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

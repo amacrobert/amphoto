@@ -38,19 +38,14 @@ class DefaultController extends Controller
      * @Route("/blog/{post_id}", name="blog_post")
      */
     public function blogPostAction($post_id) {
-        $post = (object)$this->get('wordpress_client')->getPost($post_id);
-        $featured_image = isset($post->post_thumbnail['link']) ? $post->post_thumbnail['link'] : null;
-        // Convert WordPress captions to HTML
-        // @todo: move this logic to a service
-        $post->post_content = str_replace('&nbsp;', ' ', $post->post_content);
-        $post->post_content = preg_replace("/\s*\[caption(.*?)\](<img(.*?)>)(.*?)\[\/caption\]\s*/", PHP_EOL.PHP_EOL."<img $3><div class='caption'>$4</div>", $post->post_content);
+        $post = (object)$this->get('blog')->getPost($post_id);
 
         return $this->render('default/blog_post.html.twig', [
             'blogNavActive' => true,
             'post' => $post,
             'og' => [
                 'title' => $post->post_title,
-                'image' => str_replace('https://', 'http://', $featured_image),
+                'image' => $post->featured_image,
                 'description' => $post->post_excerpt,
             ],
         ]);

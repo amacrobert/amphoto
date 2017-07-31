@@ -6,11 +6,26 @@ parameters:
 services:
     web_content:
         class: AppBundle\Service\WebContent
+
     photo_category:
         class: AppBundle\Service\PhotoCategory
+
+    blog:
+        class: AppBundle\Service\Blog
+        arguments:
+            - '@wordpress_client'
+            - '@guzzle.instagram'
+
     wordpress_client:
         class: HieuLe\WordpressXmlrpcClient\WordpressClient
         arguments:
             - 'https://andrewmacrobertphoto.wordpress.com/xmlrpc.php'
             - '%wp_username%'
             - '%wp_password%'
+
+    guzzle.instagram:
+        class: GuzzleHttp\Client
+        arguments:
+            defaults:
+                base_uri: https://api.instagram.com/oembed
+                verify: false
