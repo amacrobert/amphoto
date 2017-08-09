@@ -45,7 +45,7 @@ class DefaultController extends Controller
             'post' => $post,
             'og' => [
                 'title' => $post->post_title,
-                'image' => $post->featured_image,
+                'images' => [$post->featured_image],
                 'description' => $post->post_excerpt,
             ],
         ]);
@@ -162,7 +162,11 @@ class DefaultController extends Controller
             'endorsements' => $this->get('web_content')->getEndorsements($category),
             'og' => [
                 'title' => $title,
-                'image' => 'http://andrewmacrobert.com/' . $photos[0]->uri,
+                'images' => [
+                    'http://andrewmacrobert.com/' . $photos[0]->uri,
+                    'http://andrewmacrobert.com/' . $photos[1]->uri,
+                    'http://andrewmacrobert.com/' . $photos[2]->uri,
+                ]
             ],
             $active_nav => true,
         ]);

@@ -9,7 +9,13 @@
         {% block ogp %}
             <meta property="og:type" content="website" />
             <meta property="og:title" content="{{ og.title|default('Andrew MacRobert Photography') }}" />
-            <meta property="og:image" content="{{ og.image|default('http://andrewmacrobert.com/images/nightlife-events/pegboard-nerds-14.jpg') }}" />
+            {% if og.images is defined %}
+                {% for image in og.images %}
+                    <meta property="og:image" content="{{ image }}" />
+                {% endfor %}
+            {% else %}
+                <meta property="og:image" content="http://andrewmacrobert.com/images/nightlife-events/pegboard-nerds-14.jpg" />
+            {% endif %}
             <meta property="og:description" content="{{ og.description|default('Boston based photographer for hire worldwide. Nightlife, fashion, and weddings.') }}" />
             <meta property="fb:admins" content="1240771202">
         {% endblock %}
