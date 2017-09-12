@@ -161,7 +161,7 @@ class DefaultController extends Controller
             'photos' => $photos,
             'endorsements' => $this->get('web_content')->getEndorsements($category),
             'og' => [
-                'title' => $title,
+                'title' => $title . ' - Andrew MacRobert Photography',
                 'images' => [
                     'http://andrewmacrobert.com/' . $photos[0]->uri,
                     'http://andrewmacrobert.com/' . $photos[1]->uri,
