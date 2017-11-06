@@ -139,24 +139,7 @@ ul.social-list a:hover {
     }
 }
 
-/* Custom CSS for Freewall plugin */
-.item {
-    display: block;
-    background-position: center;
-    background-size: cover;
-    width: 350px;
-    height: 233px;
-}
-
-.item.portrait {
-    width: 233px;
-    height: 350px;
-}
-
-.item.square {
-    width: 350px;
-    height: 350px;
-}
+/* other things */
 
 img.profile {
     width: calc(40% - 10px);
@@ -296,4 +279,26 @@ body #mc_embed_signup .mc-field-group {
 
 body #mc_embed_signup .button {
     margin-top: 6px;
+}
+
+/** Blog list **/
+
+.blog-teaser {
+    padding: 0 0 30px 0;
+    margin-top: 30px;
+    border-bottom: 1px solid #888;
+}
+
+.blog-teaser.last {
+    border-bottom: none;
+    padding: 0;
+}
+
+h4.media-heading {
+    color: #3060AA;
+}
+
+p.date {
+    font-size: 11px;
+    color: #656565;
 }

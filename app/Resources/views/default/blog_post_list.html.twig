@@ -8,8 +8,8 @@
                             <img class="media-object" src="{{ post.post_thumbnail.thumbnail|default('') }}">
                         </div>
                         <div class="media-body">
-                            <p class="date">{{ post.post_date.timestamp|date('F j, Y') }}</p>
                             <h4 class="media-heading">{{ post.post_title }}</h4>
+                            <p class="date">{{ post.post_date.timestamp|date('F j, Y') }}</p>
                             <p>{{ post.post_excerpt|default('') }}</p>
                         </div>
                     </div>
