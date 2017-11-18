@@ -4,9 +4,9 @@ namespace AppBundle\Service;
 
 class Blog {
 
-    public function __construct($wordpress_client, $instagram_api) {
+    public function __construct($wordpress_client, $guzzle) {
         $this->wordpress_client = $wordpress_client;
-        $this->instagram_api = $instagram_api;
+        $this->guzzle = $guzzle;
     }
 
     public function getPosts() {
@@ -31,7 +31,7 @@ class Blog {
             "/\s*\[instagram url=(.*?)\]\s*/",
             function($match) {
                 try {
-                    $response = $this->instagram_api->get('https://api.instagram.com/oembed?url=' . $match[1]);
+                    $response = $this->guzzle->get('https://api.instagram.com/oembed?url=' . $match[1]);
                     if ($response->getStatusCode() !== 200) {
                         throw new \Exception;
                     }
@@ -40,6 +40,25 @@ class Blog {
                 }
                 catch (\Exception $e) {
                     return '<p>[Error loading instagram content]</p>';
+                }
+            },
+            $post->post_content
+        );
+
+        // Convert vimeo objects to HTML
+        $post->post_content = preg_replace_callback(
+            "/\s*\[vimeo url=(.*?)\]\s*/",
+            function($match) {
+                try {
+                    $response = $this->guzzle->get('https://vimeo.com/api/oembed.json?url=' . $match[1]);
+                    if ($response->getStatusCode() !== 200) {
+                        throw new \Exception;
+                    }
+                    $body = json_decode($response->getBody());
+                    return '<p>'.$body->html.'</p>';
+                }
+                catch (\Exception $e) {
+                    return '<p>[Error loading vimeo content]</p>';
                 }
             },
             $post->post_content
