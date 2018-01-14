@@ -4,25 +4,29 @@
 
 {% block body %}
 
-    <div class="row">
-        <div class="col-xs-12 page-title"><h2>About</h2></div>
-    </div>
+    <div class="container-fluid">
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-            <img src="{{ asset('images/profile4.jpg') }}" title="Andrew MacRobert" class="profile">
-            <p>I am a Boston-based photographer committed to delivering outstanding content for my clients.</p>
-            <p>With my first DSLR in 2014, I started as a nightlife event photographer. I continue to photograph clubs, but have expanded my repertoire to include weddings, fashion, press photos, and many more assignments.</p>
-            <p>I'm local to Boston, but available for bookings worldwide. If you like what you see on this website, <a href="/contact" style="text-decoration:underline">contact me</a> for a booking.</p>
-
-            {# Testimonials #}
-            {% for endorsement in endorsements %}
-                <blockquote>{{ endorsement.quote }}"</blockquote>
-                <div class="quote-author">&mdash; {{ endorsement.byline }}</div>
-            {% endfor %}
+        <div class="row">
+            <div class="col-xs-12 page-title"><h2>About</h2></div>
         </div>
-    </div>
 
-    {% include 'default/newsletter.html' %}
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                <img src="{{ asset('images/profile4.jpg') }}" title="Andrew MacRobert" class="profile">
+                <p>I am a Boston-based photographer committed to delivering outstanding content for my clients.</p>
+                <p>With my first DSLR in 2014, I started as a nightlife event photographer. I continue to photograph clubs, but have expanded my repertoire to include weddings, fashion, press photos, and many more assignments.</p>
+                <p>I'm local to Boston, but available for bookings worldwide. If you like what you see on this website, <a href="/contact" style="text-decoration:underline">contact me</a> for a booking.</p>
+
+                {# Testimonials #}
+                {% for endorsement in endorsements %}
+                    <blockquote>{{ endorsement.quote }}"</blockquote>
+                    <div class="quote-author">&mdash; {{ endorsement.byline }}</div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% include 'default/newsletter.html' %}
+
+    </div>
 
 {% endblock %}

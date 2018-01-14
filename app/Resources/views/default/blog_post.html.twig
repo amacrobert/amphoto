@@ -2,41 +2,45 @@
 
 {% block body %}
 
-    <div class="row">
-        <div class="col-xs-12 page-title">
-            <h2>{{ post.post_title }}</h2>
-            <p>Andrew MacRobert · {{ post.post_date.timestamp|date('F j, Y') }}</p>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xs-12 page-title">
+                <h2>{{ post.post_title }}</h2>
+                <p>Andrew MacRobert · {{ post.post_date.timestamp|date('F j, Y') }}</p>
+            </div>
         </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                <a href="{{ post.post_thumbnail.link|default('') }}" class="swipebox">
+                    <img class="featured-image" src="{{ post.post_thumbnail.link|default('') }}">
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 post-content">
+                {{ post.post_content|default('')|raw|nl2br }}
+            </div>
+
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 share-buttons">
+                <p><em>Sharing is caring</em></p>
+                {% include 'default/rrssb.html.twig' %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 page-title">
+                <h2>Read More</h2>
+            </div>
+        </div>
+
+        {% include 'default/blog_post_list.html.twig' %}
+
+        {% include 'default/newsletter.html' %}\
+
     </div>
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-            <a href="{{ post.post_thumbnail.link|default('') }}" class="swipebox">
-                <img class="featured-image" src="{{ post.post_thumbnail.link|default('') }}">
-            </a>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 post-content">
-            {{ post.post_content|default('')|raw|nl2br }}
-        </div>
-
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 share-buttons">
-            <p><em>Sharing is caring</em></p>
-            {% include 'default/rrssb.html.twig' %}
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-12 page-title">
-            <h2>Read More</h2>
-        </div>
-    </div>
-
-    {% include 'default/blog_post_list.html.twig' %}
-
-    {% include 'default/newsletter.html' %}
 
 {% endblock %}
 

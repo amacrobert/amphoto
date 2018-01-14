@@ -4,28 +4,32 @@
 
 {% block body %}
 
-    <div class="row">
-        <div class="col-xs-12 page-title">
-            <h2>Video</h2>
-        </div>
-    </div>
+    <div class="container-fluid">
 
-    <div class="row">
-        <div class="col-xs-12" style="text-align:center">
-
-            <div class="video-item">
-                <iframe src="https://player.vimeo.com/video/237254654" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                <p>BOCCE BOYS - SUBJECT (OFFICIAL MUSIC VIDEO) <strong>2017-10-26</strong></p>
+        <div class="row">
+            <div class="col-xs-12 page-title">
+                <h2>Video</h2>
             </div>
-
-            <div class="video-item">
-                <iframe src="https://player.vimeo.com/video/192579935?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                <p>FOUNDATION ROOM AFTER PARTIES <strong>2016-11-22</strong></p>
-            </div>
-
         </div>
-    </div>
 
-    {% include 'default/newsletter.html' %}
+        <div class="row">
+            <div class="col-xs-12" style="text-align:center">
+
+                <div class="video-item">
+                    <iframe src="https://player.vimeo.com/video/237254654" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <p>BOCCE BOYS - SUBJECT (OFFICIAL MUSIC VIDEO) <strong>2017-10-26</strong></p>
+                </div>
+
+                <div class="video-item">
+                    <iframe src="https://player.vimeo.com/video/192579935?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    <p>FOUNDATION ROOM AFTER PARTIES <strong>2016-11-22</strong></p>
+                </div>
+
+            </div>
+        </div>
+
+        {% include 'default/newsletter.html' %}
+
+    </div>
 
 {% endblock %}

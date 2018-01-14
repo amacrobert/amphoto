@@ -4,32 +4,35 @@
 
 {% block body %}
 
-    <div class="row">
-        <div class="col-xs-12 page-title">
-            <h2>{{ title }}</h2>
-            <p>{{ description|raw }}</p>
-        </div>
-    </div>
+    <div class="container-fluid full-width">
 
-    <div class="row justify-content-md-center">
-        {% for endorsement in endorsements %}
-            <div class="{% if endorsements|length == 1 %}col-md-offset-3 {% endif %}col-md-6">
-                <blockquote>{{ endorsement.quote }}"</blockquote>
-                <div class="quote-author">&mdash; {{ endorsement.byline }}</div>
+        <div class="row">
+            <div class="col-xs-12 page-title">
+                <h2>{{ title }}</h2>
+                <p>{{ description|raw }}</p>
             </div>
-        {% endfor %}
+        </div>
+
+        <div class="row justify-content-md-center">
+            {% for endorsement in endorsements %}
+                <div class="{% if endorsements|length == 1 %}col-md-offset-3 {% endif %}col-md-6">
+                    <blockquote>{{ endorsement.quote }}"</blockquote>
+                    <div class="quote-author">&mdash; {{ endorsement.byline }}</div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div id="portfolio-gallery">
+            {% for photo in photos %}
+                <a href="{{ asset(photo.uri) }}" class="swipebox">
+                    <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
+                </a>
+            {% endfor %}
+        </div>
+
+        {% include 'default/newsletter.html' %}
+
     </div>
-
-
-    <div id="portfolio-gallery">
-        {% for photo in photos %}
-            <a href="{{ asset(photo.uri) }}" class="swipebox">
-                <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
-            </a>
-        {% endfor %}
-    </div>
-
-    {% include 'default/newsletter.html' %}
 
 {% endblock %}
 
@@ -38,9 +41,9 @@
     <script>
         $(function() {
             $('#portfolio-gallery').justifiedGallery({
-                rowHeight: 250,
+                rowHeight: 350,
                 lastRow: 'center',
-                margins: 2,
+                margins: 10,
                 waitThumbnailsLoad: true
             });
 

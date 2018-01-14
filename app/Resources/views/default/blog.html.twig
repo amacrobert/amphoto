@@ -2,14 +2,18 @@
 
 {% block body %}
 
-    <div class="row">
-        <div class="col-xs-12 page-title">
-            <h2>Photography Blog</h2>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xs-12 page-title">
+                <h2>Photography Blog</h2>
+            </div>
         </div>
+
+        {% include 'default/blog_post_list.html.twig' %}
+
+        {% include 'default/newsletter.html' %}
+
     </div>
-
-    {% include 'default/blog_post_list.html.twig' %}
-
-    {% include 'default/newsletter.html' %}
 
 {% endblock %}
