@@ -102,7 +102,7 @@ class DefaultController extends Controller
         return $this->render('default/video.html.twig', [
             'og' => $this->get('web_content')->getOpenGraph('video'),
             'videoNavActive' => true,
-            'moreNavActive' => true,
+            'portfolioNavActive' => true,
         ]);
     }
 
@@ -124,17 +124,26 @@ class DefaultController extends Controller
             case 'nightlife-events':
                 $title = 'Nightlife & Events';
                 $active_nav = 'nightlifeNavActive';
+                $portfolio_nav_active = true;
                 break;
 
             case 'day-parties':
                 $title = 'Day Parties';
                 $active_nav = 'dayPartiesNavActive';
+                $portfolio_nav_active = true;
                 break;
 
             case 'festivals':
                 $title = 'Festivals';
                 $description = 'I am currently looking for music festival bookings. If you are an organizer for a festival and interested in media coverage that captures it in the best possible light, <a href="/contact" style="text-decoration:underline">reach out!</a>';
                 $active_nav = 'festivalsNavActive';
+                $portfolio_nav_active = true;
+                break;
+
+            case 'portraits':
+                $title = 'Portraits';
+                $active_nav = 'portraitsNavActive';
+                $portfolio_nav_active = true;
                 break;
 
             case 'portraits-women':
@@ -158,6 +167,7 @@ class DefaultController extends Controller
             case 'weddings':
                 $title = 'Weddings';
                 $active_nav = 'weddingsNavActive';
+                $portfolio_nav_active = true;
                 break;
 
             default:
@@ -180,6 +190,7 @@ class DefaultController extends Controller
                 ]
             ],
             $active_nav => true,
+            'portfolioNavActive' => empty($portfolio_nav_active) ? false : $portfolio_nav_active,
         ]);
     }
 }
