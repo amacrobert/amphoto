@@ -2,11 +2,16 @@
 
 namespace AppBundle\Service;
 
-class Blog {
+class BlogService {
 
-    public function __construct($wordpress_client, $guzzle) {
+    private $wordpress_client;
+    private $guzzle;
+    private $cache;
+
+    public function __construct($wordpress_client, $guzzle, $cache) {
         $this->wordpress_client = $wordpress_client;
         $this->guzzle = $guzzle;
+        $this->cache = $cache;
     }
 
     public function getPosts() {
@@ -14,6 +19,13 @@ class Blog {
     }
 
     public function getPost($post_id) {
+
+        $cache_key = 'blog.' . $post_id;
+
+        if ($this->cache->exists($cache_key)) {
+            return $this->cache->fetch($cache_key);
+        }
+
         $post = (object)$this->wordpress_client->getPost($post_id);
 
         $featured_image = isset($post->post_thumbnail['link']) ? $post->post_thumbnail['link'] : null;
@@ -63,6 +75,8 @@ class Blog {
             },
             $post->post_content
         );
+
+        $this->cache->store($cache_key, $post, 3600);
 
         return $post;
     }

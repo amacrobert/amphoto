@@ -10,11 +10,23 @@ services:
     photo_category:
         class: AppBundle\Service\PhotoCategory
 
+    # freebie:
+    #     class: AppBundle\Service\FreebieService
+    #     arguments:
+    #         - '@doctrine.orm.entity_manager'
+    #         - '@mailgun'
+
+    # mailgun:
+    #     class: Mailgun\Mailgun
+    #     factory: ['Mailgun\Mailgun', 'create']
+    #     arguments: ['%mailgun_key%']
+
     blog:
-        class: AppBundle\Service\Blog
+        class: AppBundle\Service\BlogService
         arguments:
             - '@wordpress_client'
             - '@guzzle'
+            - '@cache'
 
     wordpress_client:
         class: HieuLe\WordpressXmlrpcClient\WordpressClient
@@ -22,6 +34,10 @@ services:
             - 'https://andrewmacrobertphoto.wordpress.com/xmlrpc.php'
             - '%wp_username%'
             - '%wp_password%'
+
+    cache:
+        class: AppBundle\Service\DatabaseCacheService
+        arguments: ['@doctrine.orm.entity_manager']
 
     guzzle:
         class: GuzzleHttp\Client
