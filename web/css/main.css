@@ -225,20 +225,26 @@ blockquote {
     background-position: center 60%;
     margin-bottom: 45px;
 }
+.banner-short {
+    min-height: 150px;
+}
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
     .banner { min-height: 300px; }
+    .banner-short { min-height: 225px }
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
     .banner { min-height: 350px;  }
+    .banner-short { min-height: 260px; }
 }
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
     .banner { min-height: 400px; }
+    .banner-short { min-height: 300px;  }
 }
 
 #portfolio-gallery {

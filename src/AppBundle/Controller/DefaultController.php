@@ -5,6 +5,10 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use AppBundle\Entity\Freebie;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends Controller
 {
@@ -19,6 +23,49 @@ class DefaultController extends Controller
             'bodyclass' => 'slideshow',
             'slideshow' => $category->getPhotos('featured'),
             'og' => $content->getOpenGraph(),
+        ]);
+    }
+
+    /**
+     * @Route("/downloads/{freebie_id}", name="download")
+     */
+    public function downloadsAction(Request $request, $freebie_id) {
+
+        $freebie_repo = $this->get('doctrine.orm.entity_manager')->getRepository(Freebie::class);
+
+        if (is_numeric($freebie_id)) {
+            $freebie = $freebie_repo->find($freebie_id);
+        }
+        else {
+            $freebie = $freebie_repo->findOneBy(['name' => str_replace('-', ' ', $freebie_id)]);
+        }
+
+        if (!$freebie) {
+            $this->redirectToRoute('homepage');
+        }
+
+        $form = $this->createFormBuilder()
+            ->add('email', EmailType::class, ['attr' => ['placeholder' => 'EMAIL']])
+            ->add('submit', SubmitType::class, ['label' => 'SUBMIT'])
+            ->getForm()
+        ;
+
+        $form->handleRequest($request);
+
+        $submitted = $form->isSubmitted() && $form->isValid();
+
+        if ($submitted) {
+            $email = $form->getData()['email'];
+
+            $this->get('freebie')->mail($email, $freebie);
+            $this->get('freebie')->subscribe($email);
+        }
+
+        return $this->render('default/freebie.html.twig', [
+            'freebie'   => $freebie,
+            'submitted' => $submitted,
+            'form'      => $form->createView(),
+            'email'     => $submitted ? $email : null,
         ]);
     }
 
@@ -38,6 +85,7 @@ class DefaultController extends Controller
      * @Route("/blog/{post_id}", name="blog_post")
      */
     public function blogPostAction($post_id) {
+
         $post = (object)$this->get('blog')->getPost($post_id);
         $additional_posts = $this->get('wordpress_client')->getPosts([
             'post_status' => 'publish',

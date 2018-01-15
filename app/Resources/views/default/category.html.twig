@@ -4,8 +4,7 @@
 
 {% block body %}
 
-    <div class="container-fluid full-width">
-
+    <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 page-title">
                 <h2>{{ title }}</h2>
@@ -21,17 +20,18 @@
                 </div>
             {% endfor %}
         </div>
+    </div>
 
-        <div id="portfolio-gallery">
-            {% for photo in photos %}
-                <a href="{{ asset(photo.uri) }}" class="swipebox">
-                    <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
-                </a>
-            {% endfor %}
-        </div>
+    <div id="portfolio-gallery">
+        {% for photo in photos %}
+            <a href="{{ asset(photo.uri) }}" class="swipebox">
+                <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
+            </a>
+        {% endfor %}
+    </div>
 
+    <div class="container-fluid">
         {% include 'default/newsletter.html' %}
-
     </div>
 
 {% endblock %}

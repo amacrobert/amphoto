@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Free Download: {{ freebie.name }}{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xs-12 page-title">
+                <h2>{{ freebie.name }}</h2>
+                <h4>Free Download</h4>
+            </div>
+        </div>
+
+        {% if freebie.getBannerUri %}
+            <div class="row">
+                <div class="col-xs-12 banner banner-short" style="background-image:url({{ asset(freebie.getBannerUri) }})">
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                {% if submitted %}
+                    <p><strong>Email sent!</strong></p>
+                    <p>Check your email <strong>{{ email }}</strong> for your free download.</p>
+
+                {% else %}
+
+                    {{ freebie.body|raw }}
+
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+
+                    <div class="clearfix"></div>
+                    <p class="email-disclaimer">Your email is private; we never share or sell your information.</p>
+
+                {% endif %}
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+
+    <style>
+        label {
+            display: none;
+        }
+        #form div {
+            display: block;
+            float: left;
+        }
+        #form div:nth-child(1) {
+            width: calc(80% - 10px);
+            margin-right: 10px;
+        }
+        #form div:nth-child(2) {
+            width: 20%;
+        }
+        #form div {
+        }
+        #form_email, #form_submit {
+            padding: 10px;
+        }
+        #form_email {
+            width: 100%;
+            border: 1px solid #333;
+            border-radius: 3px;
+        }
+        #form_submit {
+            width: 100%;
+            border: 1px solid #333;
+            background-color: #333;
+            color: #fff;
+            border-radius: 3px
+        }
+        #form_submit:hover {
+            background-color: #666;
+        }
+        .email-disclaimer {
+            text-align: right;
+            color: #666666;
+            font-size: .9em;
+        }
+    </style>
+
+{% endblock %}
