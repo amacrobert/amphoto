@@ -10,16 +10,16 @@ services:
     photo_category:
         class: AppBundle\Service\PhotoCategory
 
-    # freebie:
-    #     class: AppBundle\Service\FreebieService
-    #     arguments:
-    #         - '@doctrine.orm.entity_manager'
-    #         - '@mailgun'
+    freebie:
+        class: AppBundle\Service\FreebieService
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@mailgun'
 
-    # mailgun:
-    #     class: Mailgun\Mailgun
-    #     factory: ['Mailgun\Mailgun', 'create']
-    #     arguments: ['%mailgun_key%']
+    mailgun:
+        class: Mailgun\Mailgun
+        factory: ['Mailgun\Mailgun', 'create']
+        arguments: ['%mailgun_key%']
 
     blog:
         class: AppBundle\Service\BlogService
