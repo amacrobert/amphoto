@@ -30,6 +30,7 @@ class DatabaseCacheService {
             ->setKey($key)
             ->setValue(json_encode($value))
             ->setTTL($ttl)
+            ->setDateCreatedToNow()
         ;
 
         $this->em->flush();
