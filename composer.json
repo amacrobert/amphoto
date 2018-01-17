@@ -36,7 +36,9 @@
         "mailgun/mailgun-php": "^2.4",
         "php-http/guzzle6-adapter": "^1.1",
         "php-http/message": "^1.6",
-        "psr/cache": "^1.0"
+        "psr/cache": "^1.0",
+        "sonata-project/admin-bundle": "^3.23",
+        "sonata-project/doctrine-orm-admin-bundle": "^3.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

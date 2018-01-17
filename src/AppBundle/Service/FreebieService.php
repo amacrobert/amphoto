@@ -16,8 +16,8 @@ class FreebieService {
     }
 
     public function mail($email, Freebie $freebie) {
-        $result = $this->mailgun->messages()->send('andrewmacrobert.com', [
-            'from'          => 'downloads@andrewmacrobert.com',
+        $result = $this->mailgun->messages()->send('mg.andrewmacrobert.com', [
+            'from'          => '"Andrew MacRobert" <downloads@andrewmacrobert.com>',
             'to'            => $email,
             'subject'       => $freebie->getName(),
             'html'          => $freebie->getEmailBody(),

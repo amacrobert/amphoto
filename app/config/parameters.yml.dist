@@ -22,3 +22,6 @@ parameters:
     wp_password: ~
 
     mailgun_key: ~
+
+    admin_username: ~
+    admin_password: ~
