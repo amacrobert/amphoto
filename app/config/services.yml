@@ -44,3 +44,12 @@ services:
         arguments:
             defaults:
                 verify: false
+
+# Admins
+
+    admin.freebie:
+        class: AppBundle\Admin\FreebieAdmin
+        arguments: [~, AppBundle\Entity\Freebie, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Freebies, group: Entities }
+        public: true

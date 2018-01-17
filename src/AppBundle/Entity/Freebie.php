@@ -12,6 +12,10 @@ class Freebie {
     private $filename;
     private $email_body;
 
+    public function __toString() {
+        return $this->getName() ?: 'New Freebie';
+    }
+
     public function getId() {
         return $this->id;
     }
