@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\Freebie;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use AppBundle\Entity\Portfolio;
 
 class DefaultController extends Controller
 {
@@ -159,10 +159,12 @@ class DefaultController extends Controller
      */
     public function categoryAction($category) {
 
+        $portfolio_repo = $this->get('doctrine.orm.entity_manager')->getRepository(Portfolio::class);
+        $portfolio = $portfolio_repo->findOneBy(['machine_name' => $category]);
         $directory = 'images/' . $category;
 
-        // If the category doesn't exist, redirect home
-        if (!file_exists($directory)) {
+        // If the portfolio doesn't exist, redirect home
+        if (!$portfolio || !file_exists($directory)) {
             return $this->redirectToRoute('homepage');
         }
 
@@ -225,8 +227,7 @@ class DefaultController extends Controller
         }
 
         return $this->render('default/category.html.twig', [
-            'title' => $title,
-            'description' => empty($description) ? '' : $description,
+            'portfolio' => $portfolio,
             'photos' => $photos,
             'endorsements' => $this->get('web_content')->getEndorsements($category),
             'og' => [

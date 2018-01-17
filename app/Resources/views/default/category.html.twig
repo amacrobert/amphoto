@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{title}}{% endblock %}
+{% block title %}{{ portfolio.name }}{% endblock %}
 
 {% block body %}
 
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 page-title">
-                <h2>{{ title }}</h2>
-                <p>{{ description|raw }}</p>
+                <h2>{{ portfolio.name }}</h2>
+                <p>{{ portfolio.description|raw }}</p>
             </div>
         </div>
 

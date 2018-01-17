@@ -47,6 +47,13 @@ services:
 
 # Admins
 
+    admin.portfolio:
+        class: AppBundle\Admin\PortfolioAdmin
+        arguments: [~, AppBundle\Entity\Portfolio, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Portfolios, group: Entities }
+        public: true
+
     admin.freebie:
         class: AppBundle\Admin\FreebieAdmin
         arguments: [~, AppBundle\Entity\Freebie, ~]

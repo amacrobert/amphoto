@@ -1,0 +1,13 @@
+AppBundle\Entity\Portfolio:
+
+    type: entity
+    table: portfolio
+
+    id: {id: {type: integer, generator: {strategy: AUTO}}}
+
+    fields:
+        ordinal: { type: integer, nullable: true }
+        name: { type: string }
+        machine_name: { type: string }
+        description: { type: text, nullable: true }
+        banner: { type: string, nullable: true }
