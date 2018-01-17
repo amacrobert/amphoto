@@ -1,4 +1,4 @@
-AppBundle\Entity\DatabaseCache:
+AppBundle\Entity\DatabaseCacheItem:
 
     type: entity
     table: cache
