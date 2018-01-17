@@ -20,10 +20,10 @@ class BlogService {
 
     public function getPost($post_id) {
 
-        $cache_key = 'blog.' . $post_id;
+        $cache_item = $this->cache->getItem('blog.' . $post_id);
 
-        if ($this->cache->exists($cache_key)) {
-            return $this->cache->fetch($cache_key);
+        if ($cache_item->isHit()) {
+            return $cache_item->get();
         }
 
         $post = (object)$this->wordpress_client->getPost($post_id);
@@ -76,7 +76,8 @@ class BlogService {
             $post->post_content
         );
 
-        $this->cache->store($cache_key, $post, 3600);
+        $cache_item->set($post)->expiresAfter(3600);
+        $this->cache->save($cache_item);
 
         return $post;
     }
