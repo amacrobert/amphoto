@@ -195,7 +195,7 @@ class DefaultController extends Controller
         $menu = $this->getMenu($this->active_portfolio);
         $parameters = array_merge($parameters, [
             'menu' => $menu->portfolios,
-            'portfolioNavActive' => $parameters['portfolioNavActive'] ?? $menu->portfolio_nav_active ?? false,
+            'portfolioNavActive' => isset($parameters['portfolioNavActive']) ? $parameters['portfolioNavActive'] : $menu->portfolio_nav_active,
         ]);
 
         return parent::render($view, $parameters, $response);
@@ -204,6 +204,8 @@ class DefaultController extends Controller
     private function getMenu($portfolio_machine_name = null) {
         $portfolio_repo = $this->get('doctrine.orm.entity_manager')->getRepository(Portfolio::class);
         $portfolios = $portfolio_repo->findBy(['listed' => true], ['ordinal' => 'ASC']);
+
+        $portfolio_nav_active = false;
 
         foreach ($portfolios as $portfolio) {
             if ($portfolio->getMachineName() == $portfolio_machine_name) {
@@ -214,7 +216,7 @@ class DefaultController extends Controller
         }
 
         return (object)[
-            'portfolio_nav_active' => $portfolio_nav_active ?? false,
+            'portfolio_nav_active' => $portfolio_nav_active,
             'portfolios' => $portfolios,
         ];
     }
