@@ -64,56 +64,24 @@
                     <div id="navbar" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
 
-                            <li role="presentation" class="dropdown {% if portfolioNavActive is defined and portfolioNavActive %}active{% endif %}">
+                            <li role="presentation" class="dropdown {% if portfolioNavActive %}active{% endif %}">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspop="true" aria-expanded="false">
                                     Portfolios <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li {% if nightlifeNavActive is defined %}class="active"{% endif %}>
-                                        <a href="/photos/nightlife-events">🎉 Nightlife + Events</a>
-                                    </li>
 
-                                    <li {% if portraitsNavActive is defined %}class="active"{% endif %}>
-                                        <a href="/photos/portraits">💁 Portraits</a>
-                                    </li>
-
-                                    {% if festivalsNavActive is defined %}
-                                    <li class="active">
-                                       <a href="/photos/festivals">🎡 Festivals</a>
-                                    </li>
-                                    {% endif %}
-
-                                    {% if tourLifeNavActive is defined %}<li class="active">
-                                        <a href="/photos/tour-life">🚌 Tour Life</a>
-                                    </li>{% endif %}
-
-                                    <li {% if weddingsNavActive is defined %} class="active"{% endif %}>
-                                        <a href="/photos/weddings">👰 Weddings</a>
-                                    </li>
+                                    {% for portfolio in menu %}
+                                        <li {% if portfolio.active %}class="active"{% endif %}>
+                                            <a href="/photos/{{ portfolio.machineName }}">{{ portfolio.name }}</a>
+                                        </li>
+                                    {% endfor %}
 
                                     <li {% if videoNavActive is defined %} class="active"{% endif %}>
-                                        <a href="/video">🎬 Video</a>
+                                        <a href="/video">Video</a>
                                     </li>                                    
                                 </ul>
                             </li>
-
-
-                            {% if portraitsWomenNavActive is defined or portraitsMenNavActive is defined%}
-                            <li class="active">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                    💁 People <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li {% if portraitsWomenNavActive is defined %}class="active"{% endif %}>
-                                        <a href="/photos/portraits-women">Women</a>
-                                    </li>
-                                    <li {% if portraitsMenNavActive is defined %}class="active"{% endif %}>
-                                        <a href="/photos/portraits-men">Men</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            {% endif %}
 
                             <li class="{% if blogNavActive is defined %}active {% endif %}">
                                 <a href="/blog">Blog</a>
@@ -129,11 +97,11 @@
                                     </li>
 
                                     <li>
-                                        <a href="http://shirtsforphotographers.com" target="_blank">👕 Merch</a>
+                                        <a href="http://shirtsforphotographers.com" target="_blank">Shirts For Photographers</a>
                                     </li>
 
                                     <li {% if equipmentNavActive is defined %}class="active"{% endif %}>
-                                        <a href="/equipment">🎒 Equipment</a>
+                                        <a href="/equipment">Equipment</a>
                                     </li>
                                 </ul>
                             </li>

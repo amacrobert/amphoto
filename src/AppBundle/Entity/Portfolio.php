@@ -8,11 +8,15 @@ class Portfolio {
 
     private $id;
     private $ordinal;
+    private $listed = false;
     private $name;
     private $machine_name;
     private $description;
     private $banner;
     private $endorsements;
+
+    // unmapped - used for active menu item
+    private $active = false;
 
     public function __toString() {
         return $this->name ?: 'New Portfolio';
@@ -20,6 +24,15 @@ class Portfolio {
 
     public function __construct() {
         $this->endoresements = new ArrayCollection;
+    }
+
+    public function isActive() {
+        return (bool)$this->active;
+    }
+
+    public function setActive($active) {
+        $this->active = $active;
+        return $this;
     }
 
     public function getId() {
@@ -32,6 +45,15 @@ class Portfolio {
 
     public function setOrdinal($ordinal) {
         $this->ordinal = $ordinal;
+        return $this;
+    }
+
+    public function isListed() {
+        return (bool)$this->listed;
+    }
+
+    public function setListed($listed) {
+        $this->listed = $listed;
         return $this;
     }
 

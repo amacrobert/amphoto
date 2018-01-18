@@ -8,9 +8,17 @@
         <div class="row">
             <div class="col-xs-12 page-title">
                 <h2>{{ portfolio.name }}</h2>
+                <h4>Portfolio</h4>
                 <p>{{ portfolio.description|raw }}</p>
             </div>
         </div>
+
+        {% if portfolio.banner %}
+            <div class="row">
+                <div class="col-xs-12 banner banner-short" style="background-image:url({{ asset(portfolio.banner) }})">
+                </div>
+            </div>
+        {% endif %}
 
         <div class="row justify-content-md-center">
             {% for endorsement in endorsements %}

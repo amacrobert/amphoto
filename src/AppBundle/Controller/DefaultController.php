@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\Freebie;
@@ -12,6 +13,9 @@ use AppBundle\Entity\Portfolio;
 
 class DefaultController extends Controller
 {
+
+    private $active_portfolio = '';
+
     /**
      * @Route("/", name="homepage")
      */
@@ -159,6 +163,8 @@ class DefaultController extends Controller
      */
     public function categoryAction($category) {
 
+        $this->active_portfolio = $category;
+
         $portfolio_repo = $this->get('doctrine.orm.entity_manager')->getRepository(Portfolio::class);
         $portfolio = $portfolio_repo->findOneBy(['machine_name' => $category]);
         $directory = 'images/' . $category;
@@ -170,76 +176,46 @@ class DefaultController extends Controller
 
         $photos = $this->get('photo_category')->getPhotos($category);
 
-        switch ($category) {
-            case 'nightlife-events':
-                $title = 'Nightlife & Events';
-                $active_nav = 'nightlifeNavActive';
-                $portfolio_nav_active = true;
-                break;
-
-            case 'day-parties':
-                $title = 'Day Parties';
-                $active_nav = 'dayPartiesNavActive';
-                $portfolio_nav_active = true;
-                break;
-
-            case 'festivals':
-                $title = 'Festivals';
-                $description = 'I am currently looking for music festival bookings. If you are an organizer for a festival and interested in media coverage that captures it in the best possible light, <a href="/contact" style="text-decoration:underline">reach out!</a>';
-                $active_nav = 'festivalsNavActive';
-                $portfolio_nav_active = true;
-                break;
-
-            case 'portraits':
-                $title = 'Portraits';
-                $active_nav = 'portraitsNavActive';
-                $portfolio_nav_active = true;
-                break;
-
-            case 'portraits-women':
-                $title = 'Portraiture: Women';
-                $description = '<a href="/photos/portraits-men">Switch to men</a>';
-                $active_nav = 'portraitsWomenNavActive';
-                break;
-
-            case 'portraits-men':
-                $title = 'Portraiture: Men';
-                $description = '<a href="/photos/portraits-women">Switch to women</a>';
-                $active_nav = 'portraitsMenNavActive';
-                break;
-
-            case 'tour-life':
-                $title = 'Tour Life';
-                $description = "Being on tour is living in an alternate reality, and it's not all about the performance each night. A big part of tour photography is capturing candid moments of artists in various cities, exposing their personality to fans on social media in ways they don't see on stage.";
-                $active_nav = 'tourLifeNavActive';
-                break;
-
-            case 'weddings':
-                $title = 'Weddings';
-                $active_nav = 'weddingsNavActive';
-                $portfolio_nav_active = true;
-                break;
-
-            default:
-                $title = 'Huh?';
-                $description = 'How did you get here?';
-                break;
-        }
-
         return $this->render('default/category.html.twig', [
             'portfolio' => $portfolio,
             'photos' => $photos,
             'endorsements' => $this->get('web_content')->getEndorsements($category),
             'og' => [
-                'title' => $title . ' - Andrew MacRobert Photography',
+                'title' => $portfolio->getName() . ' - Andrew MacRobert Photography',
                 'images' => [
                     'http://andrewmacrobert.com/' . $photos[0]->uri,
                     'http://andrewmacrobert.com/' . $photos[1]->uri,
                     'http://andrewmacrobert.com/' . $photos[2]->uri,
                 ]
             ],
-            $active_nav => true,
-            'portfolioNavActive' => empty($portfolio_nav_active) ? false : $portfolio_nav_active,
         ]);
+    }
+
+    protected function render($view, array $parameters = array(), Response $response = null) {
+        $menu = $this->getMenu($this->active_portfolio);
+        $parameters = array_merge($parameters, [
+            'menu' => $menu->portfolios,
+            'portfolioNavActive' => $parameters['portfolioNavActive'] ?? $menu->portfolio_nav_active ?? false,
+        ]);
+
+        return parent::render($view, $parameters, $response);
+    }
+
+    private function getMenu($portfolio_machine_name = null) {
+        $portfolio_repo = $this->get('doctrine.orm.entity_manager')->getRepository(Portfolio::class);
+        $portfolios = $portfolio_repo->findBy(['listed' => true], ['ordinal' => 'ASC']);
+
+        foreach ($portfolios as $portfolio) {
+            if ($portfolio->getMachineName() == $portfolio_machine_name) {
+                $portfolio->setActive(true);
+                $portfolio_nav_active = true;
+                break;
+            }
+        }
+
+        return (object)[
+            'portfolio_nav_active' => $portfolio_nav_active ?? false,
+            'portfolios' => $portfolios,
+        ];
     }
 }

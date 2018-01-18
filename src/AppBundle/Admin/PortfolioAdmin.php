@@ -11,11 +11,16 @@ class PortfolioAdmin extends AssetAwareAdmin {
 
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
-            ->add('ordinal')
-            ->add('name')
-            ->add('machine_name')
-            ->add('description')
-            ->add('banner', 'choice', ['choices' => $this->getAssets('images'), 'required' => false])
+            ->with('Configuration', ['class' => 'col-md-8'])
+                ->add('name')
+                ->add('machine_name')
+                ->add('description')
+                ->add('banner', 'choice', ['choices' => $this->getAssets('images'), 'required' => false])
+            ->end()
+            ->with('Menu', ['class' => 'col-md-4'])
+                ->add('listed', 'checkbox', ['required' => false])
+                ->add('ordinal')
+            ->end()
         ;
     }
 
@@ -28,7 +33,7 @@ class PortfolioAdmin extends AssetAwareAdmin {
 
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-            ->add('id')
+            ->add('listed')
             ->addIdentifier('name')
             ->add('machine_name')
             ->add('_action', null, ['actions' => [
