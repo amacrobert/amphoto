@@ -54,6 +54,13 @@ services:
             - { name: sonata.admin, manager_type: orm, label: Portfolios, group: Entities }
         public: true
 
+    admin.endorsement:
+        class: AppBundle\Admin\EndorsementAdmin
+        arguments: [~, AppBundle\Entity\Endorsement, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Endorsements, group: Entities }
+        public: true
+
     admin.freebie:
         class: AppBundle\Admin\FreebieAdmin
         arguments: [~, AppBundle\Entity\Freebie, ~]

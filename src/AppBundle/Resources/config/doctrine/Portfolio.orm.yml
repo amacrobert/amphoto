@@ -12,3 +12,7 @@ AppBundle\Entity\Portfolio:
         machine_name: { type: string }
         description: { type: text, nullable: true }
         banner: { type: string, nullable: true }
+
+    manyToMany:
+        endorsements:
+            targetEntity: AppBundle\Entity\Endorsement

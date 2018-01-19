@@ -51,40 +51,4 @@ class WebContent {
 
         return (object)$ogp;
     }
-
-    /**
-     * Get endorsements, optionally by category
-     */
-    public function getEndorsements($category = null) {
-        $endorsements = [
-            [
-                'quote' => 'Andrew MacRobert is in my opinion the best nightlife photographer in Boston.',
-                'byline' => 'Matthew Keene, manager of Keene Marcil Group',
-                'category' => 'nightlife-events',
-            ],
-            [
-                'quote' => 'I want to make the night a huge success, which means I need the best photog guy in the business.',
-                'byline' => 'Theodore Green of Green T Enterprises, booking Andrew at Royale Boston',
-                'category' => 'nightlife-events',
-            ],
-            [
-                'quote' => 'Boston will be too small for Andrew. I proclaim it.',
-                'byline' => 'Cam Preciado, Creative Director at Christian Hill Studios',
-                'category' => 'festivals',
-            ],
-            [
-                'quote' => 'Gaby and I are really blown away by your professionalism and above-and-beyond service.',
-                'byline' => 'Chris MacFadyen, newlywed husband and wedding client',
-                'category' => 'weddings',
-            ],
-        ];
-
-        if ($category) {
-            return array_filter($endorsements, function($endorsement) use ($category) {
-                return $category == $endorsement['category'];
-            });
-        }
-
-        return $endorsements;
-    }
 }

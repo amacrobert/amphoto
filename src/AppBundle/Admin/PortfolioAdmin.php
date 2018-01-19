@@ -16,6 +16,7 @@ class PortfolioAdmin extends AssetAwareAdmin {
                 ->add('machine_name')
                 ->add('description')
                 ->add('banner', 'choice', ['choices' => $this->getAssets('images'), 'required' => false])
+                ->add('endorsements')
             ->end()
             ->with('Menu', ['class' => 'col-md-4'])
                 ->add('listed', 'checkbox', ['required' => false])

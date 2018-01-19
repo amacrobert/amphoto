@@ -18,10 +18,12 @@
                 <p>I'm local to Boston, but available for bookings worldwide. If you like what you see on this website, <a href="/contact" style="text-decoration:underline">contact me</a> for a booking.</p>
 
                 {# Testimonials #}
-                {% for endorsement in endorsements %}
-                    <blockquote>{{ endorsement.quote }}"</blockquote>
-                    <div class="quote-author">&mdash; {{ endorsement.byline }}</div>
-                {% endfor %}
+                <div class="endorsements">
+                    {% for endorsement in endorsements %}
+                        <blockquote>{{ endorsement.body }}"</blockquote>
+                        <div class="quote-author">&mdash; {{ endorsement.author|raw }}</div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
 

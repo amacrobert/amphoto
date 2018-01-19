@@ -170,6 +170,11 @@ blockquote {
     padding: 0 10px;
 }
 
+.endorsements a {
+    color: #888;
+    text-decoration: underline;
+}
+
 /* overrides for bootstrap's menu dropdown item */
 .dropdown-menu {
     border: none;

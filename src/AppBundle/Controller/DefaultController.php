@@ -10,9 +10,9 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\Freebie;
 use AppBundle\Entity\Portfolio;
+use AppBundle\Entity\Endorsement;
 
-class DefaultController extends Controller
-{
+class DefaultController extends Controller {
 
     private $active_portfolio = '';
 
@@ -119,8 +119,8 @@ class DefaultController extends Controller
      */
     public function aboutAction() {
         return $this->render('default/about.html.twig', [
-            'endorsements' => $this->get('web_content')->getEndorsements(),
             'og' => $this->get('web_content')->getOpenGraph('about'),
+            'endorsements' => $this->get('doctrine.orm.entity_manager')->getRepository(Endorsement::class)->findAll(),
             'moreNavActive' => true,
             'aboutNavActive' => true,
         ]);
@@ -179,7 +179,6 @@ class DefaultController extends Controller
         return $this->render('default/category.html.twig', [
             'portfolio' => $portfolio,
             'photos' => $photos,
-            'endorsements' => $this->get('web_content')->getEndorsements($category),
             'og' => [
                 'title' => $portfolio->getName() . ' - Andrew MacRobert Photography',
                 'images' => [
