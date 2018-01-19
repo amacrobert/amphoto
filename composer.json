@@ -39,7 +39,7 @@
         "psr/cache": "^1.0",
         "sonata-project/admin-bundle": "^3.23",
         "sonata-project/doctrine-orm-admin-bundle": "^3.1",
-        "ext-simplexml": "^7.2"
+        "ext-xml": "^7.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
