@@ -103,20 +103,4 @@ class DatabaseCacheService implements CacheItemPoolInterface {
 
         $this->em->flush();
     }
-
-    public function store($key, $value, $ttl = 84600) {
-        if (!$item = $this->em->getRepository(DatabaseCacheItem::class)->findOneBy(['key' => $key])) {
-            $item = new DatabaseCacheItem;
-            $this->em->persist($item);
-        }
-
-        $item
-            ->setKey($key)
-            ->setValue(json_encode($value))
-            ->setTTL($ttl)
-            ->setDateCreatedToNow()
-        ;
-
-        $this->save($item);
-    }
 }
