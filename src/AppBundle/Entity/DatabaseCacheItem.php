@@ -21,7 +21,7 @@ class DatabaseCacheItem implements \Psr\Cache\CacheItemInterface {
     }
 
     public function isHit() {
-        return (bool)$this->getId();
+        return (bool)$this->getId() && !$this->expired();
     }
 
     public function set($value) {

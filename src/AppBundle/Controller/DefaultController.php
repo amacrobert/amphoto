@@ -45,7 +45,7 @@ class DefaultController extends Controller {
         }
 
         if (!$freebie) {
-            $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('homepage');
         }
 
         $form = $this->createFormBuilder()
