@@ -1,3 +1,39 @@
+{%
+    set textboxes = [
+        {
+            'title': 'Hello!',
+            'body': "
+                <p>I'm Andrew, a Boston-based photographer and videographer for hire.</p>
+                <p>I've been photographing nightlife, weddings, and portraits since 2014 and love it. Lucky me!</p>
+                <p>Do you need photos or video?</p>
+                <p><a href='/contact' class='btn btn-success btn-lg'>Let's work together!</a></p>
+            "
+        },
+        {
+            'title': 'Make a Visual Impact',
+            'body': "
+                <p>Brands, bands, and businesses all need to stand out to their audience to stay relevant.</p>
+                <p>I work with my clients to deliver work they thrilled with.</p>
+            "
+        }, {},
+        {
+            'title': 'Timeless Wedding Photography',
+            'body': "
+                <p>I would be thrilled and honored to be your wedding photographer.</p>
+                <p><a href='/contact'>Contact me</a> for packages and rates</p>
+                <p><a href='/photos/weddings' class='btn btn-success btn-lg'>Wedding Portfolio</a></p>
+            "
+        }, {}, {}, {},
+        {
+            'title': 'Stunning Portraits',
+            'body': "
+                <p>I do people photography - from corporate headshots to glamour, from press shots to just-for-fun shots for your followers.</p>
+                <p><a href='/photos/weddings' class='btn btn-success btn-lg'>Portrait Portfolio</a></p>
+            "
+        }
+    ]
+%}
+
 {% extends 'base.html.twig' %}
 
 {% block body %}
@@ -5,41 +41,110 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    {% for photo in slideshow %}
-                        <div class="item{% if loop.first %} active{% endif %}" style="background-image: url('{{ photo.uri }}')"></div>
-                    {% endfor %}
+            <div class="homepage-parallax">
+
+                <div class="jarallax"
+                    data-jarallax
+                    data-jarallax-video="mp4:/video/risingup.mp4"
+                    data-speed=".1">
+                    <div class="hero" data-jarallax-element="-500" data-speed="2">
+                        <h2>Andrew <span class='mac'>Mac</span>Robert</h2>
+                        <h1>Photo + Video</h1>
+                        <a href="/photos/nightlife-events" class="btn btn-default btn-lg">
+                            Portfolio
+                        </a>
+                        <a href="/contact" class='btn btn-info btn-lg'>
+                            Book Now
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
 
+                {% for photo in slideshow %}
+
+                    {% if textboxes[loop.index0].body is defined %}
+                        <div class="textbox">
+                            <div class="textbox-content">
+                                <h3>{{ textboxes[loop.index0].title }}</h3>
+                                {{ textboxes[loop.index0].body|raw }}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="jarallax" data-jarallax data-speed=".1" style="background-image: url({{ asset(photo.uri) }})">
+                        {% if textboxes[loop.index0].hero is defined %}
+                            <div class="hero">
+                                {{ textboxes[loop.index0].hero|raw }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                {% endfor %}
+
+                <div class="textbox">
+                    <div class="textbox-content">
+                        <h3>The End</h3>
+                        <p>Like what you see?</p>
+                        <p><a href='/contact'>Reach out</a> and let me know your needs! I look forward to working with you.</p>
+                    </div>
+                </div>
+
+            </div>
     </div>
 
 {% endblock %}
 
-{% block javascripts %}
+{% block stylesheets %}
+
     {{ parent() }}
 
-    <script>
-        $(function() {
-            $('#myCarousel').carousel({
-                interval: 2500,
-                pause: false,
-            });
-        });
-    </script>
+    <style>
+        .jarallax {
+            height: 80vh;
+        }
+        .hero {
+            position: relative;
+            top: calc(35vh);
+            background-color: rgba(0, 0, 0, .4);
+            /*box-shadow: 0 0 10px rgba(0, 0, 0, .4);*/
+            padding: 15px;
+            text-align: center;
+        }
+        .hero h1, .hero h2 {
+            font-family: 'Raleway';
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .homepage-parallax h3 {
+            font-family: 'Raleway';
+            text-align: center;
+            text-transform: uppercase;
+            margin: 0 0 2rem 0;
+        }
+        .homepage-parallax .textbox {
+            width: 100%;
+            padding: 3rem;
+            background-color: rgba(255, 255, 255, .7);
+            color: #333;
+            background-color: #fff;
+            box-shadow: 0 0 30px rgba(0, 0, 0, .6);
+            position: relative;
+            z-index: 1;
+        }
+        .homepage-parallax .textbox-content {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        .homepage-parallax .textbox-content p {
+            font-size: 1.1em;
+            text-align: center;
+        }
+        .homepage-parallax .textbox-content p a:not(.btn) {
+            text-decoration: underline;
+        }
+
+    </style>
 
 {% endblock %}

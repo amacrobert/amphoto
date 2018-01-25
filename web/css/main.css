@@ -7,14 +7,24 @@ body {
     padding-right: 0;
 }
 
-.carousel .item {
-    width: 100vw;
-    height: calc(100vh - 82px);
-    background-size: cover;
+span.mac {
+    font-size: .75em;
 }
 
-body.slideshow {
-    padding-bottom: 0;
+.jarallax {
+    position: relative;
+    z-index: 0;
+}
+.jarallax > .jarallax-img {
+    position: absolute;
+    object-fit: cover;
+    /* support for plugin https://github.com/bfred-it/object-fit-images */
+    font-family: 'object-fit: cover;';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
 a {
@@ -28,7 +38,7 @@ a:hover {
 .header {
     background-color: #FFF;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     left: 0;
     right: 0;
