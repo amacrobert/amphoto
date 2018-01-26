@@ -3,6 +3,7 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\Freebie;
+use AppBundle\Entity\User;
 use Mailgun\Connection\Exceptions\MissingRequiredParameters;
 
 class FreebieService {
@@ -16,6 +17,8 @@ class FreebieService {
     }
 
     public function mail($email, Freebie $freebie) {
+        $email = strtolower($email);
+
         $result = $this->mailgun->messages()->send('mg.andrewmacrobert.com', [
             'from'          => '"Andrew MacRobert" <downloads@andrewmacrobert.com>',
             'to'            => $email,
@@ -23,14 +26,27 @@ class FreebieService {
             'html'          => $freebie->getEmailBody(),
             'attachment'    => [
                 [
-                    'filePath' => $freebie->getUri(),
+                    'filePath' => __DIR__ . '/../../../web' . $freebie->getUri(),
                     'filename' => $freebie->getFilename(),
                 ],
             ],
         ]);
+
+        // Register the user's email address and mark that they downloaded this freebie
+        if (!$user = $this->em->getRepository(User::class)->findOneBy(['email' => $email])) {
+            $user = new User;
+            $user->setEmail($email);
+            $this->em->persist($user);
+        }
+        if (!$user->getFreebies()->contains($freebie)) {
+            $user->addFreebie($freebie);
+        }
+        $this->em->flush();
     }
 
     public function subscribe($email) {
+        $email = strtolower($email);
+
         try {
             $this->mailgun->post('lists/photographers@andrewmacrobert.com/members', [
                 'address'       => $email,

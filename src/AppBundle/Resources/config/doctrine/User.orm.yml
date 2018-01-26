@@ -1,0 +1,16 @@
+AppBundle\Entity\User:
+
+    type: entity
+    table: user
+
+    id: {id: {type: integer, generator: {strategy: AUTO}}}
+
+    fields:
+        email: { type: text, nullable: true }
+        date_created: { type: datetime }
+
+    manyToMany:
+        freebies: { targetEntity: AppBundle\Entity\Freebie }
+
+    lifecycleCallbacks:
+        prePersist: [setDateCreatedToNow]
