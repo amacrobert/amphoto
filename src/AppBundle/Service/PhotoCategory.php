@@ -23,6 +23,10 @@ class PhotoCategory {
         $photos = [];
         $directory = 'images/' . $category;
 
+        if (!file_exists($directory)) {
+            return null;
+        }
+
         // If there's a .BridgeSort file in the directory, use it's file arrangement
         $bridge_sort_uri = $directory . '/.BridgeSort';
         if (file_exists($bridge_sort_uri)) {
