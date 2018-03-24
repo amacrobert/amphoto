@@ -50,7 +50,7 @@ class DefaultController extends Controller {
 
         $form = $this->createFormBuilder()
             ->add('email', EmailType::class, ['attr' => ['placeholder' => 'EMAIL']])
-            ->add('submit', SubmitType::class, ['label' => 'SUBMIT'])
+            ->add('submit', SubmitType::class, ['label' => 'SEND'])
             ->getForm()
         ;
 
