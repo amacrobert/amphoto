@@ -200,6 +200,21 @@ class DefaultController extends Controller {
         return parent::render($view, $parameters, $response);
     }
 
+    /**
+     * @Route("/{url}", name="remove_trailing_slash",
+     *     requirements={"url" = ".*\/$"})
+     */
+    public function removeTrailingSlashAction(Request $request) {
+        $path_info = $request->getPathInfo();
+        $request_uri = $request->getRequestUri();
+
+        $url = str_replace($path_info, rtrim($path_info, ' /'), $request_uri);
+
+        // 308 (Permanent Redirect) is similar to 301 (Moved Permanently) except
+        // that it does not allow changing the request method (e.g. from POST to GET)
+        return $this->redirect($url, 308);
+    }
+
     private function getMenu($portfolio_machine_name = null) {
         $portfolio_repo = $this->get('doctrine.orm.entity_manager')->getRepository(Portfolio::class);
         $portfolios = $portfolio_repo->findBy(['listed' => true], ['ordinal' => 'ASC']);
