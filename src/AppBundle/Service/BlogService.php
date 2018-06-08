@@ -38,7 +38,7 @@ class BlogService {
         // Convert WordPress captions to HTML
         $post->post_content = preg_replace("/\s*\[caption(.*?)\](<img(.*?)>)(.*?)\[\/caption\]\s*/", PHP_EOL.PHP_EOL."<img $3><div class='caption'>$4</div>", $post->post_content);
 
-        // Convert instagram objects to HTML
+        // Instagram oEmbeds
         $post->post_content = preg_replace_callback(
             "/\s*\[instagram url=(.*?)\]\s*/",
             function($match) {
@@ -48,7 +48,7 @@ class BlogService {
                         throw new \Exception;
                     }
                     $body = json_decode($response->getBody());
-                    return '<p>'.$body->html.'</p>';
+                    return '<p>' . $body->html . '</p>';
                 }
                 catch (\Exception $e) {
                     return '<p>[Error loading instagram content]</p>';
@@ -57,7 +57,7 @@ class BlogService {
             $post->post_content
         );
 
-        // Convert vimeo objects to HTML
+        // Vimeo oEmbeds
         $post->post_content = preg_replace_callback(
             "/\s*\[vimeo url=(.*?)\]\s*/",
             function($match) {
@@ -67,11 +67,22 @@ class BlogService {
                         throw new \Exception;
                     }
                     $body = json_decode($response->getBody());
-                    return '<p>'.$body->html.'</p>';
+                    return '<p>' . $body->html . '</p>';
                 }
                 catch (\Exception $e) {
                     return '<p>[Error loading vimeo content]</p>';
                 }
+            },
+            $post->post_content
+        );
+
+        // Youtube oEmbeds
+        $post->post_content = preg_replace_callback(
+            "/\s*\[youtube (.*?)\]\s*/",
+            function($match) {
+                return "
+                    <p><iframe style='width: 100%; min-height: 320px' src='https://youtube.com/embed/$match[1]' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe></p>
+                ";
             },
             $post->post_content
         );
