@@ -1,34 +1,49 @@
 {%
     set textboxes = [
         {
-            'title': 'Hello!',
+            'title': 'Welcome',
             'body': "
-                <p>I'm Andrew, a Boston-based photographer and videographer for hire.</p>
-                <p>I've been photographing nightlife, weddings, and portraits since 2014 and love it. Lucky me!</p>
-                <p>Do you need photos or video?</p>
-                <p><a href='/contact' class='btn btn-success btn-lg'>Let's work together!</a></p>
+                <img src='/images/profile4.jpg' style='width: 250px; float: left; padding-right: 20px' />
+                <p style='text-align: left'>I'm Andrew, a Boston-based photographer and videographer for hire.</p>
+                <p style='text-align: left'>I've been photographing shows, portraits, and more since 2014. It is my passion and purpose.</p>
+                <p style='text-align: left'>Currently available for touring. Do you need photos or video?</p>
+                <p style='text-align: left'><a href='/contact' class='btn btn-success btn-lg'>Reach out!</a></p>
             "
         },
         {
-            'title': 'Make a Visual Impact',
+            'title': 'Concert Photography',
             'body': "
-                <p>Brands, bands, and businesses all need to stand out to their audience to stay relevant.</p>
-                <p>I work with my clients to deliver visual imagery they're thrilled with.</p>
+                <p>Concert photography is my bread and butter!</p>
+                <p>I'm available for tours, one-off dates, music festivals, and artist headshots / press shots.</p>
+                <p>
+                    <a href='/photos/nightlife-events' class='btn btn-default btn-lg'>Concert Portfolio</a>
+                    <a href='/contact' class='btn btn-info btn-lg'>Bookings</a>
+                </p>
             "
-        }, {},
+        }, {},{},{},
         {
-            'title': 'Timeless Wedding Photography',
+            'title': 'Portraits, Press, & Editorial',
+            'body': "
+                <p>I do people photography - from corporate headshots to glamour, from press shots to just-for-fun pics for your followers.</p>
+                <p>
+                    <a href='/photos/portraits' class='btn btn-default btn-lg'>Portrait Portfolio</a>
+                    <a href='/contact' class='btn btn-info btn-lg'>Bookings</a>
+                </p>
+            "
+        },{},{},{},{},{},
+        {
+            'title': 'Wedding Photography',
             'body': "
                 <p>I would be thrilled and honored to be your wedding photographer.</p>
                 <p><a href='/contact'>Contact me</a> for packages and rates</p>
-                <p><a href='/photos/weddings' class='btn btn-success btn-lg'>Wedding Portfolio</a></p>
+                <p><a href='/photos/weddings' class='btn btn-default btn-lg'>Wedding Portfolio</a></p>
             "
-        }, {}, {}, {},
+        },{},{},{},{},
         {
-            'title': 'Stunning Portraits',
+            'title': 'Let\'s work together',
             'body': "
-                <p>I do people photography - from corporate headshots to glamour, from press shots to just-for-fun shots for your followers.</p>
-                <p><a href='/photos/portraits' class='btn btn-success btn-lg'>Portrait Portfolio</a></p>
+                <p>Like what you see?</p>
+                <p><a href='/contact'>Reach out</a> and let me know your needs! I look forward to working with you.</p>
             "
         }
     ]
@@ -52,7 +67,7 @@
                         <h2>Andrew <span class='mac'>Mac</span>Robert</h2>
                         <h1>Photo + Video</h1>
                         <a href="/photos/nightlife-events" class="btn btn-default btn-lg">
-                            Portfolio
+                            Concert Portfolio
                         </a>
                         <a href="/contact" class='btn btn-info btn-lg'>
                             Book Now
@@ -81,14 +96,6 @@
                     </div>
 
                 {% endfor %}
-
-                <div class="textbox">
-                    <div class="textbox-content">
-                        <h3>The End</h3>
-                        <p>Like what you see?</p>
-                        <p><a href='/contact'>Reach out</a> and let me know your needs! I look forward to working with you.</p>
-                    </div>
-                </div>
 
             </div>
     </div>
