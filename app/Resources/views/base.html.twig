@@ -17,7 +17,7 @@
                 <meta property="og:image" content="http://andrewmacrobert.com/images/nightlife-events/pegboard-nerds-14.jpg" />
             {% endif %}
 
-            {% if og.description %}
+            {% if og.description is defined %}
                 <meta property="og:description" content="{{ og.description }}" />
             {% endif %}
 
