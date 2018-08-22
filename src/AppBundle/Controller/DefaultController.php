@@ -183,9 +183,9 @@ class DefaultController extends Controller {
             'og' => [
                 'title' => $portfolio->getName() . ' - Andrew MacRobert Photography',
                 'images' => [
-                    'http://andrewmacrobert.com/' . $photos[0]->uri,
-                    'http://andrewmacrobert.com/' . $photos[1]->uri,
-                    'http://andrewmacrobert.com/' . $photos[2]->uri,
+                    'https://andrewmacrobert.com/' . $photos[0]->uri,
+                    'https://andrewmacrobert.com/' . $photos[1]->uri,
+                    'https://andrewmacrobert.com/' . $photos[2]->uri,
                 ]
             ],
         ]);

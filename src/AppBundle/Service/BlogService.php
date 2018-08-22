@@ -29,7 +29,6 @@ class BlogService {
         $post = (object)$this->wordpress_client->getPost($post_id);
 
         $featured_image = isset($post->post_thumbnail['link']) ? $post->post_thumbnail['link'] : null;
-        $featured_image = str_replace('https://', 'http://', $featured_image);
         $post->featured_image = $featured_image;
 
         // Whitespace

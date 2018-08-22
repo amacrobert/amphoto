@@ -4,7 +4,7 @@
  *
  * Service for fetching web content.
  * @todo: Create a database and administrative backend for CRUD operations instead
- *   of SFTP & editing this code. 
+ *   of SFTP & editing this code.
  */
 
 namespace AppBundle\Service;
@@ -20,14 +20,14 @@ class WebContent {
             case 'about':
                 $ogp = [
                     'title' => 'About Andrew MacRobert Photography',
-                    'image' => 'http://andrewmacrobert.com/images/profile2.jpg',
+                    'image' => 'https://andrewmacrobert.com/images/profile2.jpg',
                 ];
                 break;
 
             case 'contact':
                 $ogp = [
                     'title' => 'Contact Andrew MacRobert Photography',
-                    'image' => 'http://andrewmacrobert.com/images/banner/panorama1.jpg'
+                    'image' => 'https://andrewmacrobert.com/images/banner/panorama1.jpg'
                 ];
                 break;
 
