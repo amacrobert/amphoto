@@ -35,8 +35,8 @@ Options FollowSymlinks
     RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
     # Redirect HTTP to HTTPS
-    RewriteCond %{HTTPS} !on
-    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+    RewriteCond %{SERVER_PORT} 80
+    RewriteRule ^(.*)$ https://{HTTP_HOST}/$1 [R=301,L]
 
     # Redirect to URI without front controller to prevent duplicate content
     # (with and without `/app.php`). Only do this redirect on the initial
