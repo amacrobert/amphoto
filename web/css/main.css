@@ -35,6 +35,10 @@ a:hover {
     text-decoration: none;
 }
 
+.homepage-parallax .btn-lg {
+    margin: 1rem 0;
+}
+
 .header {
     background-color: #FFF;
     position: fixed;
