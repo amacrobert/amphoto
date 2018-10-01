@@ -25,7 +25,11 @@ class DefaultController extends Controller {
 
         return $this->render('default/index.html.twig', [
             'bodyclass' => 'slideshow',
-            'slideshow' => $category->getPhotos('featured'),
+            'photos' => [
+                'concerts' => $category->getPhotos('featured/concerts'),
+                'portraits' => $category->getPhotos('featured/portraits'),
+                'weddings' => $category->getPhotos('featured/weddings'),
+            ],
             'og' => $content->getOpenGraph(),
         ]);
     }

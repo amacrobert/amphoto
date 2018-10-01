@@ -1,54 +1,3 @@
-{%
-    set textboxes = [
-        {
-            'title': 'Welcome',
-            'body': "
-                <img src='/images/profile4.jpg' style='width: 250px; float: left; padding: 0 20px 20px 0' />
-                <p style='text-align: left'>I'm Andrew, a Boston-based photographer and videographer for hire.</p>
-                <p style='text-align: left'>I've been photographing shows, portraits, and more since 2014. It is my passion and purpose.</p>
-                <p style='text-align: left'>Currently available for touring. Do you need photos or video?</p>
-                <p style='text-align: left'><a href='/contact' class='btn btn-success btn-lg'>Reach out!</a></p>
-            "
-        },
-        {
-            'title': 'Concert Photography',
-            'body': "
-                <p>Concert photography is my bread and butter!</p>
-                <p>I'm available for tours, one-off dates, music festivals, and artist headshots / press shots.</p>
-                <p>
-                    <a href='/photos/nightlife-events' class='btn btn-default btn-lg'>Concert Portfolio</a>
-                    <a href='/contact' class='btn btn-info btn-lg'>Bookings</a>
-                </p>
-            "
-        }, {},{},{},
-        {
-            'title': 'Portraits, Press, & Editorial',
-            'body': "
-                <p>I do people photography - from corporate headshots to glamour, from press shots to just-for-fun pics for your followers.</p>
-                <p>
-                    <a href='/photos/portraits' class='btn btn-default btn-lg'>Portrait Portfolio</a>
-                    <a href='/contact' class='btn btn-info btn-lg'>Bookings</a>
-                </p>
-            "
-        },{},{},{},{},{},
-        {
-            'title': 'Wedding Photography',
-            'body': "
-                <p>I would be thrilled and honored to be your wedding photographer.</p>
-                <p><a href='/contact'>Contact me</a> for packages and rates</p>
-                <p><a href='/photos/weddings' class='btn btn-default btn-lg'>Wedding Portfolio</a></p>
-            "
-        },{},{},{},{},
-        {
-            'title': 'Let\'s work together',
-            'body': "
-                <p>Like what you see?</p>
-                <p><a href='/contact'>Reach out</a> and let me know your needs! I look forward to working with you.</p>
-            "
-        }
-    ]
-%}
-
 {% extends 'base.html.twig' %}
 
 {% block body %}
@@ -66,36 +15,62 @@
                     <div class="hero">
                         <h2 style="margin-bottom: .1em; font-size: 1.8em">Andrew <span class='mac'>Mac</span>Robert</h2>
                         <h1 style="margin-top: 0">Photography</h1>
-                        <a href="/photos/nightlife-events" class="btn btn-default btn-lg">
-                            Concert Portfolio
-                        </a>
                         <a href="/contact" class='btn btn-info btn-lg'>
-                            Book Now
+                            Bookings
                         </a>
                     </div>
                 </div>
 
-
-                {% for photo in slideshow %}
-
-                    {% if textboxes[loop.index0].body is defined %}
-                        <div class="textbox">
-                            <div class="textbox-content">
-                                <h3>{{ textboxes[loop.index0].title }}</h3>
-                                {{ textboxes[loop.index0].body|raw }}
-                            </div>
-                        </div>
-                    {% endif %}
-
-                    <div class="jarallax" data-jarallax data-speed=".1" style="background-image: url({{ asset(photo.uri) }})">
-                        {% if textboxes[loop.index0].hero is defined %}
-                            <div class="hero">
-                                {{ textboxes[loop.index0].hero|raw }}
-                            </div>
-                        {% endif %}
+                <div class="textbox">
+                    <div class="textbox-content">
+                        <h3>Concerts & Nightlife</h3>
+                        <p>
+                            <a href='/photos/nightlife-events' class='btn btn-default btn-lg'>Full Concert Portfolio</a>
+                        </p>
                     </div>
+                </div>
 
-                {% endfor %}
+                <div class="portfolio-gallery">
+                    {% for photo in photos.concerts %}
+                        <a href="{{ asset(photo.uri) }}" class="swipebox">
+                            <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
+                        </a>
+                    {% endfor %}
+                </div>
+
+                <div class="textbox">
+                    <div class="textbox-content">
+                        <h3>Portraits</h3>
+                        <p>
+                            <a href='/photos/portraits' class='btn btn-default btn-lg'>Full Portrait Portfolio</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="portfolio-gallery">
+                    {% for photo in photos.portraits %}
+                        <a href="{{ asset(photo.uri) }}" class="swipebox">
+                            <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
+                        </a>
+                    {% endfor %}
+                </div>
+
+                <div class="textbox">
+                    <div class="textbox-content">
+                        <h3>Weddings</h3>
+                        <p>
+                            <a href='/photos/weddings' class='btn btn-default btn-lg'>Full Wedding Portfolio</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="portfolio-gallery">
+                    {% for photo in photos.weddings %}
+                        <a href="{{ asset(photo.uri) }}" class="swipebox">
+                            <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
+                        </a>
+                    {% endfor %}
+                </div>
 
             </div>
     </div>
@@ -136,7 +111,7 @@
             background-color: rgba(255, 255, 255, .7);
             color: #333;
             background-color: #fff;
-            box-shadow: 0 0 30px rgba(0, 0, 0, .6);
+            box-shadow: 0 0 30px rgba(0, 0, 0, .25);
             position: relative;
             z-index: 1;
         }
@@ -151,7 +126,30 @@
         .homepage-parallax .textbox-content p a:not(.btn) {
             text-decoration: underline;
         }
+        .portfolio-gallery {
+            margin-bottom: 6rem;
+        }
 
     </style>
 
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+        var jgOptions = {
+            rowHeight: 300,
+            lastRow: 'center',
+            margins: 10,
+            waitThumbnailsLoad: true        
+        };
+
+        $(function() {
+            $('.portfolio-gallery').justifiedGallery(jgOptions);
+
+            $('.swipebox').swipebox({hideBarsDelay: 2000});
+        });
+    </script>
 {% endblock %}
