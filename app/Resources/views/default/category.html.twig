@@ -32,7 +32,7 @@
 
     <div id="portfolio-gallery">
         {% for photo in photos %}
-            <a href="{{ asset(photo.uri) }}" class="swipebox">
+            <a href="{{ asset(photo.uri) }}" class="swipebox" title="{{photo.caption}}">
                 <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
             </a>
         {% endfor %}

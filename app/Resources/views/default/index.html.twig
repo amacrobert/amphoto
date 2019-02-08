@@ -24,54 +24,57 @@
                 <div class="textbox">
                     <div class="textbox-content">
                         <h3>Concerts & Nightlife</h3>
-                        <p>
-                            <a href='/photos/nightlife-events' class='btn btn-default btn-lg'>Full Concert Portfolio</a>
-                        </p>
                     </div>
-                </div>
 
-                <div class="portfolio-gallery">
-                    {% for photo in photos.concerts %}
-                        <a href="{{ asset(photo.uri) }}" class="swipebox">
-                            <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
-                        </a>
-                    {% endfor %}
+                    <div class="portfolio-gallery">
+                        {% for photo in photos.concerts %}
+                            <a href="{{ asset(photo.uri) }}" class="swipebox" title="{{ photo.caption }}">
+                                <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
+                            </a>
+                        {% endfor %}
+                    </div>
+
+                    <p>
+                        <a href='/photos/nightlife-events' class='btn btn-default btn-lg'>Full Concert Portfolio »</a>
+                    </p>
                 </div>
 
                 <div class="textbox">
                     <div class="textbox-content">
                         <h3>Portraits</h3>
-                        <p>
-                            <a href='/photos/portraits' class='btn btn-default btn-lg'>Full Portrait Portfolio</a>
-                        </p>
                     </div>
+
+                    <div class="portfolio-gallery">
+                        {% for photo in photos.portraits %}
+                            <a href="{{ asset(photo.uri) }}" class="swipebox" title="{{ photo.caption }}">
+                                <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
+                            </a>
+                        {% endfor %}
+                    </div>
+
+                    <p>
+                        <a href='/photos/portraits' class='btn btn-default btn-lg'>Full Portrait Portfolio »</a>
+                    </p>
                 </div>
 
-                <div class="portfolio-gallery">
-                    {% for photo in photos.portraits %}
-                        <a href="{{ asset(photo.uri) }}" class="swipebox">
-                            <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
-                        </a>
-                    {% endfor %}
-                </div>
 
                 <div class="textbox">
                     <div class="textbox-content">
                         <h3>Weddings</h3>
-                        <p>
-                            <a href='/photos/weddings' class='btn btn-default btn-lg'>Full Wedding Portfolio</a>
-                        </p>
                     </div>
-                </div>
 
-                <div class="portfolio-gallery">
-                    {% for photo in photos.weddings %}
-                        <a href="{{ asset(photo.uri) }}" class="swipebox">
-                            <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
-                        </a>
-                    {% endfor %}
-                </div>
+                    <div class="portfolio-gallery">
+                        {% for photo in photos.weddings %}
+                            <a href="{{ asset(photo.uri) }}" class="swipebox" title="{{ photo.caption }}">
+                                <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
+                            </a>
+                        {% endfor %}
+                    </div>
 
+                    <p>
+                        <a href='/photos/weddings' class='btn btn-default btn-lg'>Full Wedding Portfolio »</a>
+                    </p>
+                </div>
             </div>
     </div>
 
@@ -114,17 +117,22 @@
             box-shadow: 0 0 30px rgba(0, 0, 0, .25);
             position: relative;
             z-index: 1;
+            margin-bottom: 60px;
+            margin-top: 30px;
         }
         .homepage-parallax .textbox-content {
             max-width: 750px;
             margin: 0 auto;
         }
-        .homepage-parallax .textbox-content p {
+        .homepage-parallax .textbox p {
             font-size: 1.1em;
             text-align: center;
         }
-        .homepage-parallax .textbox-content p a:not(.btn) {
+        .homepage-parallax .textbox p a:not(.btn) {
             text-decoration: underline;
+        }
+        .homepage-parallax .textbox p .btn {
+            text-transform: uppercase;
         }
         .portfolio-gallery {
             margin-bottom: 6rem;

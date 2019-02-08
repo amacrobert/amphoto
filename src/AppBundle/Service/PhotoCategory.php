@@ -40,7 +40,10 @@ class PhotoCategory {
                 $uri = $directory . '/' . $file;
 
                 if (file_exists($uri)) {
-                    $photos[] = (object)array_merge(['uri' => $uri], $this->getDimensions($uri));
+                    $photos[] = (object)array_merge([
+                        'uri' => $uri,
+                        'caption' => $this->getImageCaption($uri),
+                    ], $this->getDimensions($uri));
                 }
             }
         }
@@ -55,7 +58,10 @@ class PhotoCategory {
 
                 if (in_array(strtolower($pathinfo['extension']), self::$allowed_extensions)) {
                     $uri = $directory . '/' . $file;
-                    $photos[] = (object)array_merge(['uri' => $uri], $this->getDimensions($uri));
+                    $photos[] = (object)array_merge([
+                        'uri' => $uri,
+                        'caption' => $this->getImageCaption($uri),
+                    ], $this->getDimensions($uri));
                 }
             }
         }
@@ -77,5 +83,15 @@ class PhotoCategory {
             'width' => $dimensions[0],
             'height' => $dimensions[1]
         ];
+    }
+
+    private function getImageCaption($uri) {
+        $caption = '';
+        if ($exif = exif_read_data($uri, 'IFD0', true)) {
+            if (isset($exif['IFD0']) && isset($exif['IFD0']['ImageDescription'])) {
+                $caption = $exif['IFD0']['ImageDescription'];
+            }
+        }
+        return $caption;
     }
 }

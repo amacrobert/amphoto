@@ -27,6 +27,12 @@ span.mac {
     z-index: -1;
 }
 
+.justified-gallery>a>.caption,
+.justified-gallery>div>.caption {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
 a {
     color: #000;
 }
