@@ -21,7 +21,8 @@
                 <meta property="og:description" content="{{ og.description }}" />
             {% endif %}
 
-            <meta property="fb:admins" content="1240771202">
+
+            <meta property="fb:admins" content="1240771202" />
         {% endblock %}
 
         {% block stylesheets %}
@@ -90,27 +91,12 @@
                                 <a href="/blog">Blog</a>
                             </li>
 
-                            <li role="presentation" class="dropdown {% if moreNavActive is defined %}active{% endif %}">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                    More <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li {% if aboutNavActive is defined %}class="active"{% endif %}>
-                                        <a href="/about">About</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="https://shirtsforphotographers.com" target="_blank">Shirts For Photographers</a>
-                                    </li>
-
-                                    <li {% if equipmentNavActive is defined %}class="active"{% endif %}>
-                                        <a href="/equipment">Equipment</a>
-                                    </li>
-                                </ul>
+                            <li class="{% if aboutNavActive is defined %}active {% endif %}">
+                                <a href="/about">About</a>
                             </li>
 
                             <li class="{% if contactNavActive is defined %}active {% endif %}cta">
-                                <a href="/contact">Book Now</a>
+                                <a href="/bookings">Booking & Rates</a>
                             </li>
 
                         </ul>
