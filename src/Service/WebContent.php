@@ -29,7 +29,7 @@ class WebContent {
             case 'bookings':
                 $ogp = [
                     'title' => 'Bookings: Andrew MacRobert Photography',
-                    'image' => 'https://andrewmacrobert.com/images/banner/panorama1.jpg',
+                    'image' => 'https://andrewmacrobert.com/images/nightlife-events/sander-van-doorn-38.jpg',
                     'description' => 'Boston nightlife photographer',
                 ];
                 break;
