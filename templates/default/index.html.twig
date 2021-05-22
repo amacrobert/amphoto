@@ -11,9 +11,9 @@
                 <div class="jarallax" data-jarallax data-speed=".1" style="background-image: url({{ asset('/images/ferry-corsten-01.jpg') }})">
                     <div class="hero">
                         <h2 style="margin-bottom: .1em; font-size: 1.8em">Andrew <span class='mac'>Mac</span>Robert</h2>
-                        <h1 style="margin-top: 0">Photography</h1>
-                        <a href="/contact" class='btn btn-info btn-lg'>
-                            Bookings
+                        <h1 style="margin-top: 0">Boston Nightlife Photographer</h1>
+                        <a href="/bookings" class='btn btn-info btn-lg'>
+                            Rates & Bookings
                         </a>
                     </div>
                 </div>
@@ -53,26 +53,8 @@
                         <a href='/photos/portraits' class='btn btn-default btn-lg'>Full Portrait Portfolio »</a>
                     </p>
                 </div>
-
-
-                <div class="textbox">
-                    <div class="textbox-content">
-                        <h3>Weddings</h3>
-                    </div>
-
-                    <div class="portfolio-gallery">
-                        {% for photo in photos.weddings %}
-                            <a href="{{ asset(photo.uri) }}" class="swipebox" title="{{ photo.caption }}">
-                                <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
-                            </a>
-                        {% endfor %}
-                    </div>
-
-                    <p>
-                        <a href='/photos/weddings' class='btn btn-default btn-lg'>Full Wedding Portfolio »</a>
-                    </p>
-                </div>
             </div>
+        </div>
     </div>
 
 {% endblock %}

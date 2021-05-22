@@ -14,26 +14,23 @@ class WebContent {
     /**
      * Get OGP values for a given page
      */
-    public function getOpenGraph($page = null) {
+    public function getOpenGraph($page = null)
+    {
         switch ($page) {
 
             case 'about':
                 $ogp = [
-                    'title' => 'About Andrew MacRobert Photography',
+                    'title' => 'About: Andrew MacRobert Photography',
                     'image' => 'https://andrewmacrobert.com/images/profile2.jpg',
+                    'description' => 'Boston nightlife photographer',
                 ];
                 break;
 
-            case 'contact':
+            case 'bookings':
                 $ogp = [
-                    'title' => 'Contact Andrew MacRobert Photography',
-                    'image' => 'https://andrewmacrobert.com/images/banner/panorama1.jpg'
-                ];
-                break;
-
-            case 'equipment':
-                $ogp = [
-                    'title' => 'My Equipment - Andrew MacRobert Photography',
+                    'title' => 'Bookings: Andrew MacRobert Photography',
+                    'image' => 'https://andrewmacrobert.com/images/banner/panorama1.jpg',
+                    'description' => 'Boston nightlife photographer',
                 ];
                 break;
 

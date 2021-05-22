@@ -140,11 +140,12 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/contact", name="contact")
+     * @Route("/bookings", name="bookings")
+     * @Route("/contact", name="bookings_alternate_link")
      */
     public function contactAction(WebContent $content) {
-        return $this->renderWithNav('default/contact.html.twig', [
-            'og' => $content->getOpenGraph('contact'),
+        return $this->renderWithNav('default/bookings.html.twig', [
+            'og' => $content->getOpenGraph('bookings'),
             'contactNavActive' => true,
         ]);
     }

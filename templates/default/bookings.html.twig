@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bookings{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xs-12 page-title"><h2>Bookings and Rates</h2></div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 banner" style="background-image:url({{ asset('images/banner/panorama1.jpg') }})">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                <p style="font-size:1.4em">You are here because you're serious about your brand. I am committed to supporting that by capturing your nightlife event in the best possible light.</p>
+
+                <div class="panel panel-default" style="margin-top:30px">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Rates</h3>
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <th>Nightlife photography &mdash; Up to 3 hours</th>
+                            <td>$300</td>
+                        </tr>
+                        <tr>
+                            <th>Nightlife photography &mdash; Up to 8 hours</th>
+                            <td>$650</td>
+                        </tr>
+                        <tr>
+                            <th>Short-notice booking (less than 24 hours)</th>
+                            <td>+$50</td>
+                        </tr>
+                        <tr>
+                            <th>Other photography needs</th>
+                            <td>Contact for inquiries</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="panel panel-default" style="margin-top:30px">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Nightlife photography deliverables</h3>
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <th>Album size</th>
+                            <td>At least 50 edited photos. The size is usually higher but depends on the number of guests and event production.</td>
+                        </tr>
+                        <tr>
+                            <th>Editing quality</th>
+                            <td>High quality edits for all photos. Photoshopped composites and beauty retouching on ~5% of album when applicable.</td>
+                        </tr>
+                        <tr>
+                            <th>Turnaround time</th>
+                            <td>Under 72 hours from the end of the event.</td>
+                        </tr>
+                        <tr>
+                            <th>Delivery format</th>
+                            <td>Private download link sent via email. Album images are numbered, with highlight photos low, perfect for Facebook album uploads.</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center">Deliverables may be negotiated for an additional charge.</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <hr> 
+                <p class="text-center" style="font-size:1.4em">
+                    <strong>Book now</strong>: <a href="mailto:andrew@andrewmacrobert.com">andrew@andrewmacrobert.com</a>
+                </p>
+                <hr>
+
+            </div>
+        </div>
+
+        {% include 'default/newsletter.html' %}
+
+    </div>
+
+{% endblock %}
