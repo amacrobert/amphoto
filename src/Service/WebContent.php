@@ -21,7 +21,7 @@ class WebContent {
             case 'about':
                 $ogp = [
                     'title' => 'About: Andrew MacRobert Photography',
-                    'image' => 'https://andrewmacrobert.com/images/profile2.jpg',
+                    'images' => ['https://andrewmacrobert.com/images/profile2.jpg'],
                     'description' => 'Boston nightlife photographer',
                 ];
                 break;
@@ -29,7 +29,7 @@ class WebContent {
             case 'bookings':
                 $ogp = [
                     'title' => 'Bookings: Andrew MacRobert Photography',
-                    'image' => 'https://andrewmacrobert.com/images/nightlife-events/sander-van-doorn-38.jpg',
+                    'images' => ['https://andrewmacrobert.com/images/nightlife-events/sander-van-doorn-38.jpg'],
                     'description' => 'Boston nightlife photographer',
                 ];
                 break;
