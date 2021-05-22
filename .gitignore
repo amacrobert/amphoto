@@ -13,9 +13,25 @@
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
-/web/bundles/
+/public/bundles/
 sftp-config.json
-/web/images/.BridgeSort
-/web/images/*/*
-/web/sandbox
+/public/images/.BridgeSort
+/public/images/*/*
+/public/sandbox
 .DS_Store
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###

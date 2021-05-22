@@ -1,0 +1,14 @@
+App\Entity\Freebie:
+
+    type: entity
+    table: freebie
+
+    id: {id: {type: integer, generator: {strategy: AUTO}}}
+
+    fields:
+        name: { type: string }
+        body: { type: text, nullable: true }
+        banner_uri: { type: string, nullable: true }
+        uri: { type: string, nullable: true }
+        filename: { type: string, nullable: true }
+        email_body: { type: text, nullable: true }

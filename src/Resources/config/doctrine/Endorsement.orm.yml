@@ -1,0 +1,10 @@
+App\Entity\Endorsement:
+
+    type: entity
+    table: endorsement
+
+    id: {id: {type: integer, generator: {strategy: AUTO}}}
+
+    fields:
+        body: { type: text, nullable: true }
+        author: { type: string, nullable: true }
