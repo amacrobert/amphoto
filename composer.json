@@ -17,8 +17,7 @@
         }
     },
     "require": {
-        "php": ">=5.5.9",
-        "mnsami/composer-custom-directory-installer": "1.1.*",
+        "php": ">=7.4",
         "monolog/monolog": "*",
         "symfony/symfony": "^3.4",
         "doctrine/orm": "^2.5",
@@ -61,11 +60,6 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ]
-    },
-    "config": {
-        "platform": {
-            "php": "5.5.9"
-        }
     },
     "extra": {
         "symfony-app-dir": "app",
