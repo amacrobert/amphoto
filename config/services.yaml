@@ -1,0 +1,87 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller/'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    freebie:
+        class: App\Service\FreebieService
+        arguments:
+            - '@Doctrine\ORM\EntityManagerInterface'
+            - '@mailgun'
+
+    mailgun:
+        class: Mailgun\Mailgun
+        factory: ['Mailgun\Mailgun', 'create']
+        arguments: ['%mailgun_key%']
+
+    App\Service\BlogService:
+        arguments:
+            - '@HieuLe\WordpressXmlrpcClient\WordpressClient'
+            - '@guzzle'
+            - '@cache'
+
+    HieuLe\WordpressXmlrpcClient\WordpressClient:
+        arguments:
+            - 'https://andrewmacrobertphoto.wordpress.com/xmlrpc.php'
+            - '%env(WP_USERNAME)%'
+            - '%env(WP_PASSWORD)%'
+
+    cache:
+        class: App\Service\DatabaseCacheService
+        arguments: ['@Doctrine\ORM\EntityManagerInterface']
+
+    guzzle:
+        class: GuzzleHttp\Client
+        arguments:
+            $config:
+                verify: false
+
+# Admins
+
+    admin.portfolio:
+        class: App\Admin\PortfolioAdmin
+        arguments: [~, App\Entity\Portfolio, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Portfolios, group: Entities }
+        public: true
+
+    admin.endorsement:
+        class: App\Admin\EndorsementAdmin
+        arguments: [~, App\Entity\Endorsement, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Endorsements, group: Entities }
+        public: true
+
+    admin.freebie:
+        class: App\Admin\FreebieAdmin
+        arguments: [~, App\Entity\Freebie, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Freebies, group: Entities }
+        public: true

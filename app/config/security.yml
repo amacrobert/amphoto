@@ -7,8 +7,8 @@ security:
         in_memory:
             memory:
                 users:
-                    '%admin_username%':
-                        password: '%admin_password%'
+                    '%env(ADMIN_USERNAME)%':
+                        password: '%env(ADMIN_PASSWORD)%'
                         roles: ROLE_ADMIN
 
     firewalls:
@@ -20,6 +20,7 @@ security:
         main:
             anonymous: ~
             http_basic: ~
+            logout_on_user_change: true
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }

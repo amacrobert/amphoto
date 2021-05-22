@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Equipment{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xs-12 page-title"><h2>My Camera Bag</h2></div>
+        </div>
+
+        <div class="row equipment">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+
+                <p>Here is a list of my most frequently used equipment, and what I use it for. Click on a link to see it on Amazon. Using these links to buy equipment helps support me.</p>
+
+                    {% verbatim %}
+                    <div class="list-section-title">Cameras</div>
+                    <ul>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B01KURGS9E/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B01KURGS9E&linkCode=as2&tag=andrewmacrobe-20&linkId=313205ab71de1a7b78bdad09235f4814">Canon EOS 5D Mark IV</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B01KURGS9E" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>Primary camera</p>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B009B0MZ8U/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B009B0MZ8U&linkCode=as2&tag=andrewmacrobe-20&linkId=758c577d6d9c9e6fe81d1f1694b7e1b1">Canon EOS 6D</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B009B0MZ8U" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>Secondary camera, B camera for video</p>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B004M170YC/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B004M170YC&linkCode=as2&tag=andrewmacrobe-20&linkId=30bcc8ef76a0f0410c00a4992a00d304">Canon EOS Rebel T3i</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B004M170YC" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>Backup in case shit really hits the fan</p>
+                        </li>
+                    </ul>
+
+                    <div class="list-section-title">Lenses</div>
+                    <ul>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B0033PRWSW/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B0033PRWSW&linkCode=as2&tag=andrewmacrobe-20&linkId=74b9f1ac670c783ff05949b411ae1aab">Canon EF 70-200mm f/2.8L IS II USM</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B0033PRWSW" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>Large stages, big clubs, festival candids, fashion, general purpose in large open environments</p>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B0076BNK30/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B0076BNK30&linkCode=as2&tag=andrewmacrobe-20&linkId=65c95bcf7cdb86f98c214580f18ac056">Canon EF 24-70mm f/2.8L II USM</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B0076BNK30" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>This is my go-to lens for events; it's fast, versatile, and sharp.</p>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B00THPL0AS/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00THPL0AS&linkCode=as2&tag=andrewmacrobe-20&linkId=0e3343b1b070083f20ca8fafc06846bb">Sigma 24mm f/1.4 ART DG HSM</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B00THPL0AS" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>Crowded clubs, group portraits</p>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B000CDC79M/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B000CDC79M&linkCode=as2&tag=andrewmacrobe-20&linkId=ecb39a8652f7f1c070778f386cc1ac16">Sigma 15mm f/2.8 EX DG Diagonal Fisheye</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B000CDC79M" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>Creative fisheye shots, ultra wide angle shots with post-production correction</p>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B00007GQLU/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00007GQLU&linkCode=as2&tag=andrewmacrobe-20&linkId=0fa46cae56aa4e36641c26c66020e7f8">Canon EF 85mm f/1.8</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B00007GQLU" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>Nothing beats this lens for portraits</p>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B00X8MRBCW/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00X8MRBCW&linkCode=as2&tag=andrewmacrobe-20&linkId=9c444a8c36d13fdf548ffac533227bf8">Canon EF 50mm f/1.8 STM</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B00X8MRBCW" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>Products, beauty/glamour, fashion, candids, single-person portraits, general purpose "walkaround" lens.</p>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B00009R6WO/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00009R6WO&linkCode=as2&tag=andrewmacrobe-20&linkId=f6a35934ca2253089531ca98e14247b6">Canon EF 17-40mm f/4L USM</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B00009R6WO" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>General wide-mid range daylight shots</p>
+                        </li>
+                    </ul>
+
+                    <div class="list-section-title">For Video</div>
+                    <ul>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B0020LB0MO/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B0020LB0MO&linkCode=as2&tag=andrewmacrobe-20&linkId=0f50306e2d9904e451d2dcb694d722fe">Glidecam HD-2000</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B0020LB0MO" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>Camera stabilizer</p>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B00BL87C42/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00BL87C42&linkCode=as2&tag=andrewmacrobe-20&linkId=4a3c2910228d69fad49867470829262e">Sennheiser Wireless Microphone Kit</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B00BL87C42" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>One-person interviews/narratives, candid videos</p>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B00GQDORA4/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00GQDORA4&linkCode=as2&tag=andrewmacrobe-20&linkId=cbbd1af907a9b1877f3ce58907e4a4b8">Rode Video Mic</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B00GQDORA4" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>General purpose audio and replacement for in-camera mic</p>
+                        </li>
+                    </ul>
+
+                    <div class="list-section-title">Other Accessories</div>
+                    <ul>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B00LCWQDPG/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00LCWQDPG&linkCode=as2&tag=andrewmacrobe-20&linkId=8da2804a61ad118eb5b5ccdd6689a7c8">YONGNUO Remote Trigger Kit</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B00LCWQDPG" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>Remote flash triggering for portraits, fashion, publicity, etc.</p>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B00FSG1INY/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00FSG1INY&linkCode=as2&tag=andrewmacrobe-20&linkId=a2adf641973f963858cfd8deaf87727b">Gary Fong Collapsible Light Sphere</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B00FSG1INY" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>General-purpose light diffuser. Great for club portraits, and softening off-camera flash in fashion/glamour.</p>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B010W2MAOO/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B010W2MAOO&linkCode=as2&tag=andrewmacrobe-20&linkId=aff662b06c8b94f61c9e9cc7a20b4ba1">Canon Speedlite 430EX III-RT Flash</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B010W2MAOO" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>All-purpose flash</p>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B002ZIMEMW/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B002ZIMEMW&linkCode=as2&tag=andrewmacrobe-20&linkId=948aca69fcd2c22076b2a46f2c2455cb">Neewer 43-inch Light Reflector</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B002ZIMEMW" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>Usually in my bag for fashion shoots. Mainly useful for bouncing sunlight.</p>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.amazon.com/gp/product/B00CCA1Y3S/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00CCA1Y3S&linkCode=as2&tag=andrewmacrobe-20&linkId=b6a8733533724f1d7505cab0096792f6">Vanguard Alta Pro Tripod Kit</a><img src="//ir-na.amazon-adsystem.com/e/ir?t=andrewmacrobe-20&l=am2&o=1&a=B00CCA1Y3S" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+                            <p>A superb all-use tripod. Don't skimp on a good tripod -- my first was a cheap amazon basics and started falling apart in less than a year.</p>
+                        </li>
+                    </ul>
+                    {% endverbatim %}
+
+            </div>
+        </div>
+
+        {% include 'default/newsletter.html' %}
+
+    </div>
+
+{% endblock %}
