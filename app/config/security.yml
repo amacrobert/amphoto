@@ -2,6 +2,8 @@
 # http://symfony.com/doc/current/book/security.html
 security:
 
+    enable_authenticator_manager: true
+
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory:
@@ -18,7 +20,6 @@ security:
             security: false
 
         main:
-            anonymous: ~
             http_basic: ~
             logout_on_user_change: true
 
