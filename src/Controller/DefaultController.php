@@ -44,47 +44,6 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/blog", name="blog_index")
-     */
-    public function blogIndexAction(WordpressClient $wordpress_client) {
-        $posts = $wordpress_client->getPosts(['post_status' => 'publish']);
-
-        return $this->renderWithNav('default/blog.html.twig', [
-            'blogNavActive' => true,
-            'posts' => $posts,
-        ]);
-    }
-
-    /**
-     * @Route("/blog/{post_id}", name="blog_post")
-     */
-    public function blogPostAction(WordpressClient $wordpress_client, BlogService $blog_service, $post_id) {
-
-        $post = (object)$blog_service->getPost($post_id);
-        $additional_posts = $wordpress_client->getPosts([
-            'post_status' => 'publish',
-            'number' => 3
-        ]);
-
-        foreach ($additional_posts as $index => $additional_post) {
-            if ($additional_post['post_id'] == $post->post_id) {
-                unset($additional_posts[$index]);
-            }
-        }
-
-        return $this->renderWithNav('default/blog_post.html.twig', [
-            'blogNavActive' => true,
-            'post' => $post,
-            'posts' => $additional_posts,
-            'og' => [
-                'title' => $post->post_title,
-                'images' => [$post->featured_image],
-                'description' => $post->post_excerpt,
-            ],
-        ]);
-    }
-
-    /**
      * @Route("/about", name="about")
      */
     public function aboutAction(WebContent $content) {

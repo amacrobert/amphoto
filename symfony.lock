@@ -108,9 +108,6 @@
     "guzzlehttp/psr7": {
         "version": "1.8.2"
     },
-    "hieu-le/wordpress-xmlrpc-client": {
-        "version": "2.6.0"
-    },
     "incenteev/composer-parameter-handler": {
         "version": "v2.1.4"
     },
