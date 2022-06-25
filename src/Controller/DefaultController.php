@@ -44,49 +44,6 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/downloads/{freebie_id}", name="download")
-     */
-    public function downloadsAction(Request $request, $freebie_id) {
-
-        $freebie_repo = $this->em->getRepository(Freebie::class);
-
-        if (is_numeric($freebie_id)) {
-            $freebie = $freebie_repo->find($freebie_id);
-        }
-        else {
-            $freebie = $freebie_repo->findOneBy(['name' => str_replace('-', ' ', $freebie_id)]);
-        }
-
-        if (!$freebie) {
-            return $this->redirectToRoute('homepage');
-        }
-
-        $form = $this->createFormBuilder()
-            ->add('email', EmailType::class, ['attr' => ['placeholder' => 'EMAIL']])
-            ->add('submit', SubmitType::class, ['label' => 'SEND'])
-            ->getForm()
-        ;
-
-        $form->handleRequest($request);
-
-        $submitted = $form->isSubmitted() && $form->isValid();
-
-        if ($submitted) {
-            $email = $form->getData()['email'];
-
-            $this->get('freebie')->mail($email, $freebie);
-            $this->get('freebie')->subscribe($email);
-        }
-
-        return $this->renderWithNav('default/freebie.html.twig', [
-            'freebie'   => $freebie,
-            'submitted' => $submitted,
-            'form'      => $form->createView(),
-            'email'     => $submitted ? $email : null,
-        ]);
-    }
-
-    /**
      * @Route("/blog", name="blog_index")
      */
     public function blogIndexAction(WordpressClient $wordpress_client) {

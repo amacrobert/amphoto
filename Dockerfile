@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:8.1-fpm
 
 RUN apt-get update -y \
     && apt-get install -y \
@@ -9,7 +9,6 @@ RUN apt-get update -y \
         libxml2-dev
 
 RUN docker-php-ext-install \
-    xmlrpc \
     exif \
     pdo_mysql
 

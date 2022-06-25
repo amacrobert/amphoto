@@ -1,7 +1,7 @@
 version: '3'
 services:
     amphoto:
-        container_name: amphoto
+        container_name: amphoto_symfony
         build: .
         ports:
             - "8080:8080"
@@ -9,3 +9,21 @@ services:
         command: "symfony server:start --port 8080"
         volumes:
             - .:/var/amphoto
+            - $HOME/.ssh/id_ed25519:/root/.ssh/id_ed25519:cached
+    mysql:
+        container_name: amphoto_mysql
+        platform: linux/x86_64
+        image: mysql:8.0
+        ports:
+            - "3306:3306"
+        volumes:
+            - db_data:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: amphoto
+            MYSQL_USER: amphotouser
+            MYSQL_PASSWORD: amphotolocalpass
+
+volumes:
+    db_data: {}
