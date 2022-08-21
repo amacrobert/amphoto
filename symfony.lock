@@ -171,6 +171,9 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "stenope/stenope": {
+        "version": "v0.7.2"
+    },
     "symfony/asset": {
         "version": "v5.2.7"
     },
