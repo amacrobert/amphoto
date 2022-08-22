@@ -11,5 +11,5 @@ aws cloudformation deploy \
 docker exec -it amphoto bin/console -e prod cache:clear
 docker exec -it amphoto bin/console -e prod stenope:build ./static --no-expose
 
-# Sync hte built site to s3
+# Sync the built site to s3
 aws s3 sync ./static/ s3://amphoto.prod

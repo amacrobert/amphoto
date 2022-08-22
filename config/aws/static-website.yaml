@@ -23,16 +23,40 @@ Resources:
     Properties:
       DistributionConfig:
         Origins:
-          - DomainName: !Sub '${WebsiteBucket}.s3.amazonaws.com'
+          - DomainName: !GetAtt WebsiteBucket.RegionalDomainName
             Id: 's3-origin'
             CustomOriginConfig:
-              OriginProtocolPolicy: https-only
+              OriginProtocolPolicy: http-only
         PriceClass: PriceClass_100
         Enabled: true
+        FunctionAssociations:
+          - EventType: viewer-request
+            FunctionARN: !GetAtt RewriteDefaultIndexRequest.FunctionMetadata.FunctionARN
         DefaultCacheBehavior:
           TargetOriginId: 's3-origin'
-          ViewerProtocolPolicy: 'redirect-to-https'
+          ViewerProtocolPolicy: 'allow-all'
           ForwardedValues:
             QueryString: 'false'
             Cookies:
-              Forward: none
+              Forward: all
+
+  RewriteDefaultIndexRequest:
+    Type: AWS::CloudFront::Function
+    Properties:
+      Name: RewriteDefaultIndexRequest
+      AutoPublish: true
+      FunctionCode: |
+        function handler(event) {
+          var request = event.request;
+          var uri = request.uri;
+          if (uri.endsWith('/')) {
+            request.uri += 'index.html';
+          }
+          else if (!uri.includes('.')) {
+            request.uri += '/index.html';
+          }
+          return request;
+        }
+      FunctionConfig:
+        Comment: 'Add document indexes to requests'
+        Runtime: cloudfront-js-1.0
