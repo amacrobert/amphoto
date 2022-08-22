@@ -29,12 +29,12 @@ Resources:
               OriginProtocolPolicy: http-only
         PriceClass: PriceClass_100
         Enabled: true
-        FunctionAssociations:
-          - EventType: viewer-request
-            FunctionARN: !GetAtt RewriteDefaultIndexRequest.FunctionMetadata.FunctionARN
         DefaultCacheBehavior:
           TargetOriginId: 's3-origin'
           ViewerProtocolPolicy: 'allow-all'
+          FunctionAssociations:
+            - EventType: viewer-request
+              FunctionARN: !GetAtt RewriteDefaultIndexRequest.FunctionMetadata.FunctionARN
           ForwardedValues:
             QueryString: 'false'
             Cookies:

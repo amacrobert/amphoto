@@ -45,7 +45,8 @@ class DefaultController extends AbstractController
     /**
      * @Route("/about", name="about")
      */
-    public function aboutAction(WebContent $content) {
+    public function aboutAction(WebContent $content)
+    {
         return $this->renderWithNav('default/about.html.twig', [
             'og' => $content->getOpenGraph('about'),
             'endorsements' => $this->em->getRepository(Endorsement::class)->findAll(),
@@ -58,7 +59,8 @@ class DefaultController extends AbstractController
      * @Route("/bookings", name="bookings")
      * @Route("/contact", name="bookings_alternate_link")
      */
-    public function contactAction(WebContent $content) {
+    public function contactAction(WebContent $content)
+    {
         return $this->renderWithNav('default/bookings.html.twig', [
             'og' => $content->getOpenGraph('bookings'),
             'contactNavActive' => true,
@@ -68,7 +70,8 @@ class DefaultController extends AbstractController
     /**
      * @Route("/equipment", name="equipment")
      */
-    public function equipmentAction(WebContent $content) {
+    public function equipmentAction(WebContent $content)
+    {
         return $this->renderWithNav('default/equipment.html.twig', [
             'og' => $content->getOpenGraph('equipment'),
             'moreNavActive' => true,
@@ -80,7 +83,8 @@ class DefaultController extends AbstractController
      * @Route("/video", name="video")
      * @Route("/video/", name="video_trailing_slash")
      */
-    public function videoAction(WebContent $content) {
+    public function videoAction(WebContent $content)
+    {
         return $this->renderWithNav('default/video.html.twig', [
             'og' => $content->getOpenGraph('video'),
             'videoNavActive' => true,
@@ -91,17 +95,20 @@ class DefaultController extends AbstractController
     /**
      * @Route("/photos/{category}", name="category")
      */
-    public function categoryAction(PhotoCategory $category_service, $category) {
-
+    public function categoryAction(PhotoCategory $category_service, $category, string $project_dir)
+    {
         $this->active_portfolio = $category;
 
         $portfolio_repo = $this->em->getRepository(Portfolio::class);
         $portfolio = $portfolio_repo->findOneBy(['machine_name' => $category]);
         $directory = 'images/' . $category;
+        $directory_absolute = $project_dir . '/public/' . $directory;
 
-        // If the portfolio doesn't exist, redirect home
-        if (!$portfolio || !file_exists($directory)) {
-            return $this->redirectToRoute('homepage');
+        if (!$portfolio || !file_exists($directory_absolute)) {
+            throw new \Exception(sprintf(
+                'Cannot resolve photo category "%s" because dir "%s" does not exist',
+                $category, $directory_absolute
+            ));
         }
 
         $photos = $category_service->getPhotos($category);
@@ -120,7 +127,8 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    protected function renderWithNav($view, array $parameters = array(), Response $response = null) {
+    protected function renderWithNav($view, array $parameters = array(), Response $response = null)
+    {
         $menu = $this->getMenu($this->active_portfolio);
         $parameters = array_merge($parameters, [
             'menu' => $menu->portfolios,
