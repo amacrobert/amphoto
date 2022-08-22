@@ -17,3 +17,22 @@ Resources:
             Effect: Allow
             Resource: !Sub 'arn:aws:s3:::${WebsiteBucket}/*'
             Principal: { AWS: ['*'] }
+
+  Distribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Origins:
+          - DomainName: !Sub '${WebsiteBucket}.s3.amazonaws.com'
+            Id: 's3-origin'
+            CustomOriginConfig:
+              OriginProtocolPolicy: https-only
+        PriceClass: PriceClass_100
+        Enabled: true
+        DefaultCacheBehavior:
+          TargetOriginId: 's3-origin'
+          ViewerProtocolPolicy: 'redirect-to-https'
+          ForwardedValues:
+            QueryString: 'false'
+            Cookies:
+              Forward: none
