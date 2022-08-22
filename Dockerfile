@@ -18,7 +18,7 @@ RUN echo 'alias ll="ls -lAh"' >> /root/.bashrc
 # Symfony server
 
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash \
-    && apt install symfony-cli
+    && apt install -y symfony-cli
 
 RUN symfony server:ca:install
 

@@ -42,7 +42,7 @@
         {% block header %}
             <div class="row header" style>
                 <div class="col-xs-12">
-                    <h1><a href="/">Andrew <span class="mac">Mac</span>Robert Photo<span class="abridge">graphy</span></a></h1>
+                    <h1><a href="{{ path('homepage') }}">Andrew <span class="mac">Mac</span>Robert Photo<span class="abridge">graphy</span></a></h1>
                     <ul class="social-list">
 
                         <li title="Twitter"><a href="//twitter.com/andrewmacrobert" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
@@ -77,22 +77,22 @@
 
                                     {% for portfolio in menu %}
                                         <li {% if portfolio.active %}class="active"{% endif %}>
-                                            <a href="/photos/{{ portfolio.machineName }}">{{ portfolio.name }}</a>
+                                            <a href="{{ path('category', {category: portfolio.machineName}) }}">{{ portfolio.name }}</a>
                                         </li>
                                     {% endfor %}
 
                                     <li {% if videoNavActive is defined %} class="active"{% endif %}>
-                                        <a href="/video">Video</a>
+                                        <a href="{{ path('video') }}">Video</a>
                                     </li>
                                 </ul>
                             </li>
 
                             <li class="{% if aboutNavActive is defined %}active {% endif %}">
-                                <a href="/about">About</a>
+                                <a href="{{ path('about') }}">About</a>
                             </li>
 
                             <li class="{% if contactNavActive is defined %}active {% endif %}cta">
-                                <a href="/bookings">Booking & Rates</a>
+                                <a href="{{ path('bookings') }}">Booking & Rates</a>
                             </li>
 
                         </ul>
