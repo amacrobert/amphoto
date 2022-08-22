@@ -37,7 +37,6 @@ class DefaultController extends AbstractController
             'photos' => [
                 'concerts' => $category->getPhotos('featured/concerts'),
                 'portraits' => $category->getPhotos('featured/portraits'),
-                'weddings' => $category->getPhotos('featured/weddings'),
             ],
             'og' => $content->getOpenGraph(),
         ]);

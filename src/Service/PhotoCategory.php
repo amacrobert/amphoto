@@ -7,7 +7,10 @@
 
 namespace App\Service;
 
-class PhotoCategory {
+class PhotoCategory
+{
+    public function __construct(private string $project_dir)
+    {}
 
     // List allowed file extensions here
     public static $allowed_extensions = [
@@ -18,16 +21,16 @@ class PhotoCategory {
     /**
      * Sort and return the photos in a category
      */
-    public function getPhotos($category) {
-
+    public function getPhotos($category)
+    {
         $photos = [];
-        $directory = 'images/' . $category;
+        $directory = $this->project_dir . '/public/images/' . $category;
 
         if (!file_exists($directory)) {
-            return null;
+            throw new \Exception(sprintf('Photo directory "%s" does not exist', $directory));
         }
 
-        // If there's a .BridgeSort file in the directory, use it's file arrangement
+        // If there's a .BridgeSort file in the directory, use its file arrangement
         $bridge_sort_uri = $directory . '/.BridgeSort';
         if (file_exists($bridge_sort_uri)) {
             $bridge_sort = simplexml_load_file($bridge_sort_uri);
