@@ -9,7 +9,7 @@ aws cloudformation deploy \
 
 # Build the static website
 docker exec -it amphoto bin/console -e prod cache:clear
-docker exec -it amphoto bin/console -e prod stenope:build ./static
+docker exec -it amphoto bin/console -e prod stenope:build ./static --no-expose
 
 # Sync hte built site to s3
 aws s3 sync ./static/ s3://amphoto.prod
