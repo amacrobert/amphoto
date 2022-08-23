@@ -25,6 +25,7 @@ class PhotoCategory
     {
         $photos = [];
         $directory = 'images/' . $category;
+        $directory_thumbnails = 'thumbs/' . $category;
         $directory_absolute =  $this->project_dir . '/public/' . $directory;
 
         if (!file_exists($directory_absolute)) {
@@ -42,11 +43,13 @@ class PhotoCategory
                 $file = substr($key, 0, strpos($key, ".jpg")) . '.jpg';
 
                 $uri = $directory . '/' . $file;
+                $thumb_uri = $directory_thumbnails . '/' . $file;
                 $filepath = $directory_absolute . '/' . $file;
 
                 if (file_exists($filepath)) {
                     $photos[] = (object)array_merge([
                         'uri' => $uri,
+                        'thumbnail_uri' => $thumb_uri,
                         'caption' => $this->getImageCaption($filepath),
                     ], $this->getDimensions($filepath));
                 }

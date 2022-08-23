@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cd /var/amphoto
+cp -r public/images/* public/thumbs/
+LIST=$(find public/thumbs/ -type d)
+
+for DIR in $LIST; do
+  echo $DIR
+  cd $DIR
+  mogrify -format jpg -thumbnail 512x512 *.jpg
+  cd /var/amphoto
+done

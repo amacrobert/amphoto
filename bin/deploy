@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+# Generate thumbnails
+docker exec -it amphoto bin/generate-thumbnails
+
 # Deploy the website infrastructure
 aws cloudformation deploy \
   --template-file config/aws/static-website.yaml \
@@ -9,7 +12,7 @@ aws cloudformation deploy \
 
 # Build the static website
 docker exec -it amphoto bin/console -e prod cache:clear
-docker exec -it amphoto bin/console -e prod stenope:build ./static --no-expose
+docker exec -it amphoto bin/console -e prod stenope:build ./static
 
 # Sync the built site to s3
-aws s3 sync ./static/ s3://amphoto.prod
+aws s3 sync ./static/ s3://amphoto.prod --size-only --delete

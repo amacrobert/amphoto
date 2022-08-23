@@ -4,8 +4,6 @@ Resources:
     Properties:
       BucketName: amphoto.prod
       AccessControl: PublicRead
-      WebsiteConfiguration:
-        IndexDocument: index.html
 
   WebsiteBucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -22,6 +20,7 @@ Resources:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
+        Aliases: [ andrewmacrobert.com ]
         Origins:
           - DomainName: !GetAtt WebsiteBucket.RegionalDomainName
             Id: 's3-origin'
@@ -31,7 +30,7 @@ Resources:
         Enabled: true
         DefaultCacheBehavior:
           TargetOriginId: 's3-origin'
-          ViewerProtocolPolicy: 'allow-all'
+          ViewerProtocolPolicy: 'redirect-to-https'
           FunctionAssociations:
             - EventType: viewer-request
               FunctionARN: !GetAtt RewriteDefaultIndexRequest.FunctionMetadata.FunctionARN
@@ -39,6 +38,10 @@ Resources:
             QueryString: 'false'
             Cookies:
               Forward: all
+        ViewerCertificate:
+          AcmCertificateArn: arn:aws:acm:us-east-1:078443902822:certificate/961bdb9e-f012-4ce3-820f-63b6e3c23881
+          MinimumProtocolVersion: TLSv1
+          SslSupportMethod: sni-only
 
   RewriteDefaultIndexRequest:
     Type: AWS::CloudFront::Function

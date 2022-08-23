@@ -6,7 +6,8 @@ RUN apt-get update -y \
         git \
         zip \
         unzip \
-        libxml2-dev
+        libxml2-dev \
+        imagemagick
 
 RUN docker-php-ext-install \
     exif \
