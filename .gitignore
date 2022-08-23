@@ -20,6 +20,8 @@ sftp-config.json
 /public/sandbox
 .DS_Store
 .idea
+/static
+public/thumbs/
 
 ###> symfony/phpunit-bridge ###
 .phpunit

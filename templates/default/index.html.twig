@@ -25,9 +25,7 @@
 
                     <div class="portfolio-gallery">
                         {% for photo in photos.concerts %}
-                            <a href="{{ asset(photo.uri) }}" class="swipebox" title="{{ photo.caption }}">
-                                <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
-                            </a>
+                            {% include 'default/component/gallery-slide.html.twig' %}
                         {% endfor %}
                     </div>
 
@@ -43,9 +41,7 @@
 
                     <div class="portfolio-gallery">
                         {% for photo in photos.portraits %}
-                            <a href="{{ asset(photo.uri) }}" class="swipebox" title="{{ photo.caption }}">
-                                <img src="{{ asset(photo.uri) }}" width="{{ photo.width }}" height="{{ photo.height }}" />
-                            </a>
+                            {% include 'default/component/gallery-slide.html.twig' %}
                         {% endfor %}
                     </div>
 

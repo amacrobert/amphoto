@@ -7,7 +7,10 @@
 
 namespace App\Service;
 
-class PhotoCategory {
+class PhotoCategory
+{
+    public function __construct(private string $project_dir)
+    {}
 
     // List allowed file extensions here
     public static $allowed_extensions = [
@@ -18,17 +21,19 @@ class PhotoCategory {
     /**
      * Sort and return the photos in a category
      */
-    public function getPhotos($category) {
-
+    public function getPhotos($category)
+    {
         $photos = [];
         $directory = 'images/' . $category;
+        $directory_thumbnails = 'thumbs/' . $category;
+        $directory_absolute =  $this->project_dir . '/public/' . $directory;
 
-        if (!file_exists($directory)) {
-            return null;
+        if (!file_exists($directory_absolute)) {
+            throw new \Exception(sprintf('Photo directory "%s" does not exist', $directory));
         }
 
-        // If there's a .BridgeSort file in the directory, use it's file arrangement
-        $bridge_sort_uri = $directory . '/.BridgeSort';
+        // If there's a .BridgeSort file in the directory, use its file arrangement
+        $bridge_sort_uri = $directory_absolute . '/.BridgeSort';
         if (file_exists($bridge_sort_uri)) {
             $bridge_sort = simplexml_load_file($bridge_sort_uri);
             $sort_order = $bridge_sort->xpath('//@key');
@@ -38,12 +43,15 @@ class PhotoCategory {
                 $file = substr($key, 0, strpos($key, ".jpg")) . '.jpg';
 
                 $uri = $directory . '/' . $file;
+                $thumb_uri = $directory_thumbnails . '/' . $file;
+                $filepath = $directory_absolute . '/' . $file;
 
-                if (file_exists($uri)) {
+                if (file_exists($filepath)) {
                     $photos[] = (object)array_merge([
                         'uri' => $uri,
-                        'caption' => $this->getImageCaption($uri),
-                    ], $this->getDimensions($uri));
+                        'thumbnail_uri' => $thumb_uri,
+                        'caption' => $this->getImageCaption($filepath),
+                    ], $this->getDimensions($filepath));
                 }
             }
         }
@@ -55,13 +63,14 @@ class PhotoCategory {
             foreach ($files as $file) {
                 // Only accept certain file types and ignore directories
                 $pathinfo = pathinfo($file);
+                $filepath = $directory_absolute . '/' . $file;
 
                 if (in_array(strtolower($pathinfo['extension']), self::$allowed_extensions)) {
                     $uri = $directory . '/' . $file;
                     $photos[] = (object)array_merge([
                         'uri' => $uri,
-                        'caption' => $this->getImageCaption($uri),
-                    ], $this->getDimensions($uri));
+                        'caption' => $this->getImageCaption($filepath),
+                    ], $this->getDimensions($filepath));
                 }
             }
         }
@@ -76,18 +85,18 @@ class PhotoCategory {
      * @return string
      *   landscape, orientation, or square
      */
-    private function getDimensions($uri) {
+    private function getDimensions($filepath) {
         // Determine if the image is landscape, portrait, or square for proper Freewall rendering
-        $dimensions = getimagesize($uri);
+        $dimensions = getimagesize($filepath);
         return [
             'width' => $dimensions[0],
             'height' => $dimensions[1]
         ];
     }
 
-    private function getImageCaption($uri) {
+    private function getImageCaption($filepath) {
         $caption = '';
-        if ($exif = exif_read_data($uri, 'IFD0', true)) {
+        if ($exif = exif_read_data($filepath, 'IFD0', true)) {
             if (isset($exif['IFD0']) && isset($exif['IFD0']['ImageDescription'])) {
                 $caption = $exif['IFD0']['ImageDescription'];
             }
