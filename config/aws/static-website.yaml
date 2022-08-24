@@ -3,7 +3,7 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: amphoto.prod
-      AccessControl: PublicRead
+      AccessControl: Private
 
   WebsiteBucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -14,7 +14,15 @@ Resources:
           - Action: s3:GetObject
             Effect: Allow
             Resource: !Sub 'arn:aws:s3:::${WebsiteBucket}/*'
-            Principal: { AWS: ['*'] }
+            Principal:
+              AWS:
+                - !Sub "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${DistributionOAI.Id}"
+
+  DistributionOAI:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: 'OAI for CloudFront access to s3'
 
   Distribution:
     Type: AWS::CloudFront::Distribution
@@ -24,8 +32,8 @@ Resources:
         Origins:
           - DomainName: !GetAtt WebsiteBucket.RegionalDomainName
             Id: 's3-origin'
-            CustomOriginConfig:
-              OriginProtocolPolicy: http-only
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${DistributionOAI.Id}"
         PriceClass: PriceClass_100
         Enabled: true
         DefaultCacheBehavior:
