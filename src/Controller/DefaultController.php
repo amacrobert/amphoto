@@ -80,19 +80,6 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/video", name="video")
-     * @Route("/video/", name="video_trailing_slash")
-     */
-    public function videoAction(WebContent $content)
-    {
-        return $this->renderWithNav('default/video.html.twig', [
-            'og' => $content->getOpenGraph('video'),
-            'videoNavActive' => true,
-            'portfolioNavActive' => true,
-        ]);
-    }
-
-    /**
      * @Route("/photos/{category}", name="category")
      */
     public function categoryAction(PhotoCategory $category_service, $category, string $project_dir)
