@@ -3,17 +3,81 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Portfolio
+ *
+ * @ORM\Table(name="portfolio")
+ * @ORM\Entity
+ */
 class Portfolio
 {
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
     private $id;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="ordinal", type="integer", nullable=true)
+     */
     private $ordinal;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="listed", type="boolean")
+     */
     private $listed = false;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string")
+     */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="machine_name", type="string")
+     */
     private $machine_name;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
     private $description;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="banner", type="string", nullable=true)
+     */
     private $banner;
-    private $endorsements;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="App\Entity\Endorsement")
+     * @ORM\JoinTable(name="portfolio_endorsement",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="portfolio_id", referencedColumnName="id", onDelete="CASCADE")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="endorsement_id", referencedColumnName="id", onDelete="CASCADE")
+     *   }
+     * )
+     */
+    private $endorsements = [];
 
     // unmapped - used for active menu item
     private $active = false;

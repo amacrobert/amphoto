@@ -1,11 +1,37 @@
 <?php
 
 namespace App\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
-class Endorsement {
-
+/**
+ * Endorsement
+ *
+ * @ORM\Table(name="endorsement")
+ * @ORM\Entity
+ */
+class Endorsement
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
     private $id;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="body", type="text", nullable=true)
+     */
     private $body;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="author", type="string", nullable=true)
+     */
     private $author;
 
     public function __toString() {
