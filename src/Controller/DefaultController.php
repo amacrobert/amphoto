@@ -27,9 +27,7 @@ class DefaultController extends AbstractController
         $this->em = $em;
     }
 
-    /**
-     * @Route("/", name="homepage")
-     */
+    #[Route(path: '/', name: 'homepage')]
     public function indexAction(Request $request, WebContent $content, PhotoCategory $category)
     {
         return $this->renderWithNav('default/index.html.twig', [
@@ -42,9 +40,7 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/about", name="about")
-     */
+    #[Route(path: '/about', name: 'about')]
     public function aboutAction(WebContent $content)
     {
         return $this->renderWithNav('default/about.html.twig', [
@@ -55,10 +51,8 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/bookings", name="bookings")
-     * @Route("/contact", name="bookings_alternate_link")
-     */
+    #[Route(path: '/bookings', name: 'bookings')]
+    #[Route(path: '/contact', name: 'bookings_alternate_link')]
     public function contactAction(WebContent $content)
     {
         return $this->renderWithNav('default/bookings.html.twig', [
@@ -67,9 +61,7 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/equipment", name="equipment")
-     */
+    #[Route(path: '/equipment', name: 'equipment')]
     public function equipmentAction(WebContent $content)
     {
         return $this->renderWithNav('default/equipment.html.twig', [
@@ -79,27 +71,21 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/photos/{category}", name="category")
-     */
+    #[Route(path: '/photos/{category}', name: 'category')]
     public function categoryAction(PhotoCategory $category_service, $category, string $project_dir)
     {
         $this->active_portfolio = $category;
-
         $portfolio_repo = $this->em->getRepository(Portfolio::class);
         $portfolio = $portfolio_repo->findOneBy(['machine_name' => $category]);
         $directory = 'images/' . $category;
         $directory_absolute = $project_dir . '/public/' . $directory;
-
         if (!$portfolio || !file_exists($directory_absolute)) {
             throw new \Exception(sprintf(
                 'Cannot resolve photo category "%s" because dir "%s" does not exist',
                 $category, $directory_absolute
             ));
         }
-
         $photos = $category_service->getPhotos($category);
-
         return $this->renderWithNav('default/category.html.twig', [
             'portfolio' => $portfolio,
             'photos' => $photos,

@@ -3,84 +3,44 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Portfolio
- *
- * @ORM\Table(name="portfolio")
- * @ORM\Entity
  */
+#[ORM\Table(name: 'portfolio')]
+#[ORM\Entity]
 class Portfolio
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
+    #[ORM\Column(name: 'id', type: 'integer')]
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
+    private ?int $id;
 
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="ordinal", type="integer", nullable=true)
-     */
-    private $ordinal;
+    #[ORM\Column(name: 'ordinal', type: 'integer', nullable: true)]
+    private ?int $ordinal;
 
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="listed", type="boolean")
-     */
-    private $listed = false;
+    #[ORM\Column(name: 'listed', type: 'boolean')]
+    private bool $listed = false;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string")
-     */
-    private $name;
+    #[ORM\Column(name: 'name', type: 'string')]
+    private ?string $name;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="machine_name", type="string")
-     */
-    private $machine_name;
+    #[ORM\Column(name: 'machine_name', type: 'string')]
+    private ?string $machine_name;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="description", type="text", nullable=true)
-     */
-    private $description;
+    #[ORM\Column(name: 'description', type: 'text', nullable: true)]
+    private ?string $description;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="banner", type="string", nullable=true)
-     */
-    private $banner;
+    #[ORM\Column(name: 'banner', type: 'string', nullable: true)]
+    private ?string $banner;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="App\Entity\Endorsement")
-     * @ORM\JoinTable(name="portfolio_endorsement",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="portfolio_id", referencedColumnName="id", onDelete="CASCADE")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="endorsement_id", referencedColumnName="id", onDelete="CASCADE")
-     *   }
-     * )
-     */
+    #[ORM\ManyToMany(targetEntity: Endorsement::class)]
     private $endorsements = [];
 
     // unmapped - used for active menu item
-    private $active = false;
+    private bool $active = false;
 
     public function __toString() {
         return $this->name ?: 'New Portfolio';
