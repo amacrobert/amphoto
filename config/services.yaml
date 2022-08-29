@@ -47,25 +47,9 @@ services:
             $config:
                 verify: false
 
-# Admins
 
-#    admin.portfolio:
-#        class: App\Admin\PortfolioAdmin
-#        arguments: [~, App\Entity\Portfolio, ~]
-#        tags:
-#            - { name: sonata.admin, manager_type: orm, label: Portfolios, group: Entities }
-#        public: true
-#
-#    admin.endorsement:
-#        class: App\Admin\EndorsementAdmin
-#        arguments: [~, App\Entity\Endorsement, ~]
-#        tags:
-#            - { name: sonata.admin, manager_type: orm, label: Endorsements, group: Entities }
-#        public: true
-#
-#    admin.freebie:
-#        class: App\Admin\FreebieAdmin
-#        arguments: [~, App\Entity\Freebie, ~]
-#        tags:
-#            - { name: sonata.admin, manager_type: orm, label: Freebies, group: Entities }
-#        public: true
+    # Admins
+    admin.portfolio:
+        class: App\Admin\PortfolioAdmin
+        tags:
+            - { name: sonata.admin, model_class: App\Entity\Portfolio, manager_type: orm, label: Portfolio }

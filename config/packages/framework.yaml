@@ -16,6 +16,7 @@ framework:
     #fragments: true
     php_errors:
         log: true
+    translator: { fallbacks: ['en'] }
 
 when@test:
     framework:
