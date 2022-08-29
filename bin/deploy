@@ -15,4 +15,4 @@ docker exec -it amphoto bin/console -e prod cache:clear
 docker exec -it amphoto bin/console -e prod stenope:build ./static
 
 # Sync the built site to s3
-aws s3 sync ./static/ s3://amphoto.prod --size-only --delete
+aws s3 sync ./static/ s3://amphoto.prod --delete --size-only
