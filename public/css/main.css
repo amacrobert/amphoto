@@ -1,10 +1,19 @@
 body {
-    padding-top: 82px;
+    margin-top: 58px;
 }
 
 .full-width {
     padding-left: 0;
     padding-right: 0;
+}
+
+/* Sticky navbar to top */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
 }
 
 span.mac {
@@ -27,40 +36,22 @@ span.mac {
     z-index: -1;
 }
 
-.justified-gallery>a>.caption,
-.justified-gallery>div>.caption {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-a {
-    color: #000;
-}
-a:hover {
-    color: #000;
-    text-decoration: none;
-}
-
-.homepage-parallax .btn-lg {
-    margin: 1rem 0;
-}
-
-.header {
-    background-color: #FFF;
-    position: fixed;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    right: 0;
-    border-bottom: 2px solid white;
-    height: 32px;
-}
 .header h1 {
     font-size: 18px;
     font-family: 'Raleway';
     font-weight: 600;
     text-transform: uppercase;
-    margin: 7px 0 0 10px;
+    margin-top: 10px;
+}
+
+.header h1 a {
+    font-weight: normal;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.header h1 a:hover {
+    text-decoration: underline;
 }
 
 .header h1 .abridge {
@@ -72,62 +63,9 @@ a:hover {
     }
 }
 
-ul.social-list {
-    position: fixed;
-    top: 0;
-    right: 10px;
-    list-style-type: none;
-    font-size: 24px;
-}
-ul.social-list li {
-    float: right;
-}
-ul.social-list a {
-    display: block;
-    text-align: center;
-    width: 20px;
-    margin-left: 8px;
-    color: #000;
-}
-ul.social-list a:hover {
-    color: #888;
-}
-
-/* like boostrap's .navbar-fixed-top but with space above it for the site title and social links */
-.navbar-fixed-top-32 {
-    top: 32px;
-    border-width: 0 0 1px;
-}
-.navbar-inverse {
-    background-color: #333;
-    border-color: #EEE;
-    background-image: none; /* get rid of default gradient */
-}
-
-@media (min-width: 768px) {
-    .navbar .navbar-nav {
-        display: inline-block;
-        float: none;
-        vertical-align: top;
-    }
-
-    .navbar .navbar-collapse {
-        text-align: center;
-    }
-}
-
-@media (min-width: 768px) {
-    .navbar-nav>li>a {
-        font-size: 15px;
-        font-family: 'Raleway';
-        letter-spacing: 1px;
-    }
-}
-.navbar-inverse .navbar-nav>li>a {
-    color: #EEE;
-}
-
-.navigation ul {
+.social-link {
+    font-size: 28px;
+    padding: 0;
 }
 
 .page-title {
@@ -146,12 +84,8 @@ ul.social-list a:hover {
     margin: 0 auto 30px auto;
 }
 
-.page-title p.instructions {
-    color: #888;
-    font-style: italic;
-}
-.page-title p.instructions .click {
-    display: none;
+.page-title h3 {
+    font-size: 1.3em;
 }
 
 @media (min-width: 768px) {
@@ -175,6 +109,8 @@ blockquote {
     clear: both;
     margin-top: 40px;
     text-align: left;
+    border-left: 4px solid #DDD;
+    padding-left: 16px;
 }
 
 .quote-author {
@@ -195,49 +131,10 @@ blockquote {
     text-decoration: underline;
 }
 
-/* overrides for bootstrap's menu dropdown item */
-.dropdown-menu {
-    border: none;
-    background-color: #333;
-}
-.dropdown-menu > li > a {
-    line-height: 2em;
-    color: #EEE;
-}
-@media (min-width: 768px) {
-    .dropdown-menu > li > a {
-        font-family: 'Raleway';
-        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
-    }
-    .dropdown-menu > li:last-child a {
-        border-bottom: none;
-    }
-}
-
-.dropdown-menu > li > a:focus,
-.dropdown-menu > li > a:hover {
-    background-color: #444;
-    background-image: none;
-    color: #FFF;
-}
-
-.equipment a {
-    color: #0000AA;
-}
-.equipment a:focus,
-.equipment a:hover {
-    color: black;
-    text-decoration: underline;
-}
-
 .list-section-title {
     margin: 20px 0 0 5px;
     text-transform: uppercase;
     font-weight: bold;
-}
-
-.video-item {
-    margin-bottom: 70px;
 }
 
 .cta {
@@ -313,26 +210,4 @@ body #mc_embed_signup .mc-field-group {
 
 body #mc_embed_signup .button {
     margin-top: 6px;
-}
-
-/** Blog list **/
-
-.blog-teaser {
-    padding: 0 0 30px 0;
-    margin-top: 30px;
-    border-bottom: 1px solid #888;
-}
-
-.blog-teaser.last {
-    border-bottom: none;
-    padding: 0;
-}
-
-h4.media-heading {
-    color: #3060AA;
-}
-
-p.date {
-    font-size: 11px;
-    color: #656565;
 }

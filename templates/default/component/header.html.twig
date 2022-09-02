@@ -1,0 +1,90 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light header">
+    <div class="container-fluid mx-0">
+        <h1><a href="{{ path('homepage') }}">
+            Andrew <span class="mac">Mac</span>Robert Photo<span class="abridge">graphy</span>
+        </a></h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Portfolios
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% for portfolio in menu %}
+                            <li class="{% if portfolio.active %}active{% endif %}">
+                                <a class="dropdown-item" href="{{ path('category', {category: portfolio.machineName}) }}">{{ portfolio.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link pe-3" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-info" href="{{ path('bookings') }}">Bookings & Rates</a>
+                </li>
+                {# Socials#}
+                <li class="nav-item">
+                    <a class="nav-link social-link ps-3" href="//twitter.com/andrewmacrobert" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link social-link" href="//facebook.com/andrewmacrobertphoto" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link social-link" href="//instagram.com/andrew.macrobert" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+{#<div class="row header" style>#}
+{#    <div class="col-xs-12">#}
+{#        <h1><a href="{{ path('homepage') }}">Andrew <span class="mac">Mac</span>Robert Photo<span class="abridge">graphy</span></a></h1>#}
+{#        <ul class="social-list">#}
+
+{#            <li title="Twitter"><a href="//twitter.com/andrewmacrobert" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>#}
+
+{#            <li title="Facebook"><a href="//facebook.com/andrewmacrobertphoto" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>#}
+
+{#            <li title="Instagram"><a href="//instagram.com/andrew.macrobert" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>#}
+
+{#        </ul>#}
+{#    </div>#}
+{#</div>#}
+
+{#<nav class="navbar navbar-inverse navbar-default navbar-fixed-top navbar-fixed-top-32">#}
+{#    <div class="container-fluid">#}
+{#        <div class="navbar-header">#}
+{#            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">#}
+{#                <span class="sr-only">Toggle navigation</span>#}
+{#                <span class="icon-bar"></span>#}
+{#                <span class="icon-bar"></span>#}
+{#                <span class="icon-bar"></span>#}
+{#            </button>#}
+{#        </div>#}
+{#        <div id="navbar" class="collapse navbar-collapse">#}
+{#            <ul class="nav navbar-nav">#}
+
+{#                <li role="presentation" class="dropdown {% if portfolioNavActive %}active{% endif %}">#}
+{#                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspop="true" aria-expanded="false">#}
+{#                        Portfolios <span class="caret"></span>#}
+{#                    </a>#}
+{#                </li>#}
+
+{#                <li class="{% if aboutNavActive is defined %}active {% endif %}">#}
+{#                    <a href="{{ path('about') }}">About</a>#}
+{#                </li>#}
+
+{#                <li class="{% if contactNavActive is defined %}active {% endif %}cta">#}
+{#                    <a href="{{ path('bookings') }}">Booking & Rates</a>#}
+{#                </li>#}
+
+{#            </ul>#}
+{#        </div>#}
+{#    </div>#}
+{#</nav>#}
