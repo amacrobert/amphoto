@@ -63,9 +63,29 @@ span.mac {
     }
 }
 
-.social-link {
+.social-links a {
     font-size: 28px;
     padding: 0;
+    margin-left: 8px;
+    color: rgba(255,255,255,.55);
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+.social-links a:first-child {
+    margin-left: inherit;
+}
+.social-links a:hover {
+    color: rgba(255,255,255,.75);
+}
+
+/* padding for the social buttons when the header isn't collapsed */
+@media (min-width: 992px) {
+    .social-links a:first-child {
+        margin-left: 8px;
+    }
+    .social-links {
+        padding-left: 8px;
+    }
 }
 
 .page-title {
