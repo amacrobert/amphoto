@@ -18,6 +18,9 @@ framework:
         log: true
     translator: { fallbacks: ['en'] }
 
+    assets:
+        version: '2022-10-05'
+
 when@test:
     framework:
         test: true
