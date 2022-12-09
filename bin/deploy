@@ -11,6 +11,7 @@ aws cloudformation deploy \
   --no-fail-on-empty-changeset
 
 # Build the static website
+docker exec -it amphoto bin/console -e prod assets:install
 docker exec -it amphoto bin/console -e prod cache:clear
 docker exec -it amphoto bin/console -e prod stenope:build ./static
 
