@@ -82,10 +82,10 @@ class PhotoCategory
      * Helper function to get the orientation of a photo by its uri
      *
      * @param $uri
-     * @return string
-     *   landscape, orientation, or square
+     * @return array<string, int>
      */
-    private function getDimensions($filepath) {
+    private function getDimensions($filepath): array
+    {
         // Determine if the image is landscape, portrait, or square for proper Freewall rendering
         $dimensions = getimagesize($filepath);
         return [

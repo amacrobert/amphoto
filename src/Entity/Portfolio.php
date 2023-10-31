@@ -25,10 +25,10 @@ class Portfolio
     private bool $listed = false;
 
     #[ORM\Column(name: 'name', type: 'string')]
-    private ?string $name;
+    private string $name;
 
     #[ORM\Column(name: 'machine_name', type: 'string')]
-    private ?string $machine_name;
+    private string $machine_name;
 
     #[ORM\Column(name: 'description', type: 'text', nullable: true)]
     private ?string $description;
@@ -47,7 +47,7 @@ class Portfolio
     }
 
     public function __construct() {
-        $this->endoresements = new ArrayCollection;
+        $this->endorsements = new ArrayCollection;
     }
 
     public function isActive() {
@@ -122,11 +122,11 @@ class Portfolio
     }
 
     public function addEndorsement($endorsement) {
-        $this->endorsements->add($endorsements);
+        $this->endorsements->add($endorsement);
         return $this;
     }
 
     public function removeEndorsement($endorsement) {
-        $this->endoresements->removeElement($endorsement);
+        $this->endorsements->removeElement($endorsement);
     }
 }
