@@ -6,7 +6,7 @@ RUN apt-get update -y \
 
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-install exif pdo_mysql intl
-ENV PHP_MEMORY_LIMIT=2G
+RUN echo 'memory_limit = 2G' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
 
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 RUN echo 'alias ll="ls -lAh"' >> /root/.bashrc
