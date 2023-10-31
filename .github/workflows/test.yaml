@@ -1,0 +1,28 @@
+name: Test
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  tests:
+    name: Linting, Static Analysis, and Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Docker compose
+        run: docker-compose up --build -d
+
+      - name: Install packages
+        run: docker exec amphoto bash -c "APP_ENV=test composer install --no-progress --no-interaction --prefer-dist"
+
+      - name: Code linting
+        run: docker exec amphoto composer sniff
+
+      - name: Static analysis
+        run: docker exec amphoto composer stan
+
+      - name: Unit tests
+        run: docker exec amphoto composer test
