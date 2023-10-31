@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WebContent
  *
@@ -9,15 +10,14 @@
 
 namespace App\Service;
 
-class WebContent {
-
+class WebContent
+{
     /**
      * Get OGP values for a given page
      */
     public function getOpenGraph($page = null)
     {
         switch ($page) {
-
             case 'about':
                 $ogp = [
                     'title' => 'About: Andrew MacRobert Photography',
