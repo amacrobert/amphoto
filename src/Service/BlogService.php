@@ -2,23 +2,26 @@
 
 namespace App\Service;
 
-class BlogService {
-
+class BlogService
+{
     private $wordpress_client;
     private $guzzle;
     private $cache;
 
-    public function __construct($wordpress_client, $guzzle, $cache) {
+    public function __construct($wordpress_client, $guzzle, $cache)
+    {
         $this->wordpress_client = $wordpress_client;
         $this->guzzle = $guzzle;
         $this->cache = $cache;
     }
 
-    public function getPosts() {
+    public function getPosts()
+    {
         return $this->wordpress_client->getPosts();
     }
 
-    public function getPost($post_id) {
+    public function getPost($post_id)
+    {
 
         $cache_item = $this->cache->getItem('blog.' . $post_id);
 
@@ -35,21 +38,24 @@ class BlogService {
         $post->post_content = str_replace('&nbsp;', ' ', $post->post_content);
 
         // Convert WordPress captions to HTML
-        $post->post_content = preg_replace("/\s*\[caption(.*?)\](<img(.*?)>)(.*?)\[\/caption\]\s*/", PHP_EOL.PHP_EOL."<img $3><div class='caption'>$4</div>", $post->post_content);
+        $post->post_content = preg_replace(
+            "/\s*\[caption(.*?)\](<img(.*?)>)(.*?)\[\/caption\]\s*/",
+            PHP_EOL . PHP_EOL . "<img $3><div class='caption'>$4</div>",
+            $post->post_content
+        );
 
         // Instagram oEmbeds
         $post->post_content = preg_replace_callback(
             "/\s*\[instagram url=(.*?)\]\s*/",
-            function($match) {
+            function ($match) {
                 try {
                     $response = $this->guzzle->get('https://api.instagram.com/oembed?url=' . $match[1]);
                     if ($response->getStatusCode() !== 200) {
-                        throw new \Exception;
+                        throw new \Exception();
                     }
                     $body = json_decode($response->getBody());
                     return '<p>' . $body->html . '</p>';
-                }
-                catch (\Exception $e) {
+                } catch (\Exception $e) {
                     return '<p>[Error loading instagram content]</p>';
                 }
             },
@@ -59,16 +65,15 @@ class BlogService {
         // Vimeo oEmbeds
         $post->post_content = preg_replace_callback(
             "/\s*\[vimeo url=(.*?)\]\s*/",
-            function($match) {
+            function ($match) {
                 try {
                     $response = $this->guzzle->get('https://vimeo.com/api/oembed.json?url=' . $match[1]);
                     if ($response->getStatusCode() !== 200) {
-                        throw new \Exception;
+                        throw new \Exception();
                     }
                     $body = json_decode($response->getBody());
                     return '<p>' . $body->html . '</p>';
-                }
-                catch (\Exception $e) {
+                } catch (\Exception $e) {
                     return '<p>[Error loading vimeo content]</p>';
                 }
             },
@@ -78,9 +83,14 @@ class BlogService {
         // Youtube oEmbeds
         $post->post_content = preg_replace_callback(
             "/\s*\[youtube (.*?)\]\s*/",
-            function($match) {
+            function ($match) {
                 return "
-                    <p><iframe style='width: 100%; min-height: 320px' src='https://youtube.com/embed/$match[1]' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe></p>
+                    <p><iframe
+                        style='width: 100%; min-height: 320px'
+                        src='https://youtube.com/embed/$match[1]'
+                        allow='autoplay; encrypted-media'
+                        allowfullscreen>
+                    </iframe></p>
                 ";
             },
             $post->post_content
@@ -91,5 +101,4 @@ class BlogService {
 
         return $post;
     }
-
 }

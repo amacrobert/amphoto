@@ -25,10 +25,10 @@ class Portfolio
     private bool $listed = false;
 
     #[ORM\Column(name: 'name', type: 'string')]
-    private ?string $name;
+    private string $name;
 
     #[ORM\Column(name: 'machine_name', type: 'string')]
-    private ?string $machine_name;
+    private string $machine_name;
 
     #[ORM\Column(name: 'description', type: 'text', nullable: true)]
     private ?string $description;
@@ -42,91 +42,111 @@ class Portfolio
     // unmapped - used for active menu item
     private bool $active = false;
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->name ?: 'New Portfolio';
     }
 
-    public function __construct() {
-        $this->endoresements = new ArrayCollection;
+    public function __construct()
+    {
+        $this->endorsements = new ArrayCollection();
     }
 
-    public function isActive() {
+    public function isActive()
+    {
         return (bool)$this->active;
     }
 
-    public function setActive($active) {
+    public function setActive($active)
+    {
         $this->active = $active;
         return $this;
     }
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getOrdinal() {
+    public function getOrdinal()
+    {
         return $this->ordinal;
     }
 
-    public function setOrdinal($ordinal) {
+    public function setOrdinal($ordinal)
+    {
         $this->ordinal = $ordinal;
         return $this;
     }
 
-    public function isListed() {
+    public function isListed()
+    {
         return (bool)$this->listed;
     }
 
-    public function setListed($listed) {
+    public function setListed($listed)
+    {
         $this->listed = $listed;
         return $this;
     }
 
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
         return $this;
     }
 
-    public function getMachineName() {
+    public function getMachineName()
+    {
         return $this->machine_name;
     }
 
-    public function setMachineName($machine_name) {
+    public function setMachineName($machine_name)
+    {
         $this->machine_name = $machine_name;
         return $this;
     }
 
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
-    public function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
         return $this;
     }
 
-    public function getBanner() {
+    public function getBanner()
+    {
         return $this->banner;
     }
 
-    public function setBanner($banner) {
+    public function setBanner($banner)
+    {
         $this->banner = $banner;
         return $this;
     }
 
-    public function getEndorsements() {
+    public function getEndorsements()
+    {
         return $this->endorsements;
     }
 
-    public function addEndorsement($endorsement) {
-        $this->endorsements->add($endorsements);
+    public function addEndorsement($endorsement)
+    {
+        $this->endorsements->add($endorsement);
         return $this;
     }
 
-    public function removeEndorsement($endorsement) {
-        $this->endoresements->removeElement($endorsement);
+    public function removeEndorsement($endorsement)
+    {
+        $this->endorsements->removeElement($endorsement);
     }
 }

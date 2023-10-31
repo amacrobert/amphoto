@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PhotoCategory
  *
@@ -10,7 +11,8 @@ namespace App\Service;
 class PhotoCategory
 {
     public function __construct(private string $project_dir)
-    {}
+    {
+    }
 
     // List allowed file extensions here
     public static $allowed_extensions = [
@@ -32,9 +34,9 @@ class PhotoCategory
             throw new \Exception(sprintf('Photo directory "%s" does not exist', $directory));
         }
 
-        // If there's a .BridgeSort file in the directory, use its file arrangement
         $bridge_sort_uri = $directory_absolute . '/.BridgeSort';
         if (file_exists($bridge_sort_uri)) {
+            // If there's a .BridgeSort file in the directory, use its file arrangement
             $bridge_sort = simplexml_load_file($bridge_sort_uri);
             $sort_order = $bridge_sort->xpath('//@key');
 
@@ -54,10 +56,8 @@ class PhotoCategory
                     ], $this->getDimensions($filepath));
                 }
             }
-        }
-
-        // No BridgeSort -- scandir and sort by filename
-        else {
+        } else {
+            // No BridgeSort -- scandir and sort by filename
             $files = scandir($directory, SCANDIR_SORT_DESCENDING);
 
             foreach ($files as $file) {
@@ -82,10 +82,10 @@ class PhotoCategory
      * Helper function to get the orientation of a photo by its uri
      *
      * @param $uri
-     * @return string
-     *   landscape, orientation, or square
+     * @return array<string, int>
      */
-    private function getDimensions($filepath) {
+    private function getDimensions($filepath): array
+    {
         // Determine if the image is landscape, portrait, or square for proper Freewall rendering
         $dimensions = getimagesize($filepath);
         return [
@@ -94,7 +94,8 @@ class PhotoCategory
         ];
     }
 
-    private function getImageCaption($filepath) {
+    private function getImageCaption($filepath)
+    {
         $caption = '';
         if ($exif = exif_read_data($filepath, 'IFD0', true)) {
             if (isset($exif['IFD0']) && isset($exif['IFD0']['ImageDescription'])) {

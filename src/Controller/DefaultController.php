@@ -82,7 +82,8 @@ class DefaultController extends AbstractController
         if (!$portfolio || !file_exists($directory_absolute)) {
             throw new \Exception(sprintf(
                 'Cannot resolve photo category "%s" because dir "%s" does not exist',
-                $category, $directory_absolute
+                $category,
+                $directory_absolute
             ));
         }
         $photos = $category_service->getPhotos($category);
@@ -105,7 +106,7 @@ class DefaultController extends AbstractController
         $menu = $this->getMenu($this->active_portfolio);
         $parameters = array_merge($parameters, [
             'menu' => $menu->portfolios,
-            'portfolioNavActive' => isset($parameters['portfolioNavActive']) ? $parameters['portfolioNavActive'] : $menu->portfolio_nav_active,
+            'portfolioNavActive' => $parameters['portfolioNavActive'] ?? $menu->portfolio_nav_active,
         ]);
 
         return parent::render($view, $parameters, $response);

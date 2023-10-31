@@ -9,7 +9,8 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 abstract class AssetAwareAdmin extends AbstractAdmin
 {
-    protected function getAssets($web_dir = '') {
+    protected function getAssets($web_dir = '')
+    {
 
         $results = $this->getDirContents(__DIR__ . '/../../public/' . $web_dir);
 
@@ -29,8 +30,7 @@ abstract class AssetAwareAdmin extends AbstractAdmin
 
             if (!is_dir($path)) {
                 $results[] = str_replace('/amphoto/public', '', $path);
-            }
-            else if($value != "." && $value != "..") {
+            } elseif ($value != "." && $value != "..") {
                 $this->getDirContents($path, $results);
                 $results[] = $path;
             }
