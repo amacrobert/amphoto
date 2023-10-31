@@ -5,11 +5,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/"
-        },
-        "classmap": [
-            "app/AppKernel.php",
-            "app/AppCache.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
@@ -20,7 +16,6 @@
         "monolog/monolog": "^1.0",
         "symfony/monolog-bundle": "^3.7",
         "symfony/polyfill-apcu": "^1.0",
-        "sensio/framework-extra-bundle": "*",
         "incenteev/composer-parameter-handler": "^2.0",
         "twbs/bootstrap": "^3.3",
         "guzzlehttp/guzzle":"~6.0",
@@ -63,16 +58,13 @@
         "symfony-web-dir": "web",
         "symfony-tests-dir": "tests",
         "symfony-assets-install": "relative",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
-        },
         "installer-paths": {
             "./web/{$name}": ["twbs/bootstrap"]
         },
         "extra": {
             "symfony": {
                 "allow-contrib": true,
-                "require": "6.2.*",
+                "require": "6.3.*",
                 "docker": false
             }
         }
